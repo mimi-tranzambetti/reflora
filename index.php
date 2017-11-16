@@ -10,6 +10,7 @@
         <link rel="shortcut icon" href="img/favicon.png">
 
         <meta charset="utf-8">
+
         <title>Reflora</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -79,7 +80,7 @@
 
     <a href='reflora_search.php'>
     <div class="button" id="search-link">
-        Search
+        Search!
     </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
     </a>
 
