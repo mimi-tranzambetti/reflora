@@ -80,7 +80,7 @@
 
     <a href='reflora_search.php'>
     <div class="button" id="search-link">
-        Search!
+        Search
     </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
     </a>
 
