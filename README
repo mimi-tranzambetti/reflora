@@ -1,0 +1,20 @@
+INTRO Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.
+
+INSTRUCTIONS Move your mouse to start.
+Command - R to refresh the page and change the background (random grayscale)
+Spacebar - to rotate the canvas in reverse
+Up, Down, Left, Right arrows - to translate generated ellipses 
+Esc - stops sketch from generating ellipses around center point
+MouseX - will determine diameter of ellipses, with left being smallest and right being largest
+Enter - will regenerate background
+
+When mouse is on the left half of the canvas:
+MouseY - Vertical mouse position controls default red fill color, with the top of the canvas as black and the bottom as red, and a gradient in between. 
+Q - change fill to black
+W - change fill to white
+E - change fill to yellow
+R - change fill to magenta
+T - change fill to cyan
+
+When mouse is on right half of canvas: 
+MouseY - changes stroke to white in bottom right quadrant, and black in upper right quadrant of canvas
