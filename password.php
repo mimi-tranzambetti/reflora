@@ -31,7 +31,6 @@ if(!$results) {
 $currentrow = $results->fetch_assoc();
 
 $_SESSION["username"] = $currentrow['username'];
-echo "heyboo";
 
 if ($_SESSION["loggedin"] == "yes") {
 }
