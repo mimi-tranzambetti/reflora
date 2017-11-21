@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-<?php include "password.php";?>
 
 <head>
 
 
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/navigation.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
 
     <meta charset="utf-8">
@@ -34,49 +36,27 @@
 
 <body>
 <div id="navbar" style="z-index: 10;">
-    <img id="corner-logo" src="./img/logo.png"/>
+    <nav>
+        <a href="/"><img id="corner-logo" src="./img/logo.png"/></a>
+        <div class="navlinks">
+            <a onclick="settings()"><i class="material-icons">settings</i></a>
+            <a onclick="instructions()"><i class="material-icons">info</i></a>
+            <a href='reflora_search.php'><i class="material-icons">search</i></a>
+            <a href='img/styleguide.jpeg'><i class="material-icons">line_style</i></a>
+                <?php
+                session_start();
+                if($_SESSION["loggedin"] == "yes") {
+                    echo "<a href='logout.php'>". "<i class=\"material-icons\">account_circle</i>". " Logout" . "</a>";
+                } else {
+                    echo "<a href='login.php'>". "<i class=\"material-icons\">account_circle</i>" . " Login" . "</a>";
+                } ?>
+        </div>
 
+            </a>
+
+        </div>
+    </nav>
 </div>
-
-<div id="images">
-    <p style="text-align: center;">Library</p>
-    <img src="phyllo1.jpg.jpeg"> <br> <br>
-    <img src="phyllo2.jpg.jpeg"> <br> <br>
-    <img src="phyllo3.jpg.jpeg"> <br><br><br>
-    <div class="button" id="download-link">Download</div>
-    <br style="clear:both;">
-</div>
-
-<div class="sidebar" id="settings">
-    <p style="text-align: center;">Settings</p>
-    <h6>Red</h6>
-    <h6>Green</h6>
-    <h6>Blue</h6>
-    <h6>Speed</h6>
-    <h6>Angle</h6>
-    <h6>Background</h6>
-    <h6>Size</h6>
-</div>
-
-
-<div class="sidebar" id="instructions">
-    <p style="text-align: center;">Instructions</p>
-    <h6>Red</h6>
-    <!--<button onclick="hide()">-</button>-->
-
-</div>
-
-<a onclick="instructions()">
-    <div class="button" id="instructions-link">
-        Instructions
-    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-</a>
-
-<a onclick="settings()">
-    <div class="button" id="settings-link">
-        Settings
-    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-</a>
 
 <script>
     function instructions() {
@@ -106,32 +86,41 @@
     }
 </script>
 
-<div id="sketch">
+<div id="images">
+    <p style="text-align: center;">Library</p>
+    <img src="phyllo1.jpg.jpeg"> <br> <br>
+    <img src="phyllo2.jpg.jpeg"> <br> <br>
+    <img src="phyllo3.jpg.jpeg"> <br><br><br>
+    <div class="button" id="download-link">Download</div>
+    <br style="clear:both;">
+</div>
+
+<div class="sidebar" id="settings">
+    <p style="text-align: center;">Settings</p>
+    <h6>Red</h6>
+    <h6>Green</h6>
+    <h6>Blue</h6>
+    <h6>Speed</h6>
+    <h6>Angle</h6>
+    <h6>Background</h6>
+    <h6>Size</h6>
+</div>
+
+
+<div class="sidebar" id="instructions">
+    <p style="text-align: center;">Instructions</p>
+    <h6>Red</h6>
+    <!--<button onclick="hide()">-</button>-->
+
 </div>
 
 <div id="sketch">
 </div>
-<?php
-session_start();
-if($_SESSION["loggedin"] == "yes") {
-    echo "<a href='logout.php'>". "<div class='button' id='login-link'>". "Logout". "</div>". "</a>";
-} else {
-    echo "<a href='login.php'>". "<div class='button' id='login-link'>". "Login". "</div>". "</a>";
-} ?>
 
+<div id="sketch">
 </div>
 
-<a href='reflora_search.php'>
-    <div class="button" id="search-link">
-        Search
-    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-</a>
 
-<a href='img/styleguide.jpeg'>
-    <div class="button" id="style-link">
-        Style
-    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-</a>
 
 <div class="button" id="userwelcome" style="float:left;">
     <?php

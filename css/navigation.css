@@ -1,0 +1,36 @@
+nav {
+    position: fixed;
+    padding: 15px 15px;
+    background: #fff;
+    width: 100%;
+    opacity: 0.8;
+    z-index: 101;
+    box-shadow: 0 0 6px #ddd;
+
+
+}
+
+.navlinks a {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 5px 15px 0 0px;
+    color: #888;
+    opacity: 0.6;
+
+}
+
+.navlinks a:hover {
+    opacity: 1;
+
+}
+
+.navlinks .current {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #ccc;
+}
+
+.navlinks {
+    float: right;
+    margin-right: 40px;
+}

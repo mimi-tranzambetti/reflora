@@ -198,26 +198,6 @@ hr {
     float: right;
 }
 
-#settings-link {
-    position: absolute;
-    bottom: 300px;
-    right: 20px;
-    height: 5%;
-    width: 5%;
-    z-index: 4;
-    transition: 0.5s;
-}
-
-#instructions-link {
-    position: absolute;
-    bottom: 250px;
-    right: 20px;
-    height: 5%;
-    width: 5%;
-    z-index: 4;
-    transition: 0.5s;
-}
-
 #login-link {
     position: absolute;
     bottom: 10px;
@@ -228,25 +208,6 @@ hr {
     transition: 0.5s;
 }
 
-#search-link {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    height: 5%;
-    width: 5%;
-    z-index: 4;
-    transition: 0.5s;
-}
-
-#style-link {
-    position: absolute;
-    bottom: 150px;
-    right: 20px;
-    height: 5%;
-    width: 5%;
-    z-index: 4;
-    transition: 0.5s;
-}
 
 #userwelcome {
     position: absolute;
