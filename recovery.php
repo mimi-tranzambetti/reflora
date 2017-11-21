@@ -51,7 +51,7 @@ if(!$results) {
         </form>
     <?php
     }else{
-        $sql = "SELECT username, passowrd, email FROM users WHERE " .
+        $sql = "SELECT username, passowrd, email FROM users WHERE ";
             if($_REQUEST["username"] != ""){
                 $sql .= "username = '" . $_REQUEST["username"] . "' AND ";
             } else if($_REQUEST["password"] != ""){
