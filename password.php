@@ -18,6 +18,7 @@ if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
     exit();
 }
+
 $sql = "SELECT * FROM halpan_reflora.users WHERE username = '".$_REQUEST['username']."'";
 
 $results = $mysql->query($sql);
@@ -31,15 +32,23 @@ $currentrow = $results->fetch_assoc();
 
 //$_SESSION["username"] = $currentrow['username'];
 
-if($_SESSION["loggedin"] == "yes") {
+if ($_SESSION["loggedin"] == "yes") {
 }
-else if (!empty($_REQUEST["password"])) {
-    if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
+
+if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
+    if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
+        header('Location: admin_home.php');
+        $_SESSION["loggedin"] = "admin";
+        exit();
+    }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
+    }else if($_REQUEST['password'] == ""){
+        header('Location: login.php');
+        exit();
     }
     else {
         include "login.php";
-        $_SESSION["loggedin"] == "no";
+        $_SESSION["loggedin"] = "no";
         echo "ERROR. WRONG PASSWORD"; // !!! fix error styling so it's not on a dark red background at the bottom
         exit();
     }
