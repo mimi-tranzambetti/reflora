@@ -2,7 +2,7 @@
 ?>
 <html>
 <head>
-    <title>Reflora Admin</title>
+    <title>Reflora Accounts</title>
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 
@@ -101,8 +101,11 @@
                 <input class="button" type="submit" value="NEXT">
             </form>
         <?php } ?>
-
+        <br>
+        <a href="admin_home.php"> Return Home</a>
     </div>
+
+
 
 </body>
 </html>

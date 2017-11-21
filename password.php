@@ -37,7 +37,7 @@ if ($_SESSION["loggedin"] == "yes") {
 
 if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
-        header('Location: admin_accounts.php');
+        header('Location: admin_home.php');
         $_SESSION["loggedin"] = "admin";
         exit();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
