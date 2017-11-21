@@ -1,138 +1,145 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-    <?php include "password.php";?>
+<?php include "password.php";?>
 
-    <head>
-
-
-        <link rel="stylesheet" type="text/css" href="./css/main.css">
-        <link rel="shortcut icon" href="img/favicon.png">
-
-        <meta charset="utf-8">
-
-        <title>Reflora</title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta property="og:title" content="Reflora" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://acad.itpwebdev.com/~tranzamb/reflora/index.php" />
-        <meta property="og:description" content="Reflora is a fun place to draw things" />
-        <meta property="og:image" content="http://acad.itpwebdev.com/~tranzamb/reflora/img/background.png" />
-        <meta name="twitter:label1" value="When" />
-        <meta name="twitter:data1" value="Anytime" />
-        <meta name="twitter:label2" value="Where" />
-        <meta name="twitter:data2" value="USC, Los Angeles" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="p5.min.js"></script>
-        <script type="text/javascript" src="p5.dom.js"></script>
-
-        <script src="sketch.js"></script>
-
-    </head>
-
-    <body>
-    <div id="navbar" style="z-index: 10;">
-        <img id="corner-logo" src="./img/logo.png"/>
-
-    </div>
-
-    <div id="images">
-        <p style="text-align: center;">Library</p>
-        <img src="phyllo1.jpg.jpeg"> <br> <br>
-        <img src="phyllo2.jpg.jpeg"> <br> <br>
-        <img src="phyllo3.jpg.jpeg"> <br><br><br>
-        <div class="button" id="download-link">Download</div>
-        <br style="clear:both;">
-    </div>
-
-    <div class="sidebar" id="settings">
-        <p style="text-align: center;">Settings</p>
-        <h6>Red</h6>
-        <h6>Green</h6>
-        <h6>Blue</h6>
-        <h6>Speed</h6>
-        <h6>Angle</h6>
-        <h6>Background</h6>
-        <h6>Size</h6>
-    </div>
+<head>
 
 
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-    <div class="sidebar" id="instructions">
-        <p style="text-align: center;">Instructions</p>
-        <h6>Red</h6>
-        <!--<button onclick="hide()">-</button>-->
+    <meta charset="utf-8">
 
-    </div>
+    <title>Reflora</title>
 
-    <a onclick="instructions()">
-        <div class="button" id="instructions-link">
-            Instructions
-        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-    </a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:title" content="Reflora" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://acad.itpwebdev.com/~tranzamb/reflora/index.php" />
+    <meta property="og:description" content="Reflora is a fun place to draw things" />
+    <meta property="og:image" content="http://acad.itpwebdev.com/~tranzamb/reflora/img/background.png" />
+    <meta name="twitter:label1" value="When" />
+    <meta name="twitter:data1" value="Anytime" />
+    <meta name="twitter:label2" value="Where" />
+    <meta name="twitter:data2" value="USC, Los Angeles" />
 
-    <a onclick="settings()">
-        <div class="button" id="settings-link">
-            Settings
-        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-    </a>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="p5.min.js"></script>
+    <script type="text/javascript" src="p5.dom.js"></script>
 
-    <script>
-        function instructions() {
-            var x = document.getElementById("instructions");
-            var y = document.getElementById("settings");
-            if (x.style.display === "none" && y.style.display != "block") {
-                x.style.display = "block";
-            } else if (x.style.display === "none" && y.style.display === "block") {
-                y.style.display = "none";
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
+    <script src="sketch.js"></script>
 
-        function settings() {
-            var x = document.getElementById("settings");
-            var y = document.getElementById("instructions");
-            if (x.style.display === "none" && y.style.display != "block") {
-                x.style.display = "block";
-            } else if (x.style.display === "none" && y.style.display === "block") {
-                y.style.display = "none";
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+</head>
 
-    <div id="sketch">
-        </div>
+<body>
+<div id="navbar" style="z-index: 10;">
+    <img id="corner-logo" src="./img/logo.png"/>
 
-        <?php
-        session_start();
-        if($_SESSION["loggedin"] == "yes") {
-            echo "<a href='logout.php'>". "<div class='button' id='login-link'>". "Logout". "</div>". "</a>";
+</div>
+
+<div id="images">
+    <p style="text-align: center;">Library</p>
+    <img src="phyllo1.jpg.jpeg"> <br> <br>
+    <img src="phyllo2.jpg.jpeg"> <br> <br>
+    <img src="phyllo3.jpg.jpeg"> <br><br><br>
+    <div class="button" id="download-link">Download</div>
+    <br style="clear:both;">
+</div>
+
+<div class="sidebar" id="settings">
+    <p style="text-align: center;">Settings</p>
+    <h6>Red</h6>
+    <h6>Green</h6>
+    <h6>Blue</h6>
+    <h6>Speed</h6>
+    <h6>Angle</h6>
+    <h6>Background</h6>
+    <h6>Size</h6>
+</div>
+
+
+<div class="sidebar" id="instructions">
+    <p style="text-align: center;">Instructions</p>
+    <h6>Red</h6>
+    <!--<button onclick="hide()">-</button>-->
+
+</div>
+
+<a onclick="instructions()">
+    <div class="button" id="instructions-link">
+        Instructions
+    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+</a>
+
+<a onclick="settings()">
+    <div class="button" id="settings-link">
+        Settings
+    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+</a>
+
+<script>
+    function instructions() {
+        var x = document.getElementById("instructions");
+        var y = document.getElementById("settings");
+        if (x.style.display === "none" && y.style.display != "block") {
+            x.style.display = "block";
+        } else if (x.style.display === "none" && y.style.display === "block") {
+            y.style.display = "none";
+            x.style.display = "block";
         } else {
-            echo "<a href='login.php'>". "<div class='button' id='login-link'>". "Login". "</div>". "</a>";
-        } ?>
+            x.style.display = "none";
+        }
+    }
 
-    </div>
+    function settings() {
+        var x = document.getElementById("settings");
+        var y = document.getElementById("instructions");
+        if (x.style.display === "none" && y.style.display != "block") {
+            x.style.display = "block";
+        } else if (x.style.display === "none" && y.style.display === "block") {
+            y.style.display = "none";
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
-    <a href='reflora_search.php'>
+<div id="sketch">
+</div>
+
+<div id="sketch">
+</div>
+<?php
+session_start();
+if($_SESSION["loggedin"] == "yes") {
+    echo "<a href='logout.php'>". "<div class='button' id='login-link'>". "Logout". "</div>". "</a>";
+} else {
+    echo "<a href='login.php'>". "<div class='button' id='login-link'>". "Login". "</div>". "</a>";
+} ?>
+
+</div>
+
+<a href='reflora_search.php'>
     <div class="button" id="search-link">
         Search
     </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-    </a>
+</a>
 
-    <a href='img/styleguide.jpeg'>
-        <div class="button" id="style-link">
-            Style
-        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
-    </a>
+<a href='img/styleguide.jpeg'>
+    <div class="button" id="style-link">
+        Style
+    </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+</a>
+
+<div class="button" id="userwelcome" style="float:left;">
+    <?php
+    echo "Welcome, " . $_SESSION['username'];
+    ?>
+</div>
 
 
-
-    </body>
+</body>
 </html>
+
