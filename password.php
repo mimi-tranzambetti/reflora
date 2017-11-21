@@ -30,7 +30,6 @@ if(!$results) {
 
 $currentrow = $results->fetch_assoc();
 
-//$_SESSION["username"] = $currentrow['username'];
 $_SESSION["username"] = $currentrow['username'];
 
 if ($_SESSION["loggedin"] == "yes") {
