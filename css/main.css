@@ -132,7 +132,33 @@ hr {
     transform: scale(1.2) rotate(360deg);
 }
 
+
+
 #settings{
+    background:white;
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 330px;
+    top: 20px;
+    right: 0px;
+    padding: 2%;
+    opacity: 0.8;
+}
+
+#instructions{
+    background:white;
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 330px;
+    top: 20px;
+    right: 0px;
+    padding: 2%;
+    opacity: 0.8;
+}
+
+.sidebar{
     background:white;
     position: absolute;
     width: 200px;
@@ -170,6 +196,26 @@ hr {
     margin: 4px 2px;
     cursor: pointer;
     float: right;
+}
+
+#settings-link {
+    position: absolute;
+    bottom: 300px;
+    right: 20px;
+    height: 5%;
+    width: 5%;
+    z-index: 4;
+    transition: 0.5s;
+}
+
+#instructions-link {
+    position: absolute;
+    bottom: 250px;
+    right: 20px;
+    height: 5%;
+    width: 5%;
+    z-index: 4;
+    transition: 0.5s;
 }
 
 #login-link {

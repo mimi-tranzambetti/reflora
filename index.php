@@ -32,9 +32,6 @@
 
     </head>
 
-
-
-
     <body>
     <div id="navbar" style="z-index: 10;">
         <img id="corner-logo" src="./img/logo.png"/>
@@ -50,7 +47,7 @@
         <br style="clear:both;">
     </div>
 
-    <div id="settings">
+    <div class="sidebar" id="settings">
         <p style="text-align: center;">Settings</p>
         <h6>Red</h6>
         <h6>Green</h6>
@@ -61,12 +58,57 @@
         <h6>Size</h6>
     </div>
 
+
+
+    <div class="sidebar" id="instructions">
+        <p style="text-align: center;">Instructions</p>
+        <h6>Red</h6>
+        <!--<button onclick="hide()">-</button>-->
+
+    </div>
+
+    <a onclick="instructions()">
+        <div class="button" id="instructions-link">
+            Instructions
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+
+    <a onclick="settings()">
+        <div class="button" id="settings-link">
+            Settings
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+
+    <script>
+        function instructions() {
+            var x = document.getElementById("instructions");
+            var y = document.getElementById("settings");
+            if (x.style.display === "none" && y.style.display != "block") {
+                x.style.display = "block";
+            } else if (x.style.display === "none" && y.style.display === "block") {
+                y.style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function settings() {
+            var x = document.getElementById("settings");
+            var y = document.getElementById("instructions");
+            if (x.style.display === "none" && y.style.display != "block") {
+                x.style.display = "block";
+            } else if (x.style.display === "none" && y.style.display === "block") {
+                y.style.display = "none";
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
     <div id="sketch">
         </div>
-
-
-
-
 
         <?php
         session_start();
