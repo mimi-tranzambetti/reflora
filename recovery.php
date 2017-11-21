@@ -56,6 +56,8 @@ if(!$results) {
                 $sql .= "username = '" . $_REQUEST["username"] . "' AND ";
             } else if($_REQUEST["password"] != ""){
                 $sql .= "password  = '" . $_REQUEST["password"] . "' AND ";
+            } else if($_REQUEST["email"] != ""){
+                $sql .= "email  = '" . $_REQUEST["email"] . "' AND ";
             }
 
 
