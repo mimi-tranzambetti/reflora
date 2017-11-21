@@ -32,7 +32,7 @@
 
         .wide{
             float: left;
-            width: 30%;
+            width: 20%;
             height: 40px;
             /*border: red solid 1px;*/
         }
@@ -51,12 +51,15 @@
 
 <div class="container" id="autoheight">
     <h1>Reflora Accounts</h1>
+    <form action="logout.php" method="get">
+        <input class="button" type="submit" value="Logout of Admin">
+    </form>
     <h3>
         <div class="column1"> Username </div>
         <div class="column1"> Email </div>
         <div class="column2"> Password </div>
         <div class="column3"> Clearance </div>
-        <div class="column1"> Date-joined </div>
+        <div class="column1"> Date Joined </div>
     </h3>
     <hr>
     <?php
@@ -98,7 +101,6 @@
                 <input class="button" type="submit" value="NEXT">
             </form>
         <?php } ?>
-
 
     </div>
 

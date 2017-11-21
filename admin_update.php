@@ -48,7 +48,6 @@ if (!$results) {
 
 <div class="container">
     <h1>Account has been updated</h1>
-    New Values (ENTER THEM HERE)
     <br>
 <a href="admin_accounts.php" target=""> RETURN TO ACCOUNTS </a>
 </div>
