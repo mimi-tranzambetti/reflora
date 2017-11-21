@@ -40,17 +40,20 @@ if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         header('Location: admin_home.php');
         $_SESSION["loggedin"] = "admin";
+        $_SESSION ["error"]="no";
         exit();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
+        $_SESSION ["error"]="no";
     }else if($_REQUEST['password'] == ""){
         header('Location: login.php');
+        $_SESSION ["error"]="no";
         exit();
     }
     else {
         include "login.php";
         $_SESSION["loggedin"] = "no";
-        echo "ERROR. WRONG PASSWORD"; // !!! fix error styling so it's not on a dark red background at the bottom
+        $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
         exit();
     }
 }
