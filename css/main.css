@@ -158,6 +158,10 @@ hr {
     width: 130px;
 }
 
+.redtext {
+    color: #990000;
+}
+
 .button {
     background-color: #9B2C2C;
     border: none;
@@ -218,6 +222,7 @@ hr {
     z-index: 4;
     transition: 0.5s;
     float:none;
+
 
 }
 

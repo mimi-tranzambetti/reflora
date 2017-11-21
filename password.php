@@ -49,7 +49,7 @@ if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     else {
         include "login.php";
         $_SESSION["loggedin"] = "no";
-        echo "ERROR. WRONG PASSWORD"; // !!! fix error styling so it's not on a dark red background at the bottom
+        $_SESSION['error'] = "yes";
         exit();
     }
 }

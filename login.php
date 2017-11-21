@@ -15,7 +15,12 @@
 <form action="index.php" method="post">
     Username: <input type="text" name="username"><br>
     Password: <input type="text" name="password"><br>
+    <?php
+    if ($_SESSION['error']=="yes"){
+        echo '<br><div class="redtext">Incorrect login, please try again.</div>';
+    }
 
+    ?>
     <input type="submit" class="button" value="Submit">
 
 </form>
