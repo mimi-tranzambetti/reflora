@@ -35,11 +35,14 @@
 </head>
 
 <body>
-<div id="navbar" style="z-index: 10;">
+
+
     <nav>
-        <a href="/"><img id="corner-logo" src="./img/logo.png"/></a>
+        <a><img id="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
-            <a onclick="settings()"><i class="material-icons">settings</i></a>
+            <a id="camera-button"><i class="material-icons">camera_alt</i></a>
+            <a onclick="library()"><i class="material-icons">photo_library</i></a>
+            <a onclick="settings()" id="settings-button"><i class="material-icons">settings</i></a>
             <a onclick="instructions()"><i class="material-icons">info</i></a>
             <a href='reflora_search.php'><i class="material-icons">search</i></a>
             <a href='img/styleguide.jpeg'><i class="material-icons">line_style</i></a>
@@ -50,13 +53,9 @@
                 } else {
                     echo "<a href='login.php'>". "<i class=\"material-icons\">account_circle</i>" . " Login" . "</a>";
                 } ?>
-        </div>
+        </div> <!-- close nav links-->
 
-            </a>
-
-        </div>
     </nav>
-</div>
 
 <script>
     function instructions() {
@@ -84,9 +83,20 @@
             x.style.display = "none";
         }
     }
+
+    function library() {
+        var x = document.getElementById("images");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
 </script>
 
 <div id="images">
+    <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
     <img src="phyllo1.jpg.jpeg"> <br> <br>
     <img src="phyllo2.jpg.jpeg"> <br> <br>
@@ -96,31 +106,26 @@
 </div>
 
 <div class="sidebar" id="settings">
+    <i class="material-icons" id="close-x" onclick="settings()">close</i>
     <p style="text-align: center;">Settings</p>
-    <h6>Red</h6>
-    <h6>Green</h6>
-    <h6>Blue</h6>
-    <h6>Speed</h6>
-    <h6>Angle</h6>
-    <h6>Background</h6>
-    <h6>Size</h6>
+    <h6>Red</h6><div class="slider" id="rSlider-div"></div>
+    <h6>Green</h6><div class="slider" id="gSlider-div"></div>
+    <h6>Blue</h6><div class="slider" id="bSlider-div"></div>
+    <h6>Speed</h6><div class="slider" id="rotSlider-div"></div>
+    <h6>Angle</h6><div class="slider" id="aSlider-div"></div>
+    <h6>Background</h6><div class="slider" id="bgSlider-div"></div>
+    <h6>Size</h6><div class="slider" id="sizeSlider-div"></div>
 </div>
 
 
 <div class="sidebar" id="instructions">
+    <i class="material-icons" id="close-x" onclick="instructions()">close</i>
     <p style="text-align: center;">Instructions</p>
     <h6>Red</h6>
-    <!--<button onclick="hide()">-</button>-->
-
 </div>
 
 <div id="sketch">
 </div>
-
-<div id="sketch">
-</div>
-
-
 
 <div class="button" id="userwelcome" style="float:left;">
     <?php

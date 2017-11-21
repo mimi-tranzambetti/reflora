@@ -6,6 +6,16 @@ var c = 18; //changing c is really really fun! i wanted to spend more time figur
 
 var start = 0;
 
+var sliders;
+var rSlider;
+var gSlider;
+var bSlider;
+var rotSlider;
+var aSlider;
+var bgSlider;
+var sizeSlider;
+
+
 function setup() {
     
     
@@ -19,33 +29,70 @@ function setup() {
   //settingsDiv = createDiv('<p>Surprise Div!</p>');
   //settingsDiv.addClass('container'); // could be an extra image div
 
+
   rSlider = createSlider(0, 255, 255);
-  rSlider.position(windowWidth-(20+rSlider.width), 110);
+  rSlider.position(windowWidth-(50+rSlider.width), 190);
+  rSlider.style("display", "none");
+
   gSlider = createSlider(0, 255, 10);
-  gSlider.position(windowWidth-(20+gSlider.width), 145);
+  gSlider.position(windowWidth-(50+gSlider.width), 225);
+  gSlider.style("display", "none");
+
   bSlider = createSlider(0, 255, 10);
-  bSlider.position(windowWidth-(20+bSlider.width), 180);
+  bSlider.position(windowWidth-(50+bSlider.width), 260);
+  bSlider.style("display", "none");
+
   rotSlider = createSlider(0, 100, 5);
-  rotSlider.position(windowWidth-(20+rotSlider.width), 215);
+  rotSlider.position(windowWidth-(50+rotSlider.width), 295);
+  rotSlider.style("display", "none");
+
   aSlider = createSlider(0, 20000, 1375);
-  aSlider.position(windowWidth-(20+aSlider.width), 255);
+  aSlider.position(windowWidth-(50+aSlider.width), 335);
+  aSlider.style("display", "none");
+
   bgSlider = createSlider(0, 255, 150);
-  bgSlider.position(windowWidth-(20+aSlider.width), 295);
+  bgSlider.position(windowWidth-(50+aSlider.width), 375);
+  bgSlider.style("display", "none");
+
   sizeSlider = createSlider(1, windowWidth/4, 2);
-  sizeSlider.position(windowWidth-(20+sizeSlider.width), 325);
+  sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
+  sizeSlider.style("display", "none");
 
-  saveButton = createButton('Save');
-  saveButton.style("background-color", "#9B2C2C");
-  saveButton.style("border", "none");
-  saveButton.style("color", "white");
-  saveButton.style("padding", "5px 5px");
-  saveButton.style("display", "inline-block");
-  saveButton.style("font size", "12px");
-  saveButton.style("cursor", "pointer");
-  saveButton.style("height", "5%");
-  saveButton.style("width", "5%");
-  saveButton.position(windowWidth-100, windowHeight-250);
+  // var sliders = createDiv();
+  //
+  //
+  //   rSlider.parent(sliders);
+  //   gSlider.parent(sliders);
+  //   bSlider.parent(sliders);
+  //   rotSlider.parent(sliders);
+  //   aSlider.parent(sliders);
+  //   bgSlider.parent(sliders);
+  //   sizeSlider.parent(sliders);
 
+  // rSlider.parent('rSlider-div');
+  // gSlider.parent('gSlider-div');
+  // bSlider.parent('bSlider-div');
+  // rotSlider.parent('rotSlider-div');
+  // aSlider.parent('aSlider-div');
+  // bgSlider.parent('bgSlider-div');
+  // sizeSlider.parent('sizeSlider-div');
+
+
+  var settingsButton = select('#settings-button');
+  settingsButton.mouseClicked(closeSettings);
+
+  // saveButton = createDiv("<i class='material-icons'>camera_alt</i>");
+    // saveButton.position(windowWidth-400, 25);
+    // saveButton.style("z-index", "200");
+    // saveButton.style("color", "#888");
+    // saveButton.style("opacity", "0.6");
+    // saveButton.style("cursor", "pointer");
+    // saveButton.onmouseover("opacity", "0.8");
+    // created camera in p5, trying to access with select() now
+
+
+
+  var saveButton = select('#camera-button');
   saveButton.mouseClicked(screenshot);
 
 }
@@ -135,14 +182,14 @@ function draw() {
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
 
-    rSlider.position(windowWidth-(20+rSlider.width), 110);
-    gSlider.position(windowWidth-(20+gSlider.width), 145);
-    bSlider.position(windowWidth-(20+bSlider.width), 180);
-    rotSlider.position(windowWidth-(20+rotSlider.width), 215);
-    aSlider.position(windowWidth-(20+aSlider.width), 255);
-    bgSlider.position(windowWidth-(20+bgSlider.width), 295);
-    sizeSlider.position(windowWidth-(20+sizeSlider.width), 325);
-    saveButton.position(windowWidth-100, windowHeight-250);
+    rSlider.position(windowWidth-(50+rSlider.width), 190);
+    gSlider.position(windowWidth-(50+gSlider.width), 225);
+    bSlider.position(windowWidth-(50+bSlider.width), 260);
+    rotSlider.position(windowWidth-(50+rotSlider.width), 295);
+    aSlider.position(windowWidth-(50+aSlider.width), 335);
+    bgSlider.position(windowWidth-(50+bgSlider.width), 375);
+    sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
+    saveButton.position(windowWidth-400, 25);
 
 
     background(bgSlider.value());
@@ -151,4 +198,60 @@ function windowResized(){
 
 function screenshot(){
     saveCanvas('reflora', 'jpg');
+}
+
+function closeSettings() {
+    //can i make an array of sliders
+    //how to make this happen synchronously
+
+    // how to get it to run continuously after the first time....????
+    // and to get it to appear WITH the rest of the settings
+    if (rSlider.style == "display","none") {
+        rSlider.style("display", "block");
+        gSlider.style("display", "block");
+        bSlider.style("display", "block");
+        rotSlider.style("display", "block");
+        aSlider.style("display", "block");
+        bgSlider.style("display", "block");
+        sizeSlider.style("display", "block");
+    } else if (rSlider.style == "display","block") {
+        rSlider.style("display", "none");
+        gSlider.style("display", "none");
+        bSlider.style("display", "none");
+        rotSlider.style("display", "none");
+        aSlider.style("display", "none");
+        bgSlider.style("display", "none");
+        sizeSlider.style("display", "none");
+    }
+
+
+    // var x = select('#settings');
+    // var y = select('#instructions');
+    // if (x.style.display === "none" && y.style.display != "block") {
+    //     rSlider.style("display", "block");
+    //     gSlider.style("display", "block");
+    //     bSlider.style("display", "block");
+    //     rotSlider.style("display", "block");
+    //     aSlider.style("display", "block");
+    //     bgSlider.style("display", "block");
+    //     sizeSlider.style("display", "block");
+    // } else if (x.style.display === "none" && y.style.display === "block") {
+    //     rSlider.style("display", "block");
+    //     gSlider.style("display", "block");
+    //     bSlider.style("display", "block");
+    //     rotSlider.style("display", "block");
+    //     aSlider.style("display", "block");
+    //     bgSlider.style("display", "block");
+    //     sizeSlider.style("display", "block");
+    // } else {
+    //     rSlider.style("display", "none");
+    //     gSlider.style("display", "none");
+    //     bSlider.style("display", "none");
+    //     rotSlider.style("display", "none");
+    //     aSlider.style("display", "none");
+    //     bgSlider.style("display", "none");
+    //     sizeSlider.style("display", "none");
+    // }
+
+
 }
