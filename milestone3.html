@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Milestone 2</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <style>
+
+        p{
+            font-size: 13pt;
+            line-height: 25pt ;
+        }
+
+        a{
+            color: #e06453;
+            text-decoration: none;
+            font-weight: 700;
+            line-height: 25pt;
+            font-size: 13pt;
+        }
+
+        a:visited{
+            color: #ce7861;
+        }
+
+        a:hover{
+            color: #f27b60;
+        }
+
+        .flex{
+            display: flex;
+            align-items: center;
+        }
+
+        img{
+            width: 100%;
+        }
+
+        .introimg{
+            width: 30%;
+            margin: 2%;
+        }
+
+        hr {
+            width: 80%;
+            opacity: 0.8;
+        }
+
+        .button{
+            padding: 1% 2%;
+            width: 10%;
+            font-family: "Proxima Nova Regular";
+            font-size: 12pt;
+            text-align: center;
+            float: left;
+        }
+
+        .container{
+            padding: 10% 15%;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h3 class="title">Milestone 2</h3>
+
+    <div class="flex">
+        <img class="introimg" src="phyllo1.jpg.jpeg">
+        <img class="introimg" src="phyllo2.jpg.jpeg">
+        <img class="introimg" src="phyllo3.jpg.jpeg">
+    </div>
+    <br>
+    <hr> <br><br><br>
+    <h3 class="header">Milestone Summary</h3> <br>
+    <p> For this milestone, we did trouble shooting for our login routine (Arthur), admin backend (Hal), and nav/css
+        build out (Mimi). This upcoming week we'll shoot to finish implementing the image download/upload system,
+        solve any database issues that come up, and push the functionality of the p5 side of the site farther.
+    </p>
+    <br><br><br><br><hr><br>
+
+    <h3 class="header">Homepage</h3>
+    <p>On the homepage a new nav has been implemented to more closely resemble our original design.
+        You can also see the "login/logout" indicator in the top right </p>
+    <br>
+    <a href='index.php'>
+        <div class="button">
+            Home
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+    <br><br><br><br><br><br>
+
+    <h3 class="header">Database user tables</h3>
+    <p>See Hal Pan's database.</p>
+    <br>
+
+    <br><br><br><br><br><br>
+
+    <h3 class="header">Sign up forms</h3>
+    <p> New user page </p>
+    <br>
+    <a href='newuser.php'>
+        <div class="button">
+            New User
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+    <br><br><br><br><br><br>
+
+    <h3 class="header">User login routine</h3>
+    <p> Login page. Still improving on some caching errors </p>
+    <br>
+    <a href='login.php'>
+        <div class="button">
+            Login
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+
+    <br><br><br><br><br><br>
+
+    <h3 class="header">Administration back-end</h3>
+    <p> If you log in to our page with "HAL what's a good username" and password"
+        You'll be able to access the admin backend.
+    </p>
+    <a href='admin.php'>
+        <div class="button">
+            Admin
+        </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
+    </a>
+
+    <br><br><br><br><br>
+
+
+
+</div>
+
+</body>
+</html>
