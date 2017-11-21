@@ -33,7 +33,7 @@
     <script src="sketch.js"></script>
 
 </head>
-
+<?php include "password.php"; ?>
 <body>
 
 
