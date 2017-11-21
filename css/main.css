@@ -278,6 +278,12 @@ hr {
         transition: 0.5s;
 }
 
+.redtext {
+    color: #990000;
+}
+
+
+
 /*text{*/
 /*font-family: 'Proxima Nova Regular';*/
 /*}*/
