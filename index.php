@@ -63,11 +63,6 @@
 
     <div id="sketch">
         </div>
-
-
-
-
-
         <?php
         session_start();
         if($_SESSION["loggedin"] == "yes") {
@@ -90,6 +85,11 @@
         </div> <!--could be valuable to create a bottom nav bar, or move this to the top-->
     </a>
 
+    <div class="button" id="userwelcome" style="float:left;">
+        <?php
+        echo "Welcome, " . $_SESSION['username'];
+        ?>
+    </div>
 
 
     </body>

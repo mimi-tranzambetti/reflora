@@ -202,11 +202,23 @@ hr {
     transition: 0.5s;
 }
 
+#userwelcome {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    left: 20px;
+    height: 2%;
+    width: 155px;
+    z-index: 4;
+    transition: 0.5s;
+}
+
 #download-link {
     width: 120px;
     z-index: 4;
     transition: 0.5s;
     float:none;
+
 }
 
 /*text{*/
