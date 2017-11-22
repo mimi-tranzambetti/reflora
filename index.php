@@ -72,18 +72,18 @@
         }
     }
 
-    function settings() {
-        var x = document.getElementById("settings");
-        var y = document.getElementById("instructions");
-        if (x.style.display === "none" && y.style.display != "block") {
-            x.style.display = "block";
-        } else if (x.style.display === "none" && y.style.display === "block") {
-            y.style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
+//    function settings() {
+//        var x = document.getElementById("settings");
+//        var y = document.getElementById("instructions");
+//        if (x.style.display === "none" && y.style.display != "block") {
+//            x.style.display = "block";
+//        } else if (x.style.display === "none" && y.style.display === "block") {
+//            y.style.display = "none";
+//            x.style.display = "block";
+//        } else {
+//            x.style.display = "none";
+//        }
+//    }
 
     function library() {
         var x = document.getElementById("images");
@@ -122,7 +122,8 @@
 <div class="sidebar" id="instructions">
     <i class="material-icons" id="close-x" onclick="instructions()">close</i>
     <p style="text-align: center;">Instructions</p>
-    <h6>Red</h6>
+    <h6>Reflora is a place for you to come relax while creating some cool graphics based in floral mathematics.
+        To get started, move your mouse on the blank canvas, and explore the Reflora world.</h6>
 </div>
 
 <div id="sketch">

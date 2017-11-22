@@ -15,6 +15,42 @@ var aSlider;
 var bgSlider;
 var sizeSlider;
 
+var settingsView = false;
+
+var settingsButton = select('#settings-button');
+settingsButton.mouseClicked(settings());
+function settings() {
+    // settingsView=!settingsView
+    var x = document.getElementById("settings");
+    var y = document.getElementById("instructions");
+
+    if (settingsView==false) {
+        rSlider.style("display", "block");
+        gSlider.style("display", "block");
+        bSlider.style("display", "block");
+        rotSlider.style("display", "block");
+        aSlider.style("display", "block");
+        bgSlider.style("display", "block");
+        sizeSlider.style("display", "block");
+        settingsView = true;
+        x.style.display = "block";
+    } else if (x.style.display === "none" && y.style.display === "block"){
+        y.style.display = "none";
+        x.style.display = "block";
+    } else {
+        rSlider.style("display", "none");
+        gSlider.style("display", "none");
+        bSlider.style("display", "none");
+        rotSlider.style("display", "none");
+        aSlider.style("display", "none");
+        bgSlider.style("display", "none");
+        sizeSlider.style("display", "none");
+        settingsView=false;
+        x.style.display = "none";
+    }
+
+}
+
 
 function setup() {
     
@@ -78,8 +114,7 @@ function setup() {
   // sizeSlider.parent('sizeSlider-div');
 
 
-  var settingsButton = select('#settings-button');
-  settingsButton.mouseClicked(closeSettings);
+
 
   // saveButton = createDiv("<i class='material-icons'>camera_alt</i>");
     // saveButton.position(windowWidth-400, 25);
@@ -104,6 +139,7 @@ function draw() {
     var rot = rotSlider.value();
     rotate(n * rot / 100);
 
+
     
   for (var i = 0; i < n; i++) {
 
@@ -120,6 +156,9 @@ function draw() {
     //   var ar = (r/255)*100;
     //   var ag = (g/255)*100;
     //   var ab = (b/255)*100;
+
+
+
 
     if (sizeSlider.value() > 80){
          var dimension = sizeSlider.value();
@@ -200,58 +239,59 @@ function screenshot(){
     saveCanvas('reflora', 'jpg');
 }
 
-function closeSettings() {
-    //can i make an array of sliders
-    //how to make this happen synchronously
+// function closeSettings() {
+//     //can i make an array of sliders
+//     //how to make this happen synchronously
+//
+//     // how to get it to run continuously after the first time....????
+//     // and to get it to appear WITH the rest of the settings
+//     if (rSlider.style === "display","none") {
+//         rSlider.style("display", "block");
+//         gSlider.style("display", "block");
+//         bSlider.style("display", "block");
+//         rotSlider.style("display", "block");
+//         aSlider.style("display", "block");
+//         bgSlider.style("display", "block");
+//         sizeSlider.style("display", "block");
+//     } else if (rSlider.style === "display","block") {
+//         rSlider.style("display", "none");
+//         gSlider.style("display", "none");
+//         bSlider.style("display", "none");
+//         rotSlider.style("display", "none");
+//         aSlider.style("display", "none");
+//         bgSlider.style("display", "none");
+//         sizeSlider.style("display", "none");
+//     }
+//
+//
+//     // var x = select('#settings');
+//     // var y = select('#instructions');
+//     // if (x.style.display === "none" && y.style.display != "block") {
+//     //     rSlider.style("display", "block");
+//     //     gSlider.style("display", "block");
+//     //     bSlider.style("display", "block");
+//     //     rotSlider.style("display", "block");
+//     //     aSlider.style("display", "block");
+//     //     bgSlider.style("display", "block");
+//     //     sizeSlider.style("display", "block");
+//     // } else if (x.style.display === "none" && y.style.display === "block") {
+//     //     rSlider.style("display", "block");
+//     //     gSlider.style("display", "block");
+//     //     bSlider.style("display", "block");
+//     //     rotSlider.style("display", "block");
+//     //     aSlider.style("display", "block");
+//     //     bgSlider.style("display", "block");
+// //     sizeSlider.style("display", "block");
+// // } else {
+// //     rSlider.style("display", "none");
+// //     gSlider.style("display", "none");
+// //     bSlider.style("display", "none");
+// //     rotSlider.style("display", "none");
+// //     aSlider.style("display", "none");
+// //     bgSlider.style("display", "none");
+// //     sizeSlider.style("display", "none");
+// // }
+//
+//
+// }
 
-    // how to get it to run continuously after the first time....????
-    // and to get it to appear WITH the rest of the settings
-    if (rSlider.style == "display","none") {
-        rSlider.style("display", "block");
-        gSlider.style("display", "block");
-        bSlider.style("display", "block");
-        rotSlider.style("display", "block");
-        aSlider.style("display", "block");
-        bgSlider.style("display", "block");
-        sizeSlider.style("display", "block");
-    } else if (rSlider.style == "display","block") {
-        rSlider.style("display", "none");
-        gSlider.style("display", "none");
-        bSlider.style("display", "none");
-        rotSlider.style("display", "none");
-        aSlider.style("display", "none");
-        bgSlider.style("display", "none");
-        sizeSlider.style("display", "none");
-    }
-
-
-    // var x = select('#settings');
-    // var y = select('#instructions');
-    // if (x.style.display === "none" && y.style.display != "block") {
-    //     rSlider.style("display", "block");
-    //     gSlider.style("display", "block");
-    //     bSlider.style("display", "block");
-    //     rotSlider.style("display", "block");
-    //     aSlider.style("display", "block");
-    //     bgSlider.style("display", "block");
-    //     sizeSlider.style("display", "block");
-    // } else if (x.style.display === "none" && y.style.display === "block") {
-    //     rSlider.style("display", "block");
-    //     gSlider.style("display", "block");
-    //     bSlider.style("display", "block");
-    //     rotSlider.style("display", "block");
-    //     aSlider.style("display", "block");
-    //     bgSlider.style("display", "block");
-    //     sizeSlider.style("display", "block");
-    // } else {
-    //     rSlider.style("display", "none");
-    //     gSlider.style("display", "none");
-    //     bSlider.style("display", "none");
-    //     rotSlider.style("display", "none");
-    //     aSlider.style("display", "none");
-    //     bgSlider.style("display", "none");
-    //     sizeSlider.style("display", "none");
-    // }
-
-
-}
