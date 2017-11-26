@@ -16,15 +16,18 @@ var bgSlider;
 var sizeSlider;
 
 var settingsView = false;
+var infoView = false;
+var libraryView = false;
 
-var settingsButton = select('#settings-button');
+
+var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
     // settingsView=!settingsView
     var x = document.getElementById("settings");
     var y = document.getElementById("instructions");
 
-    if (settingsView==false) {
+    if (settingsView==false && infoView==false) {
         rSlider.style("display", "block");
         gSlider.style("display", "block");
         bSlider.style("display", "block");
@@ -32,11 +35,24 @@ function settings() {
         aSlider.style("display", "block");
         bgSlider.style("display", "block");
         sizeSlider.style("display", "block");
+        x.style.display = "block";
         settingsView = true;
-        x.style.display = "block";
-    } else if (x.style.display === "none" && y.style.display === "block"){
+
+    } else if (settingsView==false && infoView==true){
+
         y.style.display = "none";
+        infoView=false;
+
         x.style.display = "block";
+        rSlider.style("display", "block");
+        gSlider.style("display", "block");
+        bSlider.style("display", "block");
+        rotSlider.style("display", "block");
+        aSlider.style("display", "block");
+        bgSlider.style("display", "block");
+        sizeSlider.style("display", "block");
+        settingsView=true;
+
     } else {
         rSlider.style("display", "none");
         gSlider.style("display", "none");
@@ -45,11 +61,78 @@ function settings() {
         aSlider.style("display", "none");
         bgSlider.style("display", "none");
         sizeSlider.style("display", "none");
-        settingsView=false;
         x.style.display = "none";
+        settingsView=false;
     }
 
 }
+
+var infoButton = document.getElementById('#instructions-button');
+infoButton.mouseClicked(instructions());
+function instructions() {
+
+    var x = document.getElementById("instructions");
+    var y = document.getElementById("settings");
+
+    // rSlider.style("display", "none");
+    // gSlider.style("display", "none");
+    // bSlider.style("display", "none");
+    // rotSlider.style("display", "none");
+    // aSlider.style("display", "none");
+    // bgSlider.style("display", "none");
+    // sizeSlider.style("display", "none");
+
+
+    if(settingsView==true && infoView==false) {
+
+        rSlider.style("display", "none");
+        gSlider.style("display", "none");
+        bSlider.style("display", "none");
+        rotSlider.style("display", "none");
+        aSlider.style("display", "none");
+        bgSlider.style("display", "none");
+        sizeSlider.style("display", "none");
+        y.style.display = "none";
+        settingsView=false;
+
+        x.style.display = "block";
+        infoView=true;
+
+
+    }
+
+    else if(infoView==false && settingsView==false) {
+        x.style.display = "block";
+        infoView=true;
+    }
+
+    else {
+
+        x.style.display = "none";
+        infoView=false;
+    }
+}
+
+
+var libraryButton = select('#library-button');
+libraryButton.mouseClicked(library());
+function library() {
+        var x = document.getElementById("images");
+        if (libraryView===false) {
+            x.style.display = "block";
+            libraryView=true;
+        } else {
+            x.style.display = "none";
+            libraryView=false;
+        }
+    }
+
+var saveButton = select('#camera-button');
+saveButton.mouseClicked(screenshot);
+function screenshot(){
+    saveCanvas('reflora', 'jpg');
+}
+
 
 
 function setup() {
@@ -127,8 +210,7 @@ function setup() {
 
 
 
-  var saveButton = select('#camera-button');
-  saveButton.mouseClicked(screenshot);
+
 
 }
 
@@ -235,9 +317,6 @@ function windowResized(){
 
 }
 
-function screenshot(){
-    saveCanvas('reflora', 'jpg');
-}
 
 // function closeSettings() {
 //     //can i make an array of sliders

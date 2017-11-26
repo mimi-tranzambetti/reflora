@@ -42,9 +42,9 @@
         <a><img id="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
             <a id="camera-button"><i class="material-icons">camera_alt</i></a>
-            <a onclick="library()"><i class="material-icons">photo_library</i></a>
+            <a onclick="library()" id="library-button"><i class="material-icons">photo_library</i></a>
             <a onclick="settings()" id="settings-button"><i class="material-icons">settings</i></a>
-            <a onclick="instructions()"><i class="material-icons">info</i></a>
+            <a onclick="instructions()" id="instructions-button"><i class="material-icons">info</i></a>
             <a href='reflora_search.php'><i class="material-icons">search</i></a>
             <a href='img/styleguide.jpeg'><i class="material-icons">line_style</i></a>
                 <?php
@@ -59,43 +59,41 @@
     </nav>
 
 <script>
-    function instructions() {
-        var x = document.getElementById("instructions");
-        var y = document.getElementById("settings");
-        if (x.style.display === "none" && y.style.display != "block") {
-            x.style.display = "block";
-        } else if (x.style.display === "none" && y.style.display === "block") {
-            y.style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-//    function settings() {
-//        var x = document.getElementById("settings");
-//        var y = document.getElementById("instructions");
-//        if (x.style.display === "none" && y.style.display != "block") {
+//    var infoButton = select('#instructions-button');
+//    infoButton.mouseClicked(instructions());
+//    function instructions() {
+//
+//        var x = document.getElementById("instructions");
+//        var y = document.getElementById("settings");
+//
+//        if (infoView==false && settingsView==false) {
 //            x.style.display = "block";
-//        } else if (x.style.display === "none" && y.style.display === "block") {
+//            infoView=true;
+//        }
+//        else if (infoView==false && settingsView==true) {
 //            y.style.display = "none";
+////            rSlider.style("display", "none");
+////            gSlider.style("display", "none");
+////            bSlider.style("display", "none");
+////            rotSlider.style("display", "none");
+////            aSlider.style("display", "none");
+////            bgSlider.style("display", "none");
+////            sizeSlider.style("display", "none");
+////            settingsView=false;
+//
 //            x.style.display = "block";
+//            infoView=true;
+//
 //        } else {
+//
 //            x.style.display = "none";
+//            infoView=false;
 //        }
 //    }
 
-    function library() {
-        var x = document.getElementById("images");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
+
 
 </script>
-
 <div id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
