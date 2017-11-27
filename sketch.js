@@ -1,5 +1,4 @@
 //originally modelled after phyllotaxis, as explained by the one and only coding train
-//move your mouse to start
 
 var n = 0;
 var c = 18; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
@@ -19,11 +18,11 @@ var settingsView = false;
 var infoView = false;
 var libraryView = false;
 
+var mousecontrol = document.getElementById("#mouse-control").checked;
 
 var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
-    // settingsView=!settingsView
     var x = document.getElementById("settings");
     var y = document.getElementById("instructions");
 
@@ -73,15 +72,6 @@ function instructions() {
 
     var x = document.getElementById("instructions");
     var y = document.getElementById("settings");
-
-    // rSlider.style("display", "none");
-    // gSlider.style("display", "none");
-    // bSlider.style("display", "none");
-    // rotSlider.style("display", "none");
-    // aSlider.style("display", "none");
-    // bgSlider.style("display", "none");
-    // sizeSlider.style("display", "none");
-
 
     if(settingsView==true && infoView==false) {
 
@@ -136,18 +126,12 @@ function screenshot(){
 
 
 function setup() {
-    
-    
+
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent('sketch');
   angleMode(DEGREES); //since p5.js default mode is in radians
   colorMode(RGB);
   background(random(0,255)); //random grayscale backgrounds only
-
-
-  //settingsDiv = createDiv('<p>Surprise Div!</p>');
-  //settingsDiv.addClass('container'); // could be an extra image div
-
 
   rSlider = createSlider(0, 255, 255);
   rSlider.position(windowWidth-(50+rSlider.width), 190);
@@ -177,52 +161,15 @@ function setup() {
   sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
   sizeSlider.style("display", "none");
 
-  // var sliders = createDiv();
-  //
-  //
-  //   rSlider.parent(sliders);
-  //   gSlider.parent(sliders);
-  //   bSlider.parent(sliders);
-  //   rotSlider.parent(sliders);
-  //   aSlider.parent(sliders);
-  //   bgSlider.parent(sliders);
-  //   sizeSlider.parent(sliders);
-
-  // rSlider.parent('rSlider-div');
-  // gSlider.parent('gSlider-div');
-  // bSlider.parent('bSlider-div');
-  // rotSlider.parent('rotSlider-div');
-  // aSlider.parent('aSlider-div');
-  // bgSlider.parent('bgSlider-div');
-  // sizeSlider.parent('sizeSlider-div');
-
-
-
-
-  // saveButton = createDiv("<i class='material-icons'>camera_alt</i>");
-    // saveButton.position(windowWidth-400, 25);
-    // saveButton.style("z-index", "200");
-    // saveButton.style("color", "#888");
-    // saveButton.style("opacity", "0.6");
-    // saveButton.style("cursor", "pointer");
-    // saveButton.onmouseover("opacity", "0.8");
-    // created camera in p5, trying to access with select() now
-
-
-
-
-
 }
 
 
 function draw() {
 
-    translate(windowWidth /2 , windowHeight/ 2);   
+    translate(windowWidth /2 , windowHeight/ 2);
     var rot = rotSlider.value();
     rotate(n * rot / 100);
 
-
-    
   for (var i = 0; i < n; i++) {
 
       var magic = aSlider.value()/10;
@@ -235,18 +182,6 @@ function draw() {
       var g = gSlider.value();
       var b = bSlider.value();
 
-    //   var ar = (r/255)*100;
-    //   var ag = (g/255)*100;
-    //   var ab = (b/255)*100;
-
-
-
-
-    if (sizeSlider.value() > 80){
-         var dimension = sizeSlider.value();
-    } else if (sizeSlider.value() <81) {
-         var dimension = sizeSlider.value()/3;
-    }
  // supposed to allow for more smooth sliding and variability on the low end the spectrum, not sure if it's workin
       //also should add input options to directly input values
 
@@ -256,48 +191,107 @@ function draw() {
         x+=100;
     } else if (keyIsDown(DOWN_ARROW)) {
         x-=100;
-    } 
-      
+    }
+
     //makes drawing shift temporarly in y direction
     if (keyIsDown(LEFT_ARROW)){
         y+=100;
     } else if (keyIsDown(RIGHT_ARROW)) {
         y-=100;
-    } 
-      
+    }
+
     //spacebar reverses rotate
     if (keyIsDown(32)){
         rotate(n*-.1);
     }
-    
+
     //resets background
     if (keyIsDown(ENTER)){ //set the slider, click enter to create a new background over the drawing
         background(bgSlider.value());
     }
 
+    // no mouse countrol
 
-      if (dimension >= 10){
-          noFill();
-          strokeWeight(.5);
-          stroke(r,g,b);
-          rotate(-.1);
-      } else if (dimension < 10) {
-          noStroke();
-          fill(r, g, b);
+      if (mousecontrol === false){
+          if (sizeSlider.value() > 80){
+              var dimension = sizeSlider.value();
+          } else if (sizeSlider.value() <81) {
+              var dimension = sizeSlider.value()/3;
+          }
+
+          if (dimension >= 10){
+              noFill();
+              strokeWeight(.5);
+              stroke(r,g,b);
+              rotate(-.1);
+          } else if (dimension < 10) {
+              noStroke();
+              fill(r, g, b);
+          } else {
+          }
       } else {
+
+
+          mouse control
+
+          if (mouseX < windowWidth/10) {
+              //toggle for fill colors black, white, CMY on the filled ellipses
+              if (keyIsDown(81)){
+                  fill(0); // q - black
+              } else if (keyIsDown(87)){
+                  fill(255,255,255); // w - white
+              } else if (keyIsDown(69)){
+                  fill(random(220,255),255,random(0,20)); // e - variation of Y
+              } else if (keyIsDown(82)){
+                  fill(255,random(0,20),random(220,255));   //r - variation of M
+              } else if (keyIsDown(84)){
+                  fill(random(0,20),random(220,255),255); //t - variation of C
+              } else {
+                  fill(mouseY/2, hu/25, hu/25); // toggles fill from black to red based on mouse y
+              }
+              var dimension = mouseX/100; //super thin ellipses
+          } else if (mouseX < windowWidth/2){
+
+              //toggle for fill colors black, white, CMY on the filled ellipses
+              if (keyIsDown(81)){
+                  fill(0); // q - black
+              } else if (keyIsDown(87)){
+                  fill(255,255,255); // w - white
+              } else if (keyIsDown(69)){
+                  fill(random(220,255),255,random(0,20)); // e - variation of Y
+              } else if (keyIsDown(82)){
+                  fill(255,random(0,20),random(220,255));   //r - variation of M
+              } else if (keyIsDown(84)){
+                  fill(random(0,20),random(220,255),255); //t - variation of C
+              } else {
+                  fill(mouseY/2, hu/25, hu/25); // toggles fill from black to red based on mouse y
+              }
+              var dimension = mouseX/70; //allows for fun stroke variance
+          } else { //removes fill from ellipses which makes a totally different drawing but opens doors for possibilities
+              var dimension = mouseX/3;
+              noFill();
+              strokeWeight(.5);
+              if (mouseY<windowHeight/2){ //black stroke for upper right quadrant - handy for when background loads as too light
+                  stroke('rgba(0%,0%,0%,0.1)');
+              } else { //white stroke for lower right quadrant - handy for when background loads as too dark
+                  stroke('rgba(100%,100%,100%,0.1)');
+              }
+              rotate(-.1);
+          }
       }
 
 
-    ellipse(x, y, dimension, dimension); 
-      
+        //draws ellipse
+      ellipse(x, y, dimension, dimension);
+
       if (keyCode===27) {
         c++; //esc key breaks the for loop without messing up too much of the rest of drawing (will splatter some red dots around), but is handy for saving sketches -- a happy mistake while coding that i decided not to fix. EDIT: after several hours of playing around with this, I've found that you can also move your cursor all the way to the left to pause the sketch, where there is no fill and the ellipses that generate are invisible.
-    } 
-      
+    }
   }
+
   n ++;
   start += 5;
-    
+
 }
 
 function windowResized(){
@@ -311,66 +305,7 @@ function windowResized(){
     bgSlider.position(windowWidth-(50+bgSlider.width), 375);
     sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
     saveButton.position(windowWidth-400, 25);
-
-
     background(bgSlider.value());
 
 }
-
-
-// function closeSettings() {
-//     //can i make an array of sliders
-//     //how to make this happen synchronously
-//
-//     // how to get it to run continuously after the first time....????
-//     // and to get it to appear WITH the rest of the settings
-//     if (rSlider.style === "display","none") {
-//         rSlider.style("display", "block");
-//         gSlider.style("display", "block");
-//         bSlider.style("display", "block");
-//         rotSlider.style("display", "block");
-//         aSlider.style("display", "block");
-//         bgSlider.style("display", "block");
-//         sizeSlider.style("display", "block");
-//     } else if (rSlider.style === "display","block") {
-//         rSlider.style("display", "none");
-//         gSlider.style("display", "none");
-//         bSlider.style("display", "none");
-//         rotSlider.style("display", "none");
-//         aSlider.style("display", "none");
-//         bgSlider.style("display", "none");
-//         sizeSlider.style("display", "none");
-//     }
-//
-//
-//     // var x = select('#settings');
-//     // var y = select('#instructions');
-//     // if (x.style.display === "none" && y.style.display != "block") {
-//     //     rSlider.style("display", "block");
-//     //     gSlider.style("display", "block");
-//     //     bSlider.style("display", "block");
-//     //     rotSlider.style("display", "block");
-//     //     aSlider.style("display", "block");
-//     //     bgSlider.style("display", "block");
-//     //     sizeSlider.style("display", "block");
-//     // } else if (x.style.display === "none" && y.style.display === "block") {
-//     //     rSlider.style("display", "block");
-//     //     gSlider.style("display", "block");
-//     //     bSlider.style("display", "block");
-//     //     rotSlider.style("display", "block");
-//     //     aSlider.style("display", "block");
-//     //     bgSlider.style("display", "block");
-// //     sizeSlider.style("display", "block");
-// // } else {
-// //     rSlider.style("display", "none");
-// //     gSlider.style("display", "none");
-// //     bSlider.style("display", "none");
-// //     rotSlider.style("display", "none");
-// //     aSlider.style("display", "none");
-// //     bgSlider.style("display", "none");
-// //     sizeSlider.style("display", "none");
-// // }
-//
-//
-// }
 

@@ -34,7 +34,6 @@
     <script src="sketch.js"></script>
 
 </head>
-<?php include "password.php"; ?>
 <body>
 
 
@@ -54,52 +53,15 @@
                 } else {
                     echo "<a href='login.php'>". "<i class=\"material-icons\">account_circle</i>" . " Login" . "</a>";
                 } ?>
-        </div> <!-- close nav links-->
-
+                </div> <!-- close nav links-->
     </nav>
 
-<script>
-//    var infoButton = select('#instructions-button');
-//    infoButton.mouseClicked(instructions());
-//    function instructions() {
-//
-//        var x = document.getElementById("instructions");
-//        var y = document.getElementById("settings");
-//
-//        if (infoView==false && settingsView==false) {
-//            x.style.display = "block";
-//            infoView=true;
-//        }
-//        else if (infoView==false && settingsView==true) {
-//            y.style.display = "none";
-////            rSlider.style("display", "none");
-////            gSlider.style("display", "none");
-////            bSlider.style("display", "none");
-////            rotSlider.style("display", "none");
-////            aSlider.style("display", "none");
-////            bgSlider.style("display", "none");
-////            sizeSlider.style("display", "none");
-////            settingsView=false;
-//
-//            x.style.display = "block";
-//            infoView=true;
-//
-//        } else {
-//
-//            x.style.display = "none";
-//            infoView=false;
-//        }
-//    }
-
-
-
-</script>
 <div id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
-    <img src="phyllo1.jpg.jpeg"> <br> <br>
-    <img src="phyllo2.jpg.jpeg"> <br> <br>
-    <img src="phyllo3.jpg.jpeg"> <br><br><br>
+    <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
+    <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
+    <img src="./img/phyllo3.jpg.jpeg"> <br><br><br>
     <div class="button" id="download-link">Download</div>
     <br style="clear:both;">
 </div>
@@ -114,6 +76,8 @@
     <h6>Angle</h6><div class="slider" id="aSlider-div"></div>
     <h6>Background</h6><div class="slider" id="bgSlider-div"></div>
     <h6>Size</h6><div class="slider" id="sizeSlider-div"></div>
+    <!--settings switch-->
+    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">
 </div>
 
 
@@ -126,6 +90,7 @@
 
 <div id="sketch">
 </div>
+
 
 <div class="button" id="userwelcome" style="float:left;">
     <?php
