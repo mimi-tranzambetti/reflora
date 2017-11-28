@@ -34,7 +34,6 @@
     <script src="sketch.js"></script>
 
 </head>
-<?php include "password.php"; ?>
 <body>
 
 
@@ -42,9 +41,9 @@
         <a><img id="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
             <a id="camera-button"><i class="material-icons">camera_alt</i></a>
-            <a onclick="library()"><i class="material-icons">photo_library</i></a>
+            <a onclick="library()" id="library-button"><i class="material-icons">photo_library</i></a>
             <a onclick="settings()" id="settings-button"><i class="material-icons">settings</i></a>
-            <a onclick="instructions()"><i class="material-icons">info</i></a>
+            <a onclick="instructions()" id="instructions-button"><i class="material-icons">info</i></a>
             <a href='reflora_search.php'><i class="material-icons">search</i></a>
             <a href='img/styleguide.jpeg'><i class="material-icons">line_style</i></a>
                 <?php
@@ -54,54 +53,15 @@
                 } else {
                     echo "<a href='login.php'>". "<i class=\"material-icons\">account_circle</i>" . " Login" . "</a>";
                 } ?>
-        </div> <!-- close nav links-->
-
+                </div> <!-- close nav links-->
     </nav>
-
-<script>
-    function instructions() {
-        var x = document.getElementById("instructions");
-        var y = document.getElementById("settings");
-        if (x.style.display === "none" && y.style.display != "block") {
-            x.style.display = "block";
-        } else if (x.style.display === "none" && y.style.display === "block") {
-            y.style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function settings() {
-        var x = document.getElementById("settings");
-        var y = document.getElementById("instructions");
-        if (x.style.display === "none" && y.style.display != "block") {
-            x.style.display = "block";
-        } else if (x.style.display === "none" && y.style.display === "block") {
-            y.style.display = "none";
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-    function library() {
-        var x = document.getElementById("images");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-
-</script>
 
 <div id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
-    <img src="phyllo1.jpg.jpeg"> <br> <br>
-    <img src="phyllo2.jpg.jpeg"> <br> <br>
-    <img src="phyllo3.jpg.jpeg"> <br><br><br>
+    <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
+    <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
+    <img src="./img/phyllo3.jpg.jpeg"> <br><br><br>
     <div class="button" id="download-link">Download</div>
     <br style="clear:both;">
 </div>
@@ -116,17 +76,21 @@
     <h6>Angle</h6><div class="slider" id="aSlider-div"></div>
     <h6>Background</h6><div class="slider" id="bgSlider-div"></div>
     <h6>Size</h6><div class="slider" id="sizeSlider-div"></div>
+    <!--settings switch-->
+<!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 </div>
 
 
 <div class="sidebar" id="instructions">
     <i class="material-icons" id="close-x" onclick="instructions()">close</i>
     <p style="text-align: center;">Instructions</p>
-    <h6>Red</h6>
+    <h6>Reflora is a place for you to come relax while creating some cool graphics based in floral mathematics.
+        To get started, move your mouse on the blank canvas, and explore the Reflora world.</h6>
 </div>
 
 <div id="sketch">
 </div>
+
 
 <div class="button" id="userwelcome" style="float:left;">
     <?php

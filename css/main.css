@@ -224,9 +224,7 @@ hr {
 
 
 
-/*text{*/
-/*font-family: 'Proxima Nova Regular';*/
-/*}*/
+
 
 @media screen and (max-width: 800px) { iframe { display:none; transition: 2s;}}
 
