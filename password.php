@@ -34,8 +34,7 @@ $_SESSION['username'] = $currentrow['username'];
 
 if ($_SESSION["loggedin"] == "yes") {
 }
-
-if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
+else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         $_SESSION["loggedin"] = "admin";
         $_SESSION ["error"]="no";
