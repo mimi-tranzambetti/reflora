@@ -77,7 +77,7 @@
     <h6>Background</h6><div class="slider" id="bgSlider-div"></div>
     <h6>Size</h6><div class="slider" id="sizeSlider-div"></div>
     <!--settings switch-->
-    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">
+<!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 </div>
 
 
