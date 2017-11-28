@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-<?php include "password.php"; ?>
+<?php //include "password.php"; ?>
 
 <head>
 
