@@ -12,9 +12,9 @@
 <div class="container" class="smallcontainer">
 <div id="login">
     <h1>Login</h1>
-<form action="index.php" method="post">
+<form action="password.php" method="post">
     Username: <input type="text" name="username"><br>
-    Password: <input type="text" name="password"><br>
+    Password: <input type="password" name="password"><br>
     <?php
     if ($_SESSION['error']=="yes"){
         echo '<br><div class="redtext">Incorrect login, please try again.</div>';

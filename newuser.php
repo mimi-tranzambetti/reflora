@@ -13,8 +13,8 @@
     <h1>Create new account</h1>
     <form action="newuserconfirm.php">
         Username: <input type="text" name="name"><br>
-        Password: <input type="text" name="password1"><br>
-        Re-enter Password: <input type="text" name="password2"><br>
+        Password: <input type="password" name="password1"><br>
+        Re-enter Password: <input type="password" name="password2"><br>
         Email: <input type="text" name="email"><br><br>
 
 

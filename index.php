@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-<?php include "password.php"; ?>
+
 
 <head>
 
@@ -92,11 +92,11 @@
 </div>
 
 
-<div class="button" id="userwelcome" style="float:left;">
     <?php
-    echo "Welcome, " . $_SESSION['username'];
-    ?>
-</div>
+    session_start();
+    if($_SESSION["loggedin"] == "yes") {
+        echo "<div class='button' id='userwelcome' style='float:left;'>". "Welcome, ". $_SESSION['username'] . "</div>";
+    } ?>
 
 
 </body>
