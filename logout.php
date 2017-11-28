@@ -9,13 +9,13 @@
 
 <?php
 session_start();
-unset($_SESSION["loggedin"]);
+$_SESSION["loggedin"]="no";
 unset($_SESSION["username"]);
 ?>
 
 <body>
 <div class="container" class="smallcontainer">
-<div id="logout">Logged out<hr><a href="login.php">Log in</a></div>
+<div id="logout">Logged out<hr><a href="index.php">Back to drawing!</a></div>
 </div>
 </body>
 

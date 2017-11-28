@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js">
 
-<<<<<<< HEAD
-<?php //include "password.php"; ?>
-=======
-
->>>>>>> 826025973cc365e075c8fee5cde9f6137a5b1287
-
 <head>
 
 
