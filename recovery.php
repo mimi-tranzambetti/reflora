@@ -51,23 +51,37 @@ if(!$results) {
         </form>
     <?php
     }else{
-        $sql = "SELECT username, passowrd, email FROM users WHERE ";
+        $sql = "SELECT username, password, email FROM users WHERE ";
             if($_REQUEST["username"] != ""){
-                $sql .= "username = '" . $_REQUEST["username"] . "' AND ";
+                $sql .= "username = '" . $_REQUEST["username"] . "'";
             } else if($_REQUEST["password"] != ""){
-                $sql .= "password  = '" . $_REQUEST["password"] . "' AND ";
+                $sql .= "password  = '" . $_REQUEST["password"] . "'";
             } else if($_REQUEST["email"] != ""){
-                $sql .= "email  = '" . $_REQUEST["email"] . "' AND ";
+                $sql .= "email  = '" . $_REQUEST["email"] . "'";
             }
 
+        $results = $mysql->query($sql);
 
-        $to = "halpan@usc.edu";
-        $from=$_REQUEST["email"];
-        $subject = "Feedback from X website";
-        $message = $_REQUEST["userfeedback"];
+        if (!$results) {
+            echo "SQL problem: " .
+                $sql . "<br>" .
+                $mysql-> error ;
 
-        $result = mail ($to, $subject, $message);
+            exit();
+        } else {
+            $currentrow = $results->fetch_assoc();
+            echo "found a matching user. Your username and password have been sent to  " . $currentrow["email"];
+
+            $to = $currentrow["email"];
+            $from = "recovery@reflora.com";
+            $subject = "Reflora Account Information";
+            $message = "Your Username is " . $currentrow["username"] . "\r Your Password is " . $currentrow["password"] .
+                "Log in <a href='http://acad.itpwebdev.com/~halpan/reflora/login.php'>here.</a> ";
+
+            mail($to, $subject, $message);
+        }
     }
+
     ?>
 </div>
 

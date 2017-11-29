@@ -6,8 +6,8 @@ include "admin.php";
 
 <head>
     <title>Reflora Admin</title>
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@ include "admin.php";
     <br>
     <a href="admin_entries.php"> Manage Entries </a>
 
-    <form action="logout.php" method="get">
+    <form action="../logout.php" method="get">
         <input class="button" type="submit" value="Logout of Admin">
     </form>
 
