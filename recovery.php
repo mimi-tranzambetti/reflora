@@ -51,23 +51,59 @@ if(!$results) {
         </form>
     <?php
     }else{
-        $sql = "SELECT username, passowrd, email FROM users WHERE ";
+        $sql = "SELECT username, password, email FROM users WHERE ";
             if($_REQUEST["username"] != ""){
-                $sql .= "username = '" . $_REQUEST["username"] . "' AND ";
+                $sql .= "username = '" . $_REQUEST["username"] . "'";
             } else if($_REQUEST["password"] != ""){
-                $sql .= "password  = '" . $_REQUEST["password"] . "' AND ";
+                $sql .= "password  = '" . $_REQUEST["password"] . "'";
             } else if($_REQUEST["email"] != ""){
-                $sql .= "email  = '" . $_REQUEST["email"] . "' AND ";
+                $sql .= "email  = '" . $_REQUEST["email"] . "'";
             }
 
+        $results = $mysql->query($sql);
 
-        $to = "halpan@usc.edu";
-        $from=$_REQUEST["email"];
-        $subject = "Feedback from X website";
-        $message = $_REQUEST["userfeedback"];
+        if (!$results) {
+            echo "SQL problem: " .
+                $sql . "<br>" .
+                $mysql-> error ;
 
-        $result = mail ($to, $subject, $message);
+            exit();
+        } else {
+            $currentrow = $results->fetch_assoc();
+
+            $to = $currentrow["email"];
+            $from = "recovery@reflora.com";
+            $subject = "Reflora Account Information";
+            $message = "Your Username is ";
+            $message .= $currentrow["username"];
+            $message .= "\r Your Password is ";
+            $message .= $currentrow["password"];
+            $message .= "\r Log in at the address: http://acad.itpwebdev.com/~halpan/reflora/login.php ";
+
+            $sent = mail($to, $subject, $message, "From: " . $from);
+
+            if ($sent == "1"){
+                echo "Great! Your username and password have been sent to  " . $currentrow["email"];
+            } else{
+                echo "Sorry couldn't find you there. Try again?"?>
+                <form action="" method="get">
+                    <input type="hidden" value="yes" name="submit">
+                    <br>
+                    <h3>Username: <input type="text" name="username"></h3>
+                    or
+                    <br>
+                    <h3>Password: <input type="text" name="password"></h3>
+                    or
+                    <br>
+                    <h3>Email: <input type="text" name="password"></h3>
+                    <input type="submit" value="Submit">
+                </form>
+    <?php
+
+            }
+        }
     }
+
     ?>
 </div>
 
