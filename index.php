@@ -1,10 +1,18 @@
+
 <!DOCTYPE html>
 <html class="no-js">
 
-<?php include "password.php"; ?>
-
 <head>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110403299-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110403299-1');
+    </script>
 
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="stylesheet" type="text/css" href="./css/navigation.css">
@@ -38,14 +46,13 @@
 
 
     <nav>
-        <a><img id="corner-logo" src="./img/logo.png"/></a>
+        <a><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
             <a id="camera-button"><i class="material-icons">camera_alt</i></a>
             <a onclick="library()" id="library-button"><i class="material-icons">photo_library</i></a>
             <a onclick="settings()" id="settings-button"><i class="material-icons">settings</i></a>
             <a onclick="instructions()" id="instructions-button"><i class="material-icons">info</i></a>
             <a href='reflora_search.php'><i class="material-icons">search</i></a>
-            <a href='img/styleguide.jpeg'><i class="material-icons">line_style</i></a>
                 <?php
                 session_start();
                 if($_SESSION["loggedin"] == "yes") {
@@ -92,11 +99,11 @@
 </div>
 
 
-<div class="button" id="userwelcome" style="float:left;">
     <?php
-    echo "Welcome, " . $_SESSION['username'];
-    ?>
-</div>
+    session_start();
+    if($_SESSION["loggedin"] == "yes") {
+        echo "<div class='button' id='userwelcome' style='float:left;'>". "Welcome, ". $_SESSION['username'] . "</div>";
+    } ?>
 
 
 </body>
