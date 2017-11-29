@@ -143,7 +143,7 @@ function setup() {
     bgSlider.position(windowWidth-(50+aSlider.width), 375);
     bgSlider.style("display", "none");
 
-    sizeSlider = createSlider(1, windowWidth/4, 2);
+    sizeSlider = createSlider(1, windowWidth/4, 30);
     sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
     sizeSlider.style("display", "none");
 

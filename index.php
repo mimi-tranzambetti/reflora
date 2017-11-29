@@ -74,7 +74,7 @@
                 <?php
                 session_start();
                 if($_SESSION["loggedin"] == "yes") {
-                    echo "<a href='logout.php'>". " Logout" . "</a>";
+                    echo "<a href='logout.php'>". " Welcome " . $_SESSION['username']. ", Logout". "</a>";
                 } else {
                     echo "<a href='login.php'>". " Login" . "</a>";
                 } ?>
@@ -133,12 +133,6 @@
 <div id="sketch">
 </div>
 
-
-    <?php
-    session_start();
-    if($_SESSION["loggedin"] == "yes") {
-        echo "<div class='button' id='userwelcome' style='float:left;'>". "Welcome, ". $_SESSION['username'] . "</div>";
-    } ?>
 
 
 </body>
