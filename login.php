@@ -26,7 +26,7 @@
     <?php
     session_start();
     if ($_SESSION['error']=="yes"){
-        echo '<br><div class="redtext">Incorrect login, please try again.</div>';
+        echo '<div class="redtext">Incorrect login, please try again.</div>';
     }
     ?>
     <br>

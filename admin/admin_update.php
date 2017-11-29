@@ -45,8 +45,9 @@ if (!$results) {
 ?>
 <link rel="shortcut icon" href="../img/favicon.png">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/form.css">
 
-<div class="container">
+<div class="search">
     <h1>Account has been updated</h1>
     <br>
 <a href="admin_accounts.php" target=""> RETURN TO ACCOUNTS </a>

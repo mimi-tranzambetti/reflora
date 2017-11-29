@@ -119,15 +119,15 @@ function setup() {
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
 
-    rSlider = createSlider(0, 255, 255);
+    rSlider = createSlider(0, 255, 94);
     rSlider.position(windowWidth-(50+rSlider.width), 190);
     rSlider.style("display", "none");
 
-    gSlider = createSlider(0, 255, 10);
+    gSlider = createSlider(0, 255, 121);
     gSlider.position(windowWidth-(50+gSlider.width), 225);
     gSlider.style("display", "none");
 
-    bSlider = createSlider(0, 255, 10);
+    bSlider = createSlider(0, 255, 221);
     bSlider.position(windowWidth-(50+bSlider.width), 260);
     bSlider.style("display", "none");
 
@@ -143,7 +143,7 @@ function setup() {
     bgSlider.position(windowWidth-(50+aSlider.width), 375);
     bgSlider.style("display", "none");
 
-    sizeSlider = createSlider(1, windowWidth/4, 30);
+    sizeSlider = createSlider(1, windowWidth/4, 20);
     sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
     sizeSlider.style("display", "none");
 
