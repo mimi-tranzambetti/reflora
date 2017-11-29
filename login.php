@@ -30,6 +30,7 @@ if( $_SESSION["loggedin"] == "admin"){
 
 
     <img class="logo" src="./img/logo.png"/><br><br>
+
 <form action="password.php" method="post">
     Username: <input type="text" name="username" placeholder="Username"><br>
     Password: <input type="password" name="password" placeholder="Password"><br><br>

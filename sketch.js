@@ -135,7 +135,7 @@ function setup() {
     rotSlider.position(windowWidth-(50+rotSlider.width), 295);
     rotSlider.style("display", "none");
 
-    aSlider = createSlider(0, 20000, 1375);
+    aSlider = createSlider(0, 20000, 700);
     aSlider.position(windowWidth-(50+aSlider.width), 335);
     aSlider.style("display", "none");
 

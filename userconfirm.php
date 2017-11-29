@@ -1,6 +1,9 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
+
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Save Edits</title>
 </head>
@@ -9,18 +12,19 @@
     <?php
     session_start();
 
-    if (trim($_REQUEST["username"]) != "" OR trim($_REQUEST["password"]) != "" OR trim($_REQUEST["email"]) != "" ){
+    if (trim($_REQUEST["username"]) != "" OR trim($_REQUEST["password"]) != "" OR trim($_REQUEST["email"]) != "" ) {
 
-    $mysql = new mysqli(
-        "acad.itpwebdev.com",
-        halpan,
-        Pleasejustletmein4726,
-        "halpan_reflora");
+        $mysql = new mysqli(
+            "acad.itpwebdev.com",
+            halpan,
+            Pleasejustletmein4726,
+            "halpan_reflora");
 
-    if($mysql->connect_errno) {
-        echo "db connection error : " . $mysql->connect_error;
-        exit();
-    }
+
+        if ($mysql->connect_errno) {
+            echo "db connection error : " . $mysql->connect_error;
+            exit();
+        }
 
 //        $sql = "INSERT INTO users (email, username, password) VALUES ('".
 //            $_REQUEST['email']. "','" .
@@ -29,28 +33,29 @@
 //            date(o).
 //            "')";
 
-    $sql = "UPDATE users SET ";
-        if (trim($_REQUEST["username"]) != ""){
-            $sql .= "username = '" . $_REQUEST['username']. "'";
-            if (trim($_REQUEST["password"]) != ""){
-                $sql .= ", password = '" . $_REQUEST['password']. "'";
+        $sql = "UPDATE users SET ";
+        if (trim($_REQUEST["username"]) != "") {
+            $sql .= "username = '" . $_REQUEST['username'] . "'";
+            if (trim($_REQUEST["password"]) != "") {
+                $sql .= ", password = '" . $_REQUEST['password'] . "'";
                 if (trim($_REQUEST["email"]) != "") {
                     $sql .= ", email = '" . $_REQUEST['email'] . "'";
                 }
-            }else if(trim($_REQUEST["email"]) != "") {
+            } else if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
             }
-        } else if (trim($_REQUEST["password"]) != ""){
+        } else if (trim($_REQUEST["password"]) != "") {
             $sql .= "email = '" . $_REQUEST['password'] . "'";
             if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
             }
-        } else if (trim($_REQUEST["email"]) != ""){
+        } else if (trim($_REQUEST["email"]) != "") {
             $sql .= "email = '" . $_REQUEST['email'] . "'";
         }
         $sql .= " WHERE username = '" . $_SESSION["username"] . "'";
 
-    $results = $mysql->query($sql);
+        $results = $mysql->query($sql);
+    }
 
     ?>
     <div class="login">
