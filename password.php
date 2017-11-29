@@ -33,6 +33,7 @@ $currentrow = $results->fetch_assoc();
 $_SESSION['username'] = $currentrow['username'];
 
 if ($_SESSION["loggedin"] == "yes") {
+    include "index.php";
 }
 else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
@@ -43,6 +44,7 @@ else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
         $_SESSION ["error"]="no";
+        include "index.php";
     }else if($_REQUEST['password'] == ""){
         header('Location: login.php');
         $_SESSION ["error"]="no";
