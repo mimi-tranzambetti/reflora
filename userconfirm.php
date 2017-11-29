@@ -2,8 +2,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="./css/form.css">
-
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Save Edits</title>
 </head>

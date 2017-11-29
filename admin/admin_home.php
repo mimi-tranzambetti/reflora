@@ -8,7 +8,6 @@ include "admin.php";
     <title>Reflora Admin</title>
     <link rel="shortcut icon" href="../img/favicon.png">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/form.css">
 
 </head>
 

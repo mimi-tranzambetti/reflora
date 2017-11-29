@@ -16,7 +16,6 @@ if($mysql->connect_errno) {
 <head>
     <title>Reflora: Search</title>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="shortcut icon" href="img/favicon.png">
 </head>
 

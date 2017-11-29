@@ -14,16 +14,11 @@
         gtag('config', 'UA-110403299-1');
     </script>
 
-
-
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png">
-
     <meta charset="utf-8">
 
     <title>Reflora</title>
+
+    <link rel="shortcut icon" href="img/favicon.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:title" content="Reflora" />
@@ -37,9 +32,18 @@
     <meta name="twitter:data2" value="USC, Los Angeles" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script src="p5.min.js"></script>
     <script type="text/javascript" src="p5.dom.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+
 
     <script src="sketch.js"></script>
 
@@ -47,32 +51,14 @@
 </head>
 <body>
 
-
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
-
-            <a id="camera-button">
-<!--                <i class="material-icons">camera_alt</i>-->
-                Capture
-            </a>
-            <a onclick="library()" id="library-button">
-<!--                <i class="material-icons">photo_library</i>-->
-                Library
-            </a>
-            <a onclick="settings()" id="settings-button">
-<!--                <i class="material-icons">settings</i></a>-->
-                Settings
-            <a onclick="instructions()" id="instructions-button">
-<!--                <i class="material-icons">info</i>-->
-                Instructions
-            </a>
-            <a href='reflora_search.php'>
-<!--                <i class="material-icons">search</i>-->
-                Search
-            </a>
-
-                <!--"<i class=\"material-icons\">account_circle</i>"-->
+            <a id="camera-button">Capture</a>
+            <a onclick="library()" id="library-button">Library</a>
+            <a onclick="settings()" id="settings-button">Settings</a>
+            <a onclick="instructions()" id="instructions-button">Instructions</a>
+            <a href='reflora_search.php'>Search</a>
                 <?php
                 session_start();
                 if($_SESSION["loggedin"] == "yes") {
@@ -80,13 +66,16 @@
                 } else {
                     echo "<a href='login.php'>". " Login" . "</a>";
                 } ?>
-                </div> <!-- close nav links-->
+        </div> <!-- close nav links-->
+
+        <!--hamburgericon-->
         <div id="nav-icon">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
         </div>
+
     </nav>
 
 
@@ -100,7 +89,7 @@
 
     </script>
 
-<div id="images">
+<div class="sidebar" id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
     <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
@@ -113,16 +102,107 @@
 <div class="sidebar" id="settings">
     <i class="material-icons" id="close-x" onclick="settings()">close</i>
     <p style="text-align: center;">Settings</p>
-    <h6>Red</h6><div class="slider" id="rSlider-div"></div>
-    <h6>Green</h6><div class="slider" id="gSlider-div"></div>
-    <h6>Blue</h6><div class="slider" id="bSlider-div"></div>
-    <h6>Speed</h6><div class="slider" id="rotSlider-div"></div>
-    <h6>Angle</h6><div class="slider" id="aSlider-div"></div>
-    <h6>Background</h6><div class="slider" id="bgSlider-div"></div>
-    <h6>Size</h6><div class="slider" id="sizeSlider-div"></div>
+
+    <p>Red · <span id="rSlider-value"></span></p>
+    <div class="slider" id="rSlider-div">
+        <input type="range" min="1" max="255" value="94" class="slider" id="rSlider">
+
+    </div>
+
+    <p>Green · <span id="gSlider-value"></span></p>
+    <div class="slider" id="gSlider-div">
+        <input type="range" min="1" max="255" value="121" class="slider" id="gSlider">
+
+    </div>
+
+    <p>Blue · <span id="bSlider-value"></span></p>
+    <div class="slider" id="bSlider-div">
+        <input type="range" min="1" max="255" value="221" class="slider" id="bSlider">
+
+    </div>
+
+    <p>Speed · <span id="rotSlider-value"></span></p>
+    <div class="slider" id="rotSlider-div">
+        <input type="range" min="0" max="100" value="1" class="slider" id="rotSlider">
+
+    </div>
+
+    <p>Angle · <span id="aSlider-value"></span></p>
+    <div class="slider" id="aSlider-div">
+        <input type="range" min="1" max="20000" value="1375" class="slider" id="aSlider">
+
+    </div>
+
+    <p>Size · <span id="sizeSlider-value"></span></p>
+    <div class="slider" id="sizeSlider-div">
+        <input type="range" min="1" max="300" value="20" class="slider" id="sizeSlider">
+
+    </div>
+
+    <p>Background · <span id="bgSlider-value"></span></p>
+    <div class="slider" id="bgSlider-div">
+        <input type="range" min="1" max="255" value="50" class="slider" id="bgSlider">
+
+    </div>
+
     <!--settings switch-->
 <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
+
 </div>
+
+    <script>
+
+        var rSlider = document.getElementById("rSlider");
+        var rSliderVal = document.getElementById("rSlider-value");
+        rSliderVal.innerHTML = rSlider.value; // Display the default slider value
+        rSlider.oninput = function() {
+            rSliderVal.innerHTML = this.value; // Update the current slider value (each time you drag the slider handle)
+        }
+
+        var gSlider = document.getElementById("gSlider");
+        var gSliderVal = document.getElementById("gSlider-value");
+        gSliderVal.innerHTML = gSlider.value;
+        gSlider.oninput = function() {
+            gSliderVal.innerHTML = this.value;
+        }
+
+        var bSlider = document.getElementById("bSlider");
+        var bSliderVal = document.getElementById("bSlider-value");
+        bSliderVal.innerHTML = bSlider.value;
+        bSlider.oninput = function() {
+            bSliderVal.innerHTML = this.value;
+        }
+
+        var rotSlider = document.getElementById("rotSlider");
+        var rotSliderVal = document.getElementById("rotSlider-value");
+        rotSliderVal.innerHTML = rotSlider.value;
+        rotSlider.oninput = function() {
+            rotSliderVal.innerHTML = this.value;
+        }
+
+        var aSlider = document.getElementById("aSlider");
+        var aSliderVal = document.getElementById("aSlider-value");
+        aSliderVal.innerHTML = aSlider.value;
+        aSlider.oninput = function() {
+            aSliderVal.innerHTML = this.value;
+        }
+
+        var bgSlider = document.getElementById("bgSlider");
+        var bgSliderVal = document.getElementById("bgSlider-value");
+        bgSliderVal.innerHTML = bgSlider.value;
+        bgSlider.oninput = function() {
+            bgSliderVal.innerHTML = this.value;
+        }
+
+        var sizeSlider = document.getElementById("sizeSlider");
+        var sizeSliderVal = document.getElementById("sizeSlider-value");
+        sizeSliderVal.innerHTML = sizeSlider.value;
+        sizeSlider.oninput = function() {
+            sizeSliderVal.innerHTML = this.value;
+        }
+
+
+    </script>
 
 
 <div class="sidebar" id="instructions">
