@@ -15,7 +15,6 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/navigation.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
@@ -38,8 +37,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="p5.min.js"></script>
     <script type="text/javascript" src="p5.dom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <script src="sketch.js"></script>
+
 
 </head>
 <body>
@@ -48,20 +49,54 @@
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
-            <a id="camera-button"><i class="material-icons">camera_alt</i></a>
-            <a onclick="library()" id="library-button"><i class="material-icons">photo_library</i></a>
-            <a onclick="settings()" id="settings-button"><i class="material-icons">settings</i></a>
-            <a onclick="instructions()" id="instructions-button"><i class="material-icons">info</i></a>
-            <a href='reflora_search.php'><i class="material-icons">search</i></a>
+
+            <a id="camera-button">
+<!--                <i class="material-icons">camera_alt</i>-->
+                Capture
+            </a>
+            <a onclick="library()" id="library-button">
+<!--                <i class="material-icons">photo_library</i>-->
+                Library
+            </a>
+            <a onclick="settings()" id="settings-button">
+<!--                <i class="material-icons">settings</i></a>-->
+                Settings
+            <a onclick="instructions()" id="instructions-button">
+<!--                <i class="material-icons">info</i>-->
+                Instructions
+            </a>
+            <a href='reflora_search.php'>
+<!--                <i class="material-icons">search</i>-->
+                Search
+            </a>
+
+                <!--"<i class=\"material-icons\">account_circle</i>"-->
                 <?php
                 session_start();
                 if($_SESSION["loggedin"] == "yes") {
-                    echo "<a href='logout.php'>". "<i class=\"material-icons\">account_circle</i>". " Logout" . "</a>";
+                    echo "<a href='logout.php'>". " Logout" . "</a>";
                 } else {
-                    echo "<a href='login.php'>". "<i class=\"material-icons\">account_circle</i>" . " Login" . "</a>";
+                    echo "<a href='login.php'>". " Login" . "</a>";
                 } ?>
                 </div> <!-- close nav links-->
+        <div id="nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+
+
+    <script>
+
+        $(document).ready(function(){
+            $('#nav-icon').click(function(){
+                $(this).toggleClass('open');
+            });
+        });
+
+    </script>
 
 <div id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>

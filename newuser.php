@@ -14,7 +14,9 @@
 
 
 <div class="login">
-    <h1>Create new account</h1><br><br><br>
+
+    <img class="logo" src="./img/logo.png"/><br><br>
+
     <form action="newuserconfirm.php">
         Username: <input type="text" name="name" placeholder="Username"><br>
         Password: <input type="password" name="password1" placeholder="Password"><br>
@@ -22,7 +24,7 @@
         Email: <input type="text" name="email" placeholder="name@company.com"><br><br>
 
 
-        <input type="submit" class="button" value="Submit">
+        <input type="submit" class="button" value="Create new account">
 
 
     </form>
