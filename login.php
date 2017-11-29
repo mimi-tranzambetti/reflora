@@ -22,11 +22,14 @@
 <form action="password.php" method="post">
     Username: <input type="text" name="username" placeholder="Username"><br>
     Password: <input type="password" name="password" placeholder="Password"><br><br>
+
     <?php
+    session_start();
     if ($_SESSION['error']=="yes"){
         echo '<br><div class="redtext">Incorrect login, please try again.</div>';
     }
     ?>
+    <br>
     <input type="submit" class="button" value="Log in">
 
 </form>

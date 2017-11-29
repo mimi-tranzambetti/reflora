@@ -36,30 +36,25 @@ $_SESSION["email"] = $currentrow["email"];
 
 if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
-}
-else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
+} else if($_REQUEST['password'] == ""){
+    $_SESSION ["error"]="yes";
+    include "login.php";
+    exit();
+} else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         $_SESSION["loggedin"] = "admin";
         $_SESSION ["error"]="no";
-
         header('Location: admin/admin_home.php');
         exit();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
         $_SESSION ["error"]="no";
         include "index.php";
-    }else if($_REQUEST['password'] == ""){
-        header('Location: login.php');
-        $_SESSION ["error"]="no";
-        $_SESSION["password"] = $currentrow["password"];
-        $_SESSION["email"] = $currentrow["email"];
-        exit();
     }
     else {
-        include "login.php";
         $_SESSION["loggedin"] = "no";
         $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
-        echo "you did something wrong";
+        include "login.php";
         exit();
     }
 }
