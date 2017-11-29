@@ -1,3 +1,14 @@
+<?php
+session_start();
+if( $_SESSION["loggedin"] == "admin"){
+    header('Location: admin/admin_home.php');
+    exit();
+} else if ( $_SESSION["loggedin"] == "yes"){
+    header('Location: index.php');
+    exit();
+}
+?>
+
 <html>
 
 <head>
@@ -24,7 +35,7 @@
     Password: <input type="password" name="password" placeholder="Password"><br><br>
 
     <?php
-    session_start();
+
     if ($_SESSION['error']=="yes"){
         echo '<div class="redtext">Incorrect login, please try again.</div>';
     }
