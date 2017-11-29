@@ -39,8 +39,8 @@ if($mysql->connect_errno) {
         and <input type="text "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br>
 
-        Dot Color <select name="dotcolor">
-            <option value="ALL">ALL</option>
+        Ellipse Color <select name="dotcolor">
+            <option value="ALL">All</option>
             <option value="yellow">Yellow</option>
             <option value="red">Red</option>
             <option value="blue">Blue</option>

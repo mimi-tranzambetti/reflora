@@ -54,6 +54,7 @@ else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
         include "login.php";
         $_SESSION["loggedin"] = "no";
         $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
+        echo "you did something wrong";
         exit();
     }
 }
