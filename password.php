@@ -31,6 +31,8 @@ if(!$results) {
 $currentrow = $results->fetch_assoc();
 
 $_SESSION['username'] = $currentrow['username'];
+$_SESSION["password"] = $currentrow["password"];
+$_SESSION["email"] = $currentrow["email"];
 
 if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
@@ -39,6 +41,7 @@ else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         $_SESSION["loggedin"] = "admin";
         $_SESSION ["error"]="no";
+
         header('Location: admin/admin_home.php');
         exit();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
@@ -48,6 +51,8 @@ else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     }else if($_REQUEST['password'] == ""){
         header('Location: login.php');
         $_SESSION ["error"]="no";
+        $_SESSION["password"] = $currentrow["password"];
+        $_SESSION["email"] = $currentrow["email"];
         exit();
     }
     else {
