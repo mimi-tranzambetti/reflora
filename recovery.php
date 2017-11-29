@@ -70,15 +70,37 @@ if(!$results) {
             exit();
         } else {
             $currentrow = $results->fetch_assoc();
-            echo "found a matching user. Your username and password have been sent to  " . $currentrow["email"];
 
             $to = $currentrow["email"];
             $from = "recovery@reflora.com";
             $subject = "Reflora Account Information";
-            $message = "Your Username is " . $currentrow["username"] . "\r Your Password is " . $currentrow["password"] .
-                "Log in <a href='http://acad.itpwebdev.com/~halpan/reflora/login.php'>here.</a> ";
+            $message = "Your Username is ";
+            $message .= $currentrow["username"];
+            $message .= "\r Your Password is ";
+            $message .= $currentrow["password"];
+            $message .= "\r Log in at the address: http://acad.itpwebdev.com/~halpan/reflora/login.php ";
 
-            mail($to, $subject, $message);
+            $sent = mail($to, $subject, $message, "From: " . $from);
+
+            if ($sent == "1"){
+                echo "Great! Your username and password have been sent to  " . $currentrow["email"];
+            } else{
+                echo "Sorry couldn't find you there. Try again?"?>
+                <form action="" method="get">
+                    <input type="hidden" value="yes" name="submit">
+                    <br>
+                    <h3>Username: <input type="text" name="username"></h3>
+                    or
+                    <br>
+                    <h3>Password: <input type="text" name="password"></h3>
+                    or
+                    <br>
+                    <h3>Email: <input type="text" name="password"></h3>
+                    <input type="submit" value="Submit">
+                </form>
+    <?php
+
+            }
         }
     }
 
