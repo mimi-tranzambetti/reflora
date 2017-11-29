@@ -5,6 +5,7 @@
     <title>Reflora Accounts</title>
     <link rel="shortcut icon" href="../img/favicon.png">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
 
     <style>
         .column1{

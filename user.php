@@ -23,7 +23,7 @@ session_start();
 
     <form action="userconfirm.php">
         Username: <input type="text" name="username" placeholder=" <?= $_SESSION['username']?> "><br>
-        Password: <input type="password" name="password1" placeholder="<?= $_SESSION['password']?> "><br>
+        Password: <input type="password" name="password" placeholder="<?= $_SESSION['password']?> "><br>
         Email: <input type="text" name="email" placeholder=" <?= $_SESSION['email']?> "><br><br>
         <input type="submit" class="button" value="Save Changes">
 

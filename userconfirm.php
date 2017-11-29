@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="shortcut icon" href="img/favicon.png">
@@ -7,34 +6,11 @@
 </head>
 
 <body>
-<div class="login">
-
     <?php
+    session_start();
 
-    if(empty($_REQUEST['name'])) {
-        echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-        exit();
-    }
-    if(empty(trim($_REQUEST['name']))) {
-        echo "You must enter a name.<br>";
-        echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-        exit();
-    }
-    if(empty(trim($_REQUEST['password1']))) {
-        echo "You must enter a name.<br>";
-        echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-        exit();
-    }
-    if($_REQUEST['password1'] != $_REQUEST['password2']){
-        echo "Passwords do not match.";
-        echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-        exit();
-    }
-    if(empty(trim($_REQUEST['email']))) {
-        echo "You must enter an email.<br>";
-        echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-        exit();
-    }
+    if (trim($_REQUEST["username"]) != "" OR trim($_REQUEST["password"]) != "" OR trim($_REQUEST["email"]) != "" ){
+
     $mysql = new mysqli(
         "acad.itpwebdev.com",
         halpan,
@@ -45,26 +21,50 @@
         echo "db connection error : " . $mysql->connect_error;
         exit();
     }
-    $sql = "INSERT INTO users (email, username, password, date_join) VALUES ('".
-        $_REQUEST['email']. "','".
-        $_REQUEST['name']. "','".
-        $_REQUEST['password1']. "',' ".
-        date(o).
-        "')";
+
+//        $sql = "INSERT INTO users (email, username, password) VALUES ('".
+//            $_REQUEST['email']. "','" .
+//            $_REQUEST['username']. "','".
+//            $_REQUEST['password1']. "',' ".
+//            date(o).
+//            "')";
+
+    $sql = "UPDATE users SET ";
+        if (trim($_REQUEST["username"]) != ""){
+            $sql .= "username = '" . $_REQUEST['username']. "'";
+            if (trim($_REQUEST["password"]) != ""){
+                $sql .= ", password = '" . $_REQUEST['password']. "'";
+                if (trim($_REQUEST["email"]) != "") {
+                    $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                }
+            }else if(trim($_REQUEST["email"]) != "") {
+                $sql .= ", email = '" . $_REQUEST['email'] . "'";
+            }
+        } else if (trim($_REQUEST["password"]) != ""){
+            $sql .= "email = '" . $_REQUEST['password'] . "'";
+            if (trim($_REQUEST["email"]) != "") {
+                $sql .= ", email = '" . $_REQUEST['email'] . "'";
+            }
+        } else if (trim($_REQUEST["email"]) != ""){
+            $sql .= "email = '" . $_REQUEST['email'] . "'";
+        }
+        $sql .= " WHERE username = '" . $_SESSION["username"] . "'";
 
     $results = $mysql->query($sql);
 
-    if(!$results) {
-        echo "SQL error: ". $mysql->error;
-        exit();
-    }
-
     ?>
+    <div class="login">
+        <form>
+        <?php
 
-
-
-    <p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
-    <a href="index.php"><input type="submit" class="button" value="Draw"></a>
-</div>
+        if(!$results) {
+            echo "SQL error: ". $mysql->error;
+            exit();
+        }
+    ?>
+        Great your information has been reset.
+        <a href="index.php"><input type="submit" value="Back to drawing"></a>
+        </form>
+    </div> <!-- close login div -->
 </body>
 </html>
