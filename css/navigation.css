@@ -36,12 +36,3 @@ nav {
     margin-right: 40px;
 }
 
-#corner-logo {
-    position: fixed;
-    top: 5px;
-    left: 5px;
-    height: 70px;
-    width: 125px;
-    z-index: 4;
-    transition: 0.5s;
-}

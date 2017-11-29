@@ -35,10 +35,19 @@
 #sketch {
 }
 
+.corner-logo {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    height: 70px;
+    width: 125px;
+    z-index: 4;
+    transition: 0.5s;
+}
 
 body{
     color: #444444;
-    background-color: #9B2C2C;
+    background-color: #204eab;
     margin: 0;
     height: 100%;
     overflow-x: hidden;
@@ -52,11 +61,6 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.smallcontainer{
-    width: 500px;
-    padding: 10%;
-    margin: auto;
-}
 
 .title{
     margin-top: 2%;
