@@ -4,7 +4,6 @@
     <title>Reflora Login</title>
 
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/navigation.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
 
     <link rel="shortcut icon" href="img/favicon.png">
@@ -19,6 +18,7 @@
 <div class="login">
 
 
+    <img class="logo" src="./img/logo.png"/><br><br>
 <form action="password.php" method="post">
     Username: <input type="text" name="username" placeholder="Username"><br>
     Password: <input type="password" name="password" placeholder="Password"><br><br>
