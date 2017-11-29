@@ -42,16 +42,35 @@
     height: 70px;
     width: 125px;
     z-index: 4;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
 }
 
 body{
     color: #444444;
-    background-color: #204eab;
     margin: 0;
     height: 100%;
     overflow-x: hidden;
     font-family: 'Proxima Nova Regular';
+
+
+
+
+    background: #d4d0ca; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#f0eeeb, #d4d0ca); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f0eeeb, #d4d0ca); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f0eeeb, #d4d0ca); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f0eeeb, #d4d0ca); /* Standard syntax */
+
+    /*blue background vs. beige*/
+    /*background: #2a51a3; !* For browsers that do not support gradients *!*/
+    /*background: -webkit-linear-gradient(#596fb5, #2a51a3); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(#596fb5, #2a51a3); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(#596fb5, #2a51a3); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(#596fb5, #2a51a3); !* Standard syntax *!*/
+
 }
 
 .container{
@@ -82,19 +101,29 @@ p{
 }
 
 a{
-    color: #e06453;
+    color: #5e79dd;
     text-decoration: none;
     font-weight: 700;
     line-height: 25pt;
     font-size: 13pt;
+
+
 }
 
+/*
 a:visited{
     color: #ce7861;
 }
+*/
 
 a:hover{
-    color: #f27b60;
+    color: #204eab;
+
+}
+
+strong{
+    padding-bottom: 3px;
+    border-bottom: 2px solid #eeeeee;
 }
 
 .flex{
@@ -193,6 +222,9 @@ hr {
     height: 5%;
     width: 5%;
     z-index: 4;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
 }
 
@@ -205,12 +237,18 @@ hr {
     height: 2%;
     width: 155px;
     z-index: 4;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
 }
 
 #download-link {
     width: 120px;
     z-index: 4;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
     float:none;
 

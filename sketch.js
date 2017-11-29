@@ -223,6 +223,7 @@ function draw() {
 }
 
 function windowResized(){
+
     resizeCanvas(windowWidth, windowHeight);
 
     rSlider.position(windowWidth-(50+rSlider.width), 190);
@@ -233,6 +234,7 @@ function windowResized(){
     bgSlider.position(windowWidth-(50+bgSlider.width), 375);
     sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
     saveButton.position(windowWidth-400, 25);
+
     background(bgSlider.value());
 
 }

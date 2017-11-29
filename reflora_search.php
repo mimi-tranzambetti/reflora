@@ -16,28 +16,29 @@ if($mysql->connect_errno) {
 <head>
     <title>Reflora: Search</title>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="shortcut icon" href="img/favicon.png">
 </head>
 
 
 <body>
-<div class="container" class="smallcontainer">
+<div class="search">
     <form action="reflora_results.php">
 
         <strong>Search for Users:</strong><br><br>
 
         Username: <input type="text" name="name">
         <br><br>
-        Joined Sometime between  <input type="text "name="datejoin1"> and <input type="text "name="datejoin2"><br>
-        (use YYYY-MM-DD format)
+        Joined between <br> <input type="text "name="datejoin1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="text "name="datejoin2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br><br>
 
         <strong>Search for Images:</strong><br><br>
 
-        Created Sometime between  <input type="text "name="datecreate1"> and <input type="text "name="datecreate2"><br>
-        (use YYYY-MM-DD format)
-
+        Created between <br> <input type="text "name="datecreate1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="text "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br>
+
         Dot Color <select name="dotcolor">
             <option value="ALL">ALL</option>
             <option value="yellow">Yellow</option>
@@ -55,9 +56,12 @@ if($mysql->connect_errno) {
         <br><br>
 
         <input class="button" type="submit" value="Search">
-        <p>Go back to <a href="index.php">drawing</a>!</p>
-</div>
+
 
 </form>
+<br><br><br>
+    <p>Return to <a href="index.php">drawing</a></p>
+
+</div>
 </body>
 </html>
