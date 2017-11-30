@@ -2,74 +2,38 @@
 //move your mouse to start
 
 var n = 0;
-var c = 18; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
+var c = 15; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
 
 var start = 0;
 
+
 var rSlider = document.getElementById("rSlider");
-var rSliderVal = document.getElementById("rSlider-value");
-
 var gSlider = document.getElementById("gSlider");
-var gSliderVal = document.getElementById("gSlider-value");
-
 var bSlider = document.getElementById("bSlider");
-var bSliderVal = document.getElementById("bSlider-value");
-
 var rotSlider = document.getElementById("rotSlider");
-var rotSliderVal = document.getElementById("rotSlider-value");
-
 var aSlider = document.getElementById("aSlider");
-var aSliderVal = document.getElementById("aSlider-value");
-
 var bgSlider = document.getElementById("bgSlider");
-var bgSliderVal = document.getElementById("bgSlider-value");
-
 var sizeSlider = document.getElementById("sizeSlider");
-var sizeSliderVal = document.getElementById("sizeSlider-value");
-
 
 var settingsView = false;
 var infoView = false;
 var libraryView = false;
 
-
 var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
-    // settingsView=!settingsView
-    var x = document.getElementById("settings");
-    var y = document.getElementById("instructions");
+    var settings = document.getElementById("settings");
+    var info = document.getElementById("instructions");
     if (settingsView==false && infoView==false) {
-        // rSlider.style("display", "block");
-        // gSlider.style("display", "block");
-        // bSlider.style("display", "block");
-        // rotSlider.style("display", "block");
-        // aSlider.style("display", "block");
-        // bgSlider.style("display", "block");
-        // sizeSlider.style("display", "block");
-        x.style.display = "block";
+        settings.style.display = "block";
         settingsView = true;
     } else if (settingsView==false && infoView==true){
-        y.style.display = "none";
+        info.style.display = "none";
         infoView=false;
-        x.style.display = "block";
-        // rSlider.style("display", "block");
-        // gSlider.style("display", "block");
-        // bSlider.style("display", "block");
-        // rotSlider.style("display", "block");
-        // aSlider.style("display", "block");
-        // bgSlider.style("display", "block");
-        // sizeSlider.style("display", "block");
+        settings.style.display = "block";
         settingsView=true;
     } else {
-        // rSlider.style("display", "none");
-        // gSlider.style("display", "none");
-        // bSlider.style("display", "none");
-        // rotSlider.style("display", "none");
-        // aSlider.style("display", "none");
-        // bgSlider.style("display", "none");
-        // sizeSlider.style("display", "none");
-        x.style.display = "none";
+        settings.style.display = "none";
         settingsView=false;
     }
 }
@@ -78,27 +42,18 @@ function settings() {
 var infoButton = document.getElementById('#instructions-button');
 infoButton.mouseClicked(instructions());
 function instructions() {
-
-    var x = document.getElementById("instructions");
-    var y = document.getElementById("settings");
-
+    var settings = document.getElementById("settings");
+    var info = document.getElementById("instructions");
     if(settingsView==true && infoView==false) {
-        // rSlider.style("display", "none");
-        // gSlider.style("display", "none");
-        // bSlider.style("display", "none");
-        // rotSlider.style("display", "none");
-        // aSlider.style("display", "none");
-        // bgSlider.style("display", "none");
-        // sizeSlider.style("display", "none");
-        y.style.display = "none";
+        settings.style.display = "none";
         settingsView=false;
-        x.style.display = "block";
+        info.style.display = "block";
         infoView=true;
     } else if(infoView==false && settingsView==false) {
-        x.style.display = "block";
+        info.style.display = "block";
         infoView=true;
     } else {
-        x.style.display = "none";
+        info.style.display = "none";
         infoView=false;
     }
 }
@@ -107,60 +62,39 @@ function instructions() {
 var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
-    var x = document.getElementById("images");
+    var images = document.getElementById("images");
     if (libraryView===false) {
-        x.style.display = "block";
+        images.style.display = "block";
         libraryView=true;
     } else {
-        x.style.display = "none";
+        images.style.display = "none";
         libraryView=false;
     }
 }
 
+var refreshButton = select('#refresh-button');
+refreshButton.mouseClicked(reset());
+function reset() {
+    var canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('sketch');
+    angleMode(DEGREES); //since p5.js default mode is in radians
+    colorMode(RGB);
+    background(random(0,255)); //random grayscale backgrounds only
+}
 
 var saveButton = select('#camera-button');
-saveButton.mouseClicked(screenshot);
+saveButton.mouseClicked(screenshot());
 
 function screenshot(){
     saveCanvas('reflora', 'jpg');
 }
 
 function setup() {
-
     var canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('sketch');
     angleMode(DEGREES); //since p5.js default mode is in radians
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
-
-    // rSlider = createSlider(0, 255, 94);
-    // rSlider.position(windowWidth-(50+rSlider.width), 190);
-    // rSlider.style("display", "none");
-    //
-    // gSlider = createSlider(0, 255, 121);
-    // gSlider.position(windowWidth-(50+gSlider.width), 225);
-    // gSlider.style("display", "none");
-    //
-    // bSlider = createSlider(0, 255, 221);
-    // bSlider.position(windowWidth-(50+bSlider.width), 260);
-    // bSlider.style("display", "none");
-    //
-    // rotSlider = createSlider(0, 100, 5);
-    // rotSlider.position(windowWidth-(50+rotSlider.width), 295);
-    // rotSlider.style("display", "none");
-    //
-    // aSlider = createSlider(0, 20000, 1375);
-    // aSlider.position(windowWidth-(50+aSlider.width), 335);
-    // aSlider.style("display", "none");
-    //
-    // bgSlider = createSlider(0, 255, 150);
-    // bgSlider.position(windowWidth-(50+aSlider.width), 375);
-    // bgSlider.style("display", "none");
-    //
-    // sizeSlider = createSlider(1, windowWidth/4, 20);
-    // sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
-    // sizeSlider.style("display", "none");
-
 }
 
 
@@ -239,7 +173,8 @@ function draw() {
 function windowResized(){
 
     resizeCanvas(windowWidth, windowHeight);
-    //background slider doesn't work rn?
+
+    //background slider doesn't work rn???
     background(bgSlider.value);
 
 }

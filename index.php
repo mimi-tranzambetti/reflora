@@ -14,6 +14,12 @@
         gtag('config', 'UA-110403299-1');
     </script>
 
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#landing-modal').modal('show');
+        });
+    </script>
+
     <meta charset="utf-8">
 
     <title>Reflora</title>
@@ -29,7 +35,7 @@
     <meta name="twitter:label1" value="When" />
     <meta name="twitter:data1" value="Anytime" />
     <meta name="twitter:label2" value="Where" />
-    <meta name="twitter:data2" value="USC, Los Angeles" />
+    <meta name="twitter:data2" value="In the comfort of your own home" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,6 +56,25 @@
 
 </head>
 <body>
+
+<!--LANDING MODAL -- ADD 'DON'T SHOW AGAIN?"-->
+<!--why isn't this modal showing >:-( it worked before-->
+
+<div class="modal fade" id="landing-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="login" class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <img class="logo" src="./img/logo.png"/><br><br>
+            <h1 class="title">Calm your mind</h1>
+            <p>Welcome to Reflora. Here, you can watch a relaxing drawing generate on screen. Toggle the drawing in
+                the settings toolbar, and save a screenshot of your favorite pieces. </p>
+            <br>
+            <input type="submit" class="button" data-dismiss="modal" value="Start drawing" >
+            <br><br>
+        </div>
+    </div>
+</div>
 
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
@@ -102,53 +127,58 @@
 <div class="sidebar" id="settings">
     <i class="material-icons" id="close-x" onclick="settings()">close</i>
     <p style="text-align: center;">Settings</p>
-
-    <p>Red · <span id="rSlider-value"></span></p>
+    <br>
+    <p>Red <span id="rSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rSlider-div">
         <input type="range" min="1" max="255" value="94" class="slider" id="rSlider">
 
     </div>
-
-    <p>Green · <span id="gSlider-value"></span></p>
+    <br>
+    <p>Green <span id="gSlider-value" style="float:right;"></span></p>
     <div class="slider" id="gSlider-div">
         <input type="range" min="1" max="255" value="121" class="slider" id="gSlider">
 
     </div>
-
-    <p>Blue · <span id="bSlider-value"></span></p>
+    <br>
+    <p>Blue <span id="bSlider-value" style="float:right;"></span></p>
     <div class="slider" id="bSlider-div">
         <input type="range" min="1" max="255" value="221" class="slider" id="bSlider">
 
     </div>
-
-    <p>Speed · <span id="rotSlider-value"></span></p>
+    <br>
+    <p>Speed <span id="rotSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rotSlider-div">
         <input type="range" min="0" max="100" value="1" class="slider" id="rotSlider">
 
     </div>
-
-    <p>Angle · <span id="aSlider-value"></span></p>
+    <br>
+    <p>Angle <span id="aSlider-value" style="float:right;"></span></p>
     <div class="slider" id="aSlider-div">
         <input type="range" min="1" max="20000" value="1375" class="slider" id="aSlider">
 
     </div>
-
-    <p>Size · <span id="sizeSlider-value"></span></p>
+    <br>
+    <p>Size <span id="sizeSlider-value" style="float:right;"></span></p>
     <div class="slider" id="sizeSlider-div">
         <input type="range" min="1" max="300" value="20" class="slider" id="sizeSlider">
 
     </div>
-
-    <p>Background · <span id="bgSlider-value"></span></p>
+    <br>
+    <p>Background · <span id="bgSlider-value" style="float:right;"></span></p>
     <div class="slider" id="bgSlider-div">
         <input type="range" min="1" max="255" value="50" class="slider" id="bgSlider">
-
     </div>
+    <br>
+    <br>
+
+    <input type="submit" value="Clear canvas" id="refresh-button">
 
     <!--settings switch-->
 <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 
 </div>
+
+<!--SLIDERS-->
 
     <script>
 

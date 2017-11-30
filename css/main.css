@@ -88,8 +88,8 @@ body{
     margin-top: 2%;
     text-align: center;
     color: #5e79dd;
-    font-size: 4em;
-    font-family: 'Proxima Nova Regular';
+    font-size: 2em;
+    font-family: 'Proxima Nova bold';
 }
 
 .header{
@@ -247,28 +247,6 @@ input[type=submit]:hover {
 
 /*INDEX CONTENT STYLING*/
 
-#settings{
-    background:white;
-    display: none;
-    position: absolute;
-    width: 200px;
-    top: 100px;
-    right: 30px;
-    padding: 2%;
-    opacity: 0.8;
-}
-
-#instructions{
-    background:white;
-    display: none;
-    position: absolute;
-    width: 200px;
-    height: 300px;
-    top: 100px;
-    right: 30px;
-    padding: 2%;
-    opacity: 0.8;
-}
 
 .sidebar {
     border-radius: 5px;
@@ -281,19 +259,46 @@ input[type=submit]:hover {
     font-size: 10pt;
     font-family: 'Proxima Nova Regular';
 
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+
     text-align: left;
+}
+
+#settings{
+    background:white;
+    display: none;
+    position: absolute;
+    width: 200px;
+    right: 30px;
+    padding: 2%;
+    opacity: 0.95;
+}
+
+#instructions{
+    background:white;
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    top: 100px;
+    right: 30px;
+    padding: 2%;
+    opacity: 0.95;
 }
 
 #images{
     background:white;
     position: absolute;
     display: none;
-    width: 130px;
-    height: 400px;
+    width: 200px;
     top: 150px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
+    text-align: center;
 }
 
 #images img{
