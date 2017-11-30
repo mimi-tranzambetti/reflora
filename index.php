@@ -78,7 +78,7 @@
 
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
-        <div class="navlinks">
+        <div class="navlinks" id="topnav">
             <a onclick="screenshot()" id="camera-button">Capture</a>
             <a onclick="library()" id="library-button">Library</a>
             <a onclick="settings()" id="settings-button">Settings</a>
@@ -91,15 +91,19 @@
                 } else {
                     echo "<a href='login.php'>". " Login" . "</a>";
                 } ?>
+
+            <!--hamburgericon-->
+            <a href="javascript:void(0);" class="nav-icon" >
+            <div id="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div></a>
+
         </div> <!-- close nav links-->
 
-        <!--hamburgericon-->
-        <div id="nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+
 
     </nav>
 
@@ -107,10 +111,20 @@
     <script>
 
         $(document).ready(function(){
-            $('#nav-icon').click(function(){
+            $('.nav-icon').click(function(){
                 $(this).toggleClass('open');
+                $("#topnav").toggleClass('responsive');
             });
         });
+
+//        function opennav() {
+//            var x = document.getElementById("topnav");
+//            if (x.className === "navlinks") {
+//                x.className += " responsive";
+//            } else {
+//                x.className = "navlinks";
+//            }
+//        }
 
     </script>
 
