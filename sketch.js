@@ -82,12 +82,13 @@ function reset() {
     background(random(0,255)); //random grayscale backgrounds only
 }
 
-var saveButton = select('#camera-button');
-saveButton.mouseClicked(screenshot());
+// var saveButton = select('#camera-button');
+// saveButton.mouseClicked(screenshot);
 
 function screenshot(){
     saveCanvas('reflora', 'jpg');
 }
+
 
 function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
@@ -116,11 +117,22 @@ function draw() {
         var g = gSlider.value;
         var b = bSlider.value;
 
-        if (sizeSlider.value > 80){
-            var dimension = sizeSlider.value;
-        } else if (sizeSlider.value <81) {
-            var dimension = sizeSlider.value/3;
+        var dimension = parseInt(sizeSlider.value);
+
+        if(dimension>80){
+            dimension = parseInt(sizeSlider.value);
+        } else if (dimension<81){
+            dimension = parseInt(sizeSlider.value)/3;
         }
+
+        // var dimension = sizeSlider.value/1;
+
+        // if(sizeSlider.value>80){
+        //     var dimension = sizeSlider.value/1;
+        //
+        // } else if (sizeSlider.value()<81){
+        //     var dimension=sizeSlider.value/3;
+        // }
 
         // supposed to allow for more smooth sliding and variability on the low end the spectrum, not sure if it's workin
         //also should add input options to directly input values
@@ -175,6 +187,7 @@ function windowResized(){
     resizeCanvas(windowWidth, windowHeight);
 
     //background slider doesn't work rn???
+
     background(bgSlider.value);
 
 }

@@ -79,7 +79,7 @@
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks">
-            <a id="camera-button">Capture</a>
+            <a onclick="screenshot()" id="camera-button">Capture</a>
             <a onclick="library()" id="library-button">Library</a>
             <a onclick="settings()" id="settings-button">Settings</a>
             <a onclick="instructions()" id="instructions-button">Instructions</a>
@@ -148,7 +148,7 @@
     <br>
     <p>Speed <span id="rotSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rotSlider-div">
-        <input type="range" min="0" max="100" value="1" class="slider" id="rotSlider">
+        <input type="range" min="0" max="50" value="1" class="slider" id="rotSlider">
 
     </div>
     <br>
