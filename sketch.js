@@ -15,6 +15,9 @@ var aSlider = document.getElementById("aSlider");
 var bgSlider = document.getElementById("bgSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 
+var bg = parseInt(bgSlider.value);
+
+
 var settingsView = false;
 var controlsView = false;
 var infoView = false;
@@ -103,7 +106,19 @@ function screenshot(){
     saveCanvas('reflora', 'jpg');
 }
 
+function restart(){
+    loop();
+    start = 'true';
+    background(bg);
+    n=0;
+}
 
+function clear(){
+    noLoop();
+    start = 'false';
+    background(bg);
+    n=0;
+}
 
 function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
@@ -113,6 +128,7 @@ function setup() {
     background(random(0,255)); //random grayscale backgrounds only
     noLoop();
 }
+
 
 
 function draw() {
@@ -134,6 +150,7 @@ function draw() {
         var b = bSlider.value;
 
         var dimension = parseInt(sizeSlider.value);
+
 
         if(dimension>100){
             dimension = parseInt(sizeSlider.value);
@@ -159,7 +176,8 @@ function draw() {
 
         //resets background
         if (keyIsDown(ENTER)){ //set the slider, click enter to create a new background over the drawing
-            background(bgSlider.value);
+            background(bg);
+            n=0;
         }
 
         if (dimension >= 33){
@@ -182,15 +200,10 @@ function draw() {
 
 
 function windowResized(){
-
+    background(bg);
     resizeCanvas(windowWidth, windowHeight);
     n=0;
 
+
 }
 
-var refreshButton = document.getElementById("#refresh-button");
-refreshButton.mouseClicked(clear());
-function clear(){
-    background(bgSlider.value);
-    n=0;
-}

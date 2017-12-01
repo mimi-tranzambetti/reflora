@@ -345,11 +345,12 @@
 
 <div class="sidebar" id="controls">
 
-    <i class="material-icons" id="close-x" onclick="library()">close</i>
+    <i class="material-icons" id="close-x" onclick="controls()">close</i>
     <p style="text-align: center;">Controls</p>
 
     <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
-    <input type="submit" value="Clear canvas" id="refresh-button" onclick="clear()">
+    <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
+    <input type="submit" value="Clear" id="clear-button" onclick="clear()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
 <!--    <input type="submit" value="Pause" id="pause-button" onclick="noLoop()">-->
 <!--    <input type="submit" value="Draw" id="draw-button" onclick="loop()">-->
@@ -365,7 +366,6 @@
                 document.getElementById("pause-button").value="Pause";
             }
         }
-
 
     </script>
 
@@ -434,7 +434,7 @@
     <i class="material-icons" id="close-x" onclick="instructions()">close</i>
     <p style="text-align: center;">Instructions</p>
     <p>INTRO Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
-
+    <p>Please be aware that resizing the window will restart the drawing!</p>
     <!--PROBABLY ADD BUTTONS HERE to search and things-->
 
 </div>
