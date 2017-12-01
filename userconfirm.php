@@ -9,18 +9,18 @@
     <?php
     session_start();
 
-    if (trim($_REQUEST["username"]) != "" OR trim($_REQUEST["password"]) != "" OR trim($_REQUEST["email"]) != "" ){
+    if (trim($_REQUEST["username"]) != "" OR trim($_REQUEST["password"]) != "" OR trim($_REQUEST["email"]) != "" ) {
 
-    $mysql = new mysqli(
-        "acad.itpwebdev.com",
-        halpan,
-        Pleasejustletmein4726,
-        "halpan_reflora");
+        $mysql = new mysqli(
+            "acad.itpwebdev.com",
+            halpan,
+            Pleasejustletmein4726,
+            "halpan_reflora");
 
-    if($mysql->connect_errno) {
-        echo "db connection error : " . $mysql->connect_error;
-        exit();
-    }
+        if ($mysql->connect_errno) {
+            echo "db connection error : " . $mysql->connect_error;
+            exit();
+        }
 
 //        $sql = "INSERT INTO users (email, username, password) VALUES ('".
 //            $_REQUEST['email']. "','" .
@@ -32,25 +32,36 @@
     $sql = "UPDATE users SET ";
         if (trim($_REQUEST["username"]) != ""){
             $sql .= "username = '" . $_REQUEST['username']. "'";
+            $_SESSION["username"] = $_REQUEST['username'];
             if (trim($_REQUEST["password"]) != ""){
                 $sql .= ", password = '" . $_REQUEST['password']. "'";
+                $_SESSION["password"] = $_REQUEST['password'];
                 if (trim($_REQUEST["email"]) != "") {
                     $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                    $_SESSION["email"] = $_REQUEST['email'];
                 }
             }else if(trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                $_SESSION["email"] = $_REQUEST['email'];
             }
         } else if (trim($_REQUEST["password"]) != ""){
-            $sql .= "email = '" . $_REQUEST['password'] . "'";
+            $sql .= "password = '" . $_REQUEST['password'] . "'";
+            $_SESSION["password"] = $_REQUEST['password'];
             if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                $_SESSION["email"] = $_REQUEST['email'];
             }
         } else if (trim($_REQUEST["email"]) != ""){
             $sql .= "email = '" . $_REQUEST['email'] . "'";
+            $_SESSION["email"] = $_REQUEST['email'];
         }
         $sql .= " WHERE username = '" . $_SESSION["username"] . "'";
 
+
+
     $results = $mysql->query($sql);
+    }
+    header('Location: index.php');
 
     ?>
     <div class="login">
@@ -63,7 +74,7 @@
         }
     ?>
         Great your information has been reset.
-        <a href="index.php"><input type="submit" value="Back to drawing"></a>
+        <a href="index.php"> Back to drawing</a>
         </form>
     </div> <!-- close login div -->
 </body>
