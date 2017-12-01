@@ -5,8 +5,9 @@ $rvalue = $_REQUEST["rSlider"];
 $gvalue = $_REQUEST["gSlider"];
 $bvalue = $_REQUEST["bSlider"];
 $anglevalue = $_REQUEST["aSlider"];
-$sizevalue = $_REQUEST["rotSlider"];
-$speedvalue = $_REQUEST["bgSlider"];
+$sizevalue = $_REQUEST["sizeSlider"];
+$speedvalue = $_REQUEST["rotSlider"];
+$backgroundvalue = $_REQUEST["bgSlider"];
 $authorvalue = $_SESSION["userid"];
 $date = date("c");
 
@@ -21,7 +22,7 @@ if($mysql->connect_errno) {
     exit();
 }
 
-$sql = "INSERT INTO entries (user_id, author_id, red, green, blue, angle, size, speed, date) VALUES ('".
+$sql = "INSERT INTO entries (user_id, author_id, red, green, blue, angle, size, speed, background, date) VALUES ('".
     $authorvalue. "','".
     $authorvalue. "','".
     $rvalue. "','".
@@ -30,6 +31,7 @@ $sql = "INSERT INTO entries (user_id, author_id, red, green, blue, angle, size, 
     $anglevalue. "','".
     $sizevalue. "','".
     $speedvalue. "','".
+    $backgroundvalue. "','".
     $date.
     "')";
 
