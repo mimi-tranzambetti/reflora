@@ -290,13 +290,12 @@
     <form method="POST" action="index.php" enctype="multipart/form-data">
         <input type="hidden" name="size" value="1000000">
         <div>
-            <input type="file" name="image">
+            <input type="file" name="image" >
         </div>
         <div>
-            <button type="submit" name="upload">POST</button>
+            <button type="submit" name="upload" class="upload-button">POST</button>
         </div>
     </form>
-    //<input type="submit" value="upload" id="upload-button" onclick="upload()">
 
     <br style="clear:both;">
 </div>
