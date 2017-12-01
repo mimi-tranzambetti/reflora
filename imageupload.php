@@ -8,7 +8,6 @@
 	$msg = "";
 
 	if (isset($_POST['upload'])) {
-	    if($_FILES['image']['size'] == 0 && $_FILES['image']['error'] == 0){
 
             $target = "images/".basename($_FILES['image']['name']);
             $image = $_FILES['image']['name'];
@@ -17,12 +16,10 @@
             $date = date("c");
             $sql = "INSERT INTO images (image, user_id, date_created) VALUES ('$image','$user_id','$date')";
             mysqli_query($db, $sql);
-
             if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
                 $msg = "Image uploaded successfully";
             }else{
                 $msg = "Failed to upload image";
-            }
         }
 
     }
