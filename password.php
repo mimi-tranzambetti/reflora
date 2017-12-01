@@ -29,14 +29,13 @@ if(!$results) {
 }
 
 $currentrow = $results->fetch_assoc();
+    $_SESSION['username'] = $currentrow['username'];
+    $_SESSION["password"] = $currentrow["password"];
+    $_SESSION["email"] = $currentrow["email"];
+    $_SESSION["userid"] = $currentrow["user_id"];
 
-$_SESSION['username'] = $currentrow['username'];
-$_SESSION["password"] = $currentrow["password"];
-$_SESSION["email"] = $currentrow["email"];
-$_SESSION["userid"] = $currentrow["user_id"];
 
-
-if ($_SESSION["loggedin"] == "yes") {
+    if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
 } else if($_REQUEST['password'] == ""){
     $_SESSION ["error"]="yes";
@@ -68,6 +67,7 @@ else{
     exit();
 // STOP the page
 }
+
 ?>
 
 </div>

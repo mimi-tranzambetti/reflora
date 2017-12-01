@@ -81,8 +81,6 @@
 
 <body>
 
-<!--LANDING MODAL -->
-
 <div class="modal fade" id="landing-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -318,13 +316,7 @@
     <button type="button" class="close" onclick="library()">&times;</button>
 <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
-<<<<<<< .merge_file_uBgPmE
-    <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo3.jpg.jpeg"> <br><br>
 
-    <form method="post" action="" enctype="multipart/form-data" target="noreload">
-=======
 
     <?php
     $start = 1;
@@ -341,7 +333,6 @@
     ?>
     
     <form method="post" action="" enctype="multipart/form-data">
->>>>>>> .merge_file_9sPsAA
         <input type="hidden" name="size" value="1000000">
         <div>
             <input type="file" name="image" >
