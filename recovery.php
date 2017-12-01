@@ -73,7 +73,7 @@ if(!$results) {
             $currentrow = $results->fetch_assoc();
 
             $to = $currentrow["email"];
-            $from = "recovery@reflora.com";
+            $from = "recy@reflora.com";
             $subject = "Reflora Account Information";
             $message = "Your Username is ";
             $message .= $currentrow["username"];
@@ -82,6 +82,10 @@ if(!$results) {
             $message .= "\r Log in at the address: http://acad.itpwebdev.com/~halpan/reflora/login.php ";
 
             $sent = mail($to, $subject, $message, "From: " . $from);
+
+
+//            $sent = mail("halpan@usc.edu", $subject, $message, "From: " . $from)
+//            $sent = mail("halpan@usc.edu", "testemail", "this is a test message", "From: test@usc.edu" );
 
             if ($sent == "1"){
                 echo "Great! Your username and password have been sent to  " . $currentrow["email"];
