@@ -282,11 +282,22 @@
     <?php include "imageupload.php"; ?>
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
-    <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo3.jpg.jpeg"> <br><br>
+
+    <?php
+    $start = 1;
+    $end = $start+2;
+    $counter = $start;
+
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<img src='images/".$row['image']."' >";
+        if($end <= $counter) {
+            break;
+        }
+        +$counter++;
+    }
+    ?>
     
-    <form method="post" action="" enctype="multipart/form-data" target="noreload">
+    <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="size" value="1000000">
         <div>
             <input type="file" name="image" >

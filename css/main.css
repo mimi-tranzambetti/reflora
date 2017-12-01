@@ -318,7 +318,7 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 200px;
-    top: 150px;
+    top: 100px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
