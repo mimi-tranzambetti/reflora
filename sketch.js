@@ -2,9 +2,9 @@
 //move your mouse to start
 
 var n = 0;
-var c = 15; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
+var c = 14; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
 
-var start = 0;
+var start = "true";
 
 
 var rSlider = document.getElementById("rSlider");
@@ -16,6 +16,7 @@ var bgSlider = document.getElementById("bgSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 
 var settingsView = false;
+var controlsView = false;
 var infoView = false;
 var libraryView = false;
 
@@ -63,31 +64,45 @@ var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
     var images = document.getElementById("images");
-    if (libraryView===false) {
+    var controls = document.getElementById("controls");
+    if (libraryView==false && controlsView==false) {
         images.style.display = "block";
         libraryView=true;
-    } else {
+    } else if (libraryView==false&&controlsView==true){
+        images.style.display = "block";
+        libraryView=true;
+        controls.style.display = "none";
+        controlsView = false;
+        }else {
         images.style.display = "none";
         libraryView=false;
     }
 }
 
-var refreshButton = select('#refresh-button');
-refreshButton.mouseClicked(reset());
-function reset() {
-    var canvas = createCanvas(windowWidth, windowHeight);
-    canvas.parent('sketch');
-    angleMode(DEGREES); //since p5.js default mode is in radians
-    colorMode(RGB);
-    background(random(0,255)); //random grayscale backgrounds only
-}
 
-// var saveButton = select('#camera-button');
-// saveButton.mouseClicked(screenshot);
+var controlsButton = select('#controls-button');
+controlsButton.mouseClicked(controls());
+function controls() {
+    var images = document.getElementById("images");
+    var controls = document.getElementById("controls");
+    if (controlsView==false && libraryView==false) {
+        controls.style.display = "block";
+        controlsView=true;
+    } else if (controlsView==false && libraryView==true){
+        controls.style.display = "block";
+        controlsView=true;
+        images.style.display = "none";
+        libraryView = false;
+    }else {
+        controls.style.display = "none";
+        controlsView=false;
+    }
+}
 
 function screenshot(){
     saveCanvas('reflora', 'jpg');
 }
+
 
 
 function setup() {
@@ -96,6 +111,7 @@ function setup() {
     angleMode(DEGREES); //since p5.js default mode is in radians
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
+    noLoop();
 }
 
 
@@ -113,7 +129,7 @@ function draw() {
         var x = r * cos(a);
         var y = r * sin(a);
 
-        var r = rSlider.value;
+        var red = rSlider.value;
         var g = gSlider.value;
         var b = bSlider.value;
 
@@ -140,10 +156,6 @@ function draw() {
             y-=100;
         }
 
-        //spacebar reverses rotate
-        if (keyIsDown(32)){
-            rotate(n*-.1);
-        }
 
         //resets background
         if (keyIsDown(ENTER)){ //set the slider, click enter to create a new background over the drawing
@@ -153,30 +165,32 @@ function draw() {
         if (dimension >= 33){
             noFill();
             strokeWeight(.5);
-            stroke(r,g,b);
+            stroke(red,g,b);
             rotate(-.1);
         } else if (dimension < 33) {
             noStroke();
-            fill(r, g, b);
+            fill(red, g, b);
         } else {
         }
 
         ellipse(x, y, dimension, dimension);
 
-        if (keyCode===27) {
-            c++; //esc key breaks the for loop without messing up too much of the rest of drawing (will splatter some red dots around), but is handy for saving sketches -- a happy mistake while coding that i decided not to fix. EDIT: after several hours of playing around with this, I've found that you can also move your cursor all the way to the left to pause the sketch, where there is no fill and the ellipses that generate are invisible.
-        }
     }
     n ++;
-    start += 5;
 }
+
+
 
 function windowResized(){
 
     resizeCanvas(windowWidth, windowHeight);
-    // canvas.position(windowWidth, windowHeight);
-    //background slider doesn't work rn???
+    n=0;
 
+}
+
+var refreshButton = document.getElementById("#refresh-button");
+refreshButton.mouseClicked(clear());
+function clear(){
     background(bgSlider.value);
-
+    n=0;
 }

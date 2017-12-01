@@ -70,6 +70,9 @@
             echo '$("#signup-modal").modal("show");';
         } else if ($_SESSION["loggedin"]=="no") {
             echo '$("#landing-modal").modal("show");';
+//            echo '$(#start-draw).click(redraw());';
+        } else {
+            echo "loop();";
         }
         ?>
     });
@@ -90,7 +93,7 @@
             <p>Welcome to Reflora. Here, you can watch a relaxing drawing generate on screen. Toggle the drawing in
                 the settings toolbar, and save a screenshot of your favorite pieces. </p>
             <br>
-            <input type="submit" class="button" data-dismiss="modal" value="Start drawing" >
+            <input type="submit" class="button" data-dismiss="modal" value="Start drawing" onclick="loop()">
             <br><br>
         </div>
     </div>
@@ -107,7 +110,7 @@
             <h1 class="title">Welcome!</h1>
             <p><p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
             <br>
-            <input type="submit" class="button" data-dismiss="modal" value="Start drawing" >
+            <input id="start-draw" type="submit" class="button" data-dismiss="modal" value="Start Drawing" onclick="loop()"  >
             <?php
             unset($_SESSION["newaccount"]);
             ?>
@@ -235,9 +238,9 @@
 </script>
 
     <nav>
-        <a><img class="corner-logo" src="./img/logo.png"/></a>
+        <a href="index.php"><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks" id="topnav">
-            <a onclick="screenshot()" id="camera-button">Capture</a>
+            <a onclick="controls()" id="controls-button">Controls</a>
             <a onclick="library()" id="library-button">Library</a>
             <a onclick="settings()" id="settings-button">Settings</a>
             <a onclick="instructions()" id="instructions-button">Instructions</a>
@@ -260,9 +263,6 @@
             </div></a>
 
         </div> <!-- close nav links-->
-
-
-
     </nav>
 
 
@@ -275,24 +275,19 @@
             });
         });
 
-//        function opennav() {
-//            var x = document.getElementById("topnav");
-//            if (x.className === "navlinks") {
-//                x.className += " responsive";
-//            } else {
-//                x.className = "navlinks";
-//            }
-//        }
-
     </script>
+
+
 
 <div class="sidebar" id="images">
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
     <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo3.jpg.jpeg"> <br><br><br>
-    <div class="button" id="download-link">Download</div>
+    <img src="./img/phyllo3.jpg.jpeg"> <br><br>
+
+    <input type="submit" value="Upload" id="upload-button" onclick="upload()">
+
     <br style="clear:both;">
 </div>
 
@@ -320,7 +315,7 @@
     <br>
     <p>Speed <span id="rotSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rotSlider-div">
-        <input type="range" min="0" max="50" value="2" class="slider" id="rotSlider">
+        <input type="range" min="0" max="25" value="2" class="slider" id="rotSlider">
 
     </div>
     <br>
@@ -342,14 +337,42 @@
     </div>
     <br>
     <br>
-
-    <input type="submit" value="Clear canvas" id="refresh-button">
-
     <!--settings switch-->
 <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 
 </div>
 
+
+<div class="sidebar" id="controls">
+
+    <i class="material-icons" id="close-x" onclick="library()">close</i>
+    <p style="text-align: center;">Controls</p>
+
+    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
+    <input type="submit" value="Clear canvas" id="refresh-button" onclick="clear()">
+    <input type="submit" value="Pause" id="pause-button" onclick="pause()">
+<!--    <input type="submit" value="Pause" id="pause-button" onclick="noLoop()">-->
+<!--    <input type="submit" value="Draw" id="draw-button" onclick="loop()">-->
+
+    <script>
+        function pause() {
+            var text = document.getElementById("pause-button").value;
+            if (text=="Pause") {
+                noLoop();
+                document.getElementById("pause-button").value = "Draw";
+            } else {
+                loop();
+                document.getElementById("pause-button").value="Pause";
+            }
+        }
+
+
+    </script>
+
+    <input type="submit" value="Save" id="save-button" onclick="screenshot()">
+
+    <br style="clear:both;">
+</div>
 <!--SLIDERS-->
 
     <script>
@@ -412,21 +435,9 @@
     <p style="text-align: center;">Instructions</p>
     <p>INTRO Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
 
-    <p>   INSTRUCTIONS Move your mouse to start.
-        Command - R to refresh the page and change the background (random grayscale)
-        Spacebar - to rotate the canvas in reverse
-        Up, Down, Left, Right arrows - to translate generated ellipses
-        Esc - stops sketch from generating ellipses around center point
-        MouseX - will determine diameter of ellipses, with left being smallest and right being largest
-        Enter - will regenerate background</p>
+    <!--PROBABLY ADD BUTTONS HERE to search and things-->
 
-    <p>When mouse is on the left half of the canvas:
-        MouseY - Vertical mouse position controls default red fill color, with the top of the canvas as black and the bottom as red, and a gradient in between.
-        Q - change fill to black
-        W - change fill to white
-        E - change fill to yellow
-        R - change fill to magenta
-        T - change fill to cyan </p></div>
+</div>
 
 <div id="sketch">
 </div>
