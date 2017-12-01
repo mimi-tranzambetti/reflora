@@ -287,7 +287,7 @@
     <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo3.jpg.jpeg"> <br><br>
 
-    <form method="get" action="index.php" enctype="multipart/form-data">
+    <form method="post" action="index.php" enctype="multipart/form-data">
         <input type="hidden" name="size" value="1000000">
         <div>
             <input type="file" name="image" >
