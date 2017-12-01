@@ -119,23 +119,12 @@ function draw() {
 
         var dimension = parseInt(sizeSlider.value);
 
-        if(dimension>80){
+        if(dimension>100){
             dimension = parseInt(sizeSlider.value);
-        } else if (dimension<81){
-            dimension = parseInt(sizeSlider.value)/3;
+        } else if (dimension<100){
+            dimension = parseInt(sizeSlider.value)/6;
         }
 
-        // var dimension = sizeSlider.value/1;
-
-        // if(sizeSlider.value>80){
-        //     var dimension = sizeSlider.value/1;
-        //
-        // } else if (sizeSlider.value()<81){
-        //     var dimension=sizeSlider.value/3;
-        // }
-
-        // supposed to allow for more smooth sliding and variability on the low end the spectrum, not sure if it's workin
-        //also should add input options to directly input values
 
         //makes drawing shift temporarily in x direction
         if (keyIsDown(UP_ARROW)){
@@ -161,12 +150,12 @@ function draw() {
             background(bgSlider.value);
         }
 
-        if (dimension >= 10){
+        if (dimension >= 33){
             noFill();
             strokeWeight(.5);
             stroke(r,g,b);
             rotate(-.1);
-        } else if (dimension < 10) {
+        } else if (dimension < 33) {
             noStroke();
             fill(r, g, b);
         } else {
@@ -184,8 +173,8 @@ function draw() {
 
 function windowResized(){
 
-    resizeCanvas(windowWidth, windowHeight);
-
+    // resizeCanvas(windowWidth, windowHeight);
+    canvas.position(windowWidth, windowHeight);
     //background slider doesn't work rn???
 
     background(bgSlider.value);

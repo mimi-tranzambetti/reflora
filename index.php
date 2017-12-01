@@ -20,6 +20,16 @@
         });
     </script>
 
+    <?php
+    session_start();
+    if( $_SESSION["loggedin"] == "admin"){
+        header('Location: admin/admin_home.php');
+        exit();
+    }
+    ?>
+
+
+
     <meta charset="utf-8">
 
     <title>Reflora</title>
@@ -76,6 +86,111 @@
     </div>
 </div>
 
+
+<!--MODAL LOGIN & SIGN UP POPUPS -->
+
+<!-- Log in Modal -->
+<div class="modal" id="login-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="login" class="modal-content">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <img class="logo" src="./img/logo.png"/><br>
+
+
+            <form role="form" action="password.php" method="post">
+
+                <div class="form-group">
+                    <label for="username">Username:</label> <input type="text" name="username" placeholder="Username"><br>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label> <input type="password" name="password" placeholder="Password"><br>
+                </div>
+
+                <?php
+
+                if ($_SESSION['error']=="yes"){
+                    echo '<div class="redtext">Incorrect login, please try again.</div>';
+                }
+                ?>
+                <br>
+
+                <input type="submit" class="button" value="Log in">
+
+            </form>
+
+
+            <br>
+
+            <p>
+                Don't have an account? <a type="button" data-dismiss="modal" id="signup-button">Sign up.</a>
+                <br>
+                <a href="recovery.php" >Forgot password?</a>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Sign up Modal -->
+<div class="modal" id="signup-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="login" class="modal-content">
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <img class="logo" src="./img/logo.png"/><br>
+
+
+            <form role="form" action="newuserconfirm.php">
+
+                <div class="form-group">
+                    <label for="name">Username:</label> <input type="text" name="name" placeholder="Enter username"><br>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label><input type="text" name="email" placeholder="name@company.com"><br>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password:</label> <input type="password" name="password1" placeholder="Enter password"><br>
+                    <input type="password" name="password2" placeholder="Re-enter password"><br>
+                </div>
+
+
+                <input type="submit" class="button" value="Create new account">
+
+            </form>
+            <br>
+            <p>
+                Already have an account? <a type="button" data-dismiss="modal" id="login-button2">Login here.</a>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#login-button").click(function(){
+            $("#login-modal").modal();
+        });
+        $("#login-button2").click(function(){
+            $("#login-modal").modal();
+        });
+        $("#signup-button").click(function(){
+            $("#signup-modal").modal();
+        });
+
+    });
+</script>
+
     <nav>
         <a><img class="corner-logo" src="./img/logo.png"/></a>
         <div class="navlinks" id="topnav">
@@ -89,7 +204,7 @@
                 if($_SESSION["loggedin"] == "yes") {
                     echo "<a href='logout.php'>". " Welcome " . $_SESSION['username']. ", Logout". "</a>";
                 } else {
-                    echo "<a href='login.php'>". " Login" . "</a>";
+                    echo "<a type='button' id='login-button'>". " Login" . "</a>";
                 } ?>
 
             <!--hamburgericon-->
@@ -162,7 +277,7 @@
     <br>
     <p>Speed <span id="rotSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rotSlider-div">
-        <input type="range" min="0" max="50" value="1" class="slider" id="rotSlider">
+        <input type="range" min="0" max="50" value="2" class="slider" id="rotSlider">
 
     </div>
     <br>
@@ -174,7 +289,7 @@
     <br>
     <p>Size <span id="sizeSlider-value" style="float:right;"></span></p>
     <div class="slider" id="sizeSlider-div">
-        <input type="range" min="1" max="300" value="20" class="slider" id="sizeSlider">
+        <input type="range" min="1" max="200" value="40" class="slider" id="sizeSlider">
 
     </div>
     <br>
@@ -252,9 +367,23 @@
 <div class="sidebar" id="instructions">
     <i class="material-icons" id="close-x" onclick="instructions()">close</i>
     <p style="text-align: center;">Instructions</p>
-    <h6>Reflora is a place for you to come relax while creating some cool graphics based in floral mathematics.
-        To get started, move your mouse on the blank canvas, and explore the Reflora world.</h6>
-</div>
+    <p>INTRO Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
+
+    <p>   INSTRUCTIONS Move your mouse to start.
+        Command - R to refresh the page and change the background (random grayscale)
+        Spacebar - to rotate the canvas in reverse
+        Up, Down, Left, Right arrows - to translate generated ellipses
+        Esc - stops sketch from generating ellipses around center point
+        MouseX - will determine diameter of ellipses, with left being smallest and right being largest
+        Enter - will regenerate background</p>
+
+    <p>When mouse is on the left half of the canvas:
+        MouseY - Vertical mouse position controls default red fill color, with the top of the canvas as black and the bottom as red, and a gradient in between.
+        Q - change fill to black
+        W - change fill to white
+        E - change fill to yellow
+        R - change fill to magenta
+        T - change fill to cyan </p></div>
 
 <div id="sketch">
 </div>

@@ -11,7 +11,7 @@
 session_start();
 $_SESSION["loggedin"]="no";
 unset($_SESSION["username"]);
-include "login.php";
+include "index.php";
 ?>
 <!---->
 <!--<body>-->
