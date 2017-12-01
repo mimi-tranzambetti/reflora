@@ -62,7 +62,6 @@ function instructions() {
     }
 }
 
-
 var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
@@ -109,16 +108,10 @@ function screenshot(){
 function restart(){
     loop();
     start = 'true';
-    background(bg);
+    background(parseInt(bgSlider.value));
     n=0;
 }
 
-function clear(){
-    noLoop();
-    start = 'false';
-    background(bg);
-    n=0;
-}
 
 function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
@@ -129,6 +122,18 @@ function setup() {
     noLoop();
 }
 
+function pause() {
+    var text = document.getElementById("pause-button").value;
+    if (text=="Pause") {
+        noLoop();
+        document.getElementById("pause-button").value = "Draw";
+        start="false";
+    } else {
+        loop();
+        document.getElementById("pause-button").value="Pause";
+        start="true";
+    }
+}
 
 
 function draw() {
@@ -176,7 +181,7 @@ function draw() {
 
         //resets background
         if (keyIsDown(ENTER)){ //set the slider, click enter to create a new background over the drawing
-            background(bg);
+            background(parseInt(bgSlider.value));
             n=0;
         }
 
@@ -200,10 +205,12 @@ function draw() {
 
 
 function windowResized(){
-    background(bg);
-    resizeCanvas(windowWidth, windowHeight);
-    n=0;
 
+    loop();
+    start = 'true';
+    resizeCanvas(windowWidth, windowHeight);
+    background(parseInt(bgSlider.value));
+    n=0;
 
 }
 

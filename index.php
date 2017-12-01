@@ -321,7 +321,7 @@
     <br>
     <p>Angle <span id="aSlider-value" style="float:right;"></span></p>
     <div class="slider" id="aSlider-div">
-        <input type="range" min="1" max="20000" value="1375" class="slider" id="aSlider">
+        <input type="range" min="1" max="10000" value="1375" class="slider" id="aSlider">
 
     </div>
     <br>
@@ -350,10 +350,7 @@
 
     <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
     <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
-    <input type="submit" value="Clear" id="clear-button" onclick="clear()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
-<!--    <input type="submit" value="Pause" id="pause-button" onclick="noLoop()">-->
-<!--    <input type="submit" value="Draw" id="draw-button" onclick="loop()">-->
 
     <script>
         function pause() {
