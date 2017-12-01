@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: Hal2001
@@ -27,7 +28,7 @@ $bvalue = $_REQUEST["bSlider"];
 $anglevalue = $_REQUEST["aSlider"];
 $sizevalue = $_REQUEST["rotSlider"];
 $speedvalue = $_REQUEST["bgSlider"];
-$authorvalue = $_REQUEST["rotSlider"];
+$authorvalue = $_SESSION["userid"];
 $date = date("c");
 
 $mysql = new mysqli(
@@ -41,14 +42,19 @@ if($mysql->connect_errno) {
     exit();
 }
 
-$sql = "INSERT INTO entries (author_id, red, green, blue, angle, size, speed) VALUES ('".
+$sql = "INSERT INTO entries (author_id, red, green, blue, angle, size, speed, date) VALUES ('".
     $authorvalue. "','".
     $rvalue. "','".
-    $gvalue. "',' ".
-    $gvalue. "',' ".
-
+    $gvalue. "','".
+    $bvalue. "','".
+    $anglevalue. "','".
+    $sizevalue. "','".
+    $speedvalue. "','".
+    $authorvalue. "','".
     $date.
     "')";
+
+echo $sql;
 
 $results = $mysql->query($sql);
 
