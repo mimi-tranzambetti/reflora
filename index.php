@@ -70,7 +70,6 @@
             echo '$("#signup-modal").modal("show");';
         } else if ($_SESSION["loggedin"]=="no") {
             echo '$("#landing-modal").modal("show");';
-//            echo '$(#start-draw).click(redraw());';
         } else {
             echo "loop();";
         }
@@ -105,7 +104,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="login" class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br><br>
             <h1 class="title">Welcome!</h1>
             <p><p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
@@ -131,7 +130,7 @@
         <div class="login" class="modal-content">
 
 
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br>
 
 
@@ -178,7 +177,7 @@
         <div class="login" class="modal-content">
 
 
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br>
 
 
@@ -250,7 +249,7 @@
                 if($_SESSION["loggedin"] == "yes") {
                     echo "<a href='logout.php'>". " Welcome " . $_SESSION['username']. ", Logout". "</a>";
                 } else {
-                    echo "<a type='button' id='login-button'>". " Login" . "</a>";
+                    echo "<a type='button' id='login-button' onclick='noLoop()'>". " Log in" . "</a>";
                 } ?>
 
             <!--hamburgericon-->
