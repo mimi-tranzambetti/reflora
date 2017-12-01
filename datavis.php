@@ -50,7 +50,22 @@ $blue = floor($row['average_blue']);
 <div class="colorbar"><div class="colorbarfill" style="background-color:green;width: <?php echo $green;?>px;"><h1>Average green value</h1></div></div><br>
 <div class="colorbar"><div class="colorbarfill" style="background-color:blue;width: <?php echo $blue;?>px;"><h1>Average blue value</h1></div></div><br>
 
+<div id="colortilebox"><h1>User Color Tiles</h1>
+    <?php
 
+    $sql = "SELECT * FROM entries";
+
+    $results = $mysql->query($sql);
+
+    $row = mysqli_fetch_assoc($results);
+
+    while ($row = mysqli_fetch_array($results)) {
+        echo "<div class='colortile' style='background-color:rgb(". $row['red'] . "," .$row['green'] . "," . $row['blue'] .");'></div>";
+    }
+    ?>
+
+
+</div><!--endcolortilebox-->
 
 </body>
 
