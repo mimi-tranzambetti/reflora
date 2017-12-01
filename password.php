@@ -33,6 +33,8 @@ $currentrow = $results->fetch_assoc();
 $_SESSION['username'] = $currentrow['username'];
 $_SESSION["password"] = $currentrow["password"];
 $_SESSION["email"] = $currentrow["email"];
+$_SESSION["userid"] = $currentrow["user_id"];
+
 
 if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
