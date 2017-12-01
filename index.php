@@ -366,8 +366,19 @@
 
     </script>
 
-    <input type="submit" value="Save" id="save-button" onclick="screenshot()">
 
+    <iframe name="noreload" style="display:none;"></iframe>
+    <form action="" method="post" target="noreload">
+
+            <input type="hidden" name="rSlider" value="" id="rSlider-hidden"><br>
+            <input type="hidden" name="gSlider" value="" id="gSlider-hidden"><br>
+            <input type="hidden" name="bSlider" value="" id="bSlider-hidden"><br>
+            <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden"><br>
+            <input type="hidden" name="aSlider" value="" id="aSlider-hidden"><br>
+            <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden"><br>
+            <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden"><br>
+            <input type="submit" value="Save" id="save-button" onclick="screenshot()">
+    </form>
     <br style="clear:both;">
 </div>
 <!--SLIDERS-->
@@ -376,51 +387,72 @@
 
         var rSlider = document.getElementById("rSlider");
         var rSliderVal = document.getElementById("rSlider-value");
+        var rSliderhidden = document.getElementById("rSlider-hidden");
         rSliderVal.innerHTML = rSlider.value; // Display the default slider value
+        rSliderhidden.value = rSlider.value;
         rSlider.oninput = function() {
             rSliderVal.innerHTML = this.value; // Update the current slider value (each time you drag the slider handle)
+            rSliderhidden.value = this.value;
         }
 
         var gSlider = document.getElementById("gSlider");
         var gSliderVal = document.getElementById("gSlider-value");
+        var gSliderhidden = document.getElementById("gSlider-hidden");
         gSliderVal.innerHTML = gSlider.value;
+        gSliderhidden.value = gSlider.value;
         gSlider.oninput = function() {
             gSliderVal.innerHTML = this.value;
+            gSliderhidden.value = this.value;
         }
 
         var bSlider = document.getElementById("bSlider");
         var bSliderVal = document.getElementById("bSlider-value");
+        var bSliderhidden = document.getElementById("bSlider-hidden");
         bSliderVal.innerHTML = bSlider.value;
+        bSliderhidden.value = bSlider.value;
         bSlider.oninput = function() {
             bSliderVal.innerHTML = this.value;
+            bSliderhidden.value = this.value;
         }
 
         var rotSlider = document.getElementById("rotSlider");
         var rotSliderVal = document.getElementById("rotSlider-value");
+        var rotSliderhidden = document.getElementById("rotSlider-hidden");
         rotSliderVal.innerHTML = rotSlider.value;
+        rotSliderhidden.value = rotSlider.value;
         rotSlider.oninput = function() {
             rotSliderVal.innerHTML = this.value;
+            rotSliderhidden.value = this.value;
         }
 
         var aSlider = document.getElementById("aSlider");
         var aSliderVal = document.getElementById("aSlider-value");
+        var aSliderhidden = document.getElementById("aSlider-hidden");
         aSliderVal.innerHTML = aSlider.value;
+        aSliderhidden.value = aSlider.value;
         aSlider.oninput = function() {
             aSliderVal.innerHTML = this.value;
+            aSliderhidden.value = this.value;
         }
 
         var bgSlider = document.getElementById("bgSlider");
         var bgSliderVal = document.getElementById("bgSlider-value");
+        var bgSliderhidden = document.getElementById("bgSlider-hidden");
         bgSliderVal.innerHTML = bgSlider.value;
+        bgSliderhidden.value = bgSlider.value;
         bgSlider.oninput = function() {
             bgSliderVal.innerHTML = this.value;
+            bgSliderhidden.value = this.value;
         }
 
         var sizeSlider = document.getElementById("sizeSlider");
         var sizeSliderVal = document.getElementById("sizeSlider-value");
+        var sizeSliderhidden = document.getElementById("sizeSlider-hidden");
         sizeSliderVal.innerHTML = sizeSlider.value;
+        sizeSliderhidden.value = sizeSlider.value;
         sizeSlider.oninput = function() {
             sizeSliderVal.innerHTML = this.value;
+            sizeSliderhidden.value = this.value;
         }
 
 
