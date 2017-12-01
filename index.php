@@ -280,13 +280,22 @@
 
 
 <div class="sidebar" id="images">
+    <?php include "imageupload.php"; ?>
     <i class="material-icons" id="close-x" onclick="library()">close</i>
     <p style="text-align: center;">Library</p>
     <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo3.jpg.jpeg"> <br><br>
 
-    <input type="submit" value="Upload" id="upload-button" onclick="upload()">
+    <form method="get" action="index.php" enctype="multipart/form-data">
+        <input type="hidden" name="size" value="1000000">
+        <div>
+            <input type="file" name="image" >
+        </div>
+        <div>
+            <button type="submit" name="upload" class="upload-button">POST</button>
+        </div>
+    </form>
 
     <br style="clear:both;">
 </div>
