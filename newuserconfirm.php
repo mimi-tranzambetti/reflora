@@ -61,11 +61,12 @@ if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
     exit();
 }
+$date = date("c");
 $sql = "INSERT INTO users (email, username, password, date_join) VALUES ('".
     $_REQUEST['email']. "','".
     $_REQUEST['name']. "','".
     $_REQUEST['password1']. "',' ".
-    date(o).
+    $date.
     "')";
 
 $results = $mysql->query($sql);
