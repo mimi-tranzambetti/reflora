@@ -375,8 +375,8 @@
     </script>
 
 
-    <iframe name="noreload" style="display:none;"></iframe>
-    <form action="" method="post" target="noreload">
+
+    <form action="datacapture.php" method="post" target="_blank">
 
             <input type="hidden" name="rSlider" value="" id="rSlider-hidden"><br>
             <input type="hidden" name="gSlider" value="" id="gSlider-hidden"><br>
@@ -387,6 +387,9 @@
             <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden"><br>
             <input type="submit" value="Save" id="save-button" onclick="screenshot()">
     </form>
+
+    <iframe name="noreload" style="display:none;">
+    </iframe>
 
     <br style="clear:both;">
 </div>
