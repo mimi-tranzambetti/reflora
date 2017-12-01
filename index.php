@@ -62,6 +62,7 @@
 <script type="text/javascript">
     $(window).on('load',function(){
         <?php
+            session_start();
         if ($_SESSION['newaccount']=="yes"){
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
