@@ -326,6 +326,20 @@ input[type=submit]:hover {
     text-align: center;
 }
 
+#averagecolor {
+    width: 80%;
+    margin: auto;
+
+}
+
+.colorbar{
+    width: 510px;
+    margin: auto;
+    background-color: white;
+}
+.colorbar{
+}
+
 
 #images img{
     width: 130px;
@@ -555,3 +569,5 @@ nav {
     }
 
 }
+
+
