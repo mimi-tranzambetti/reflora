@@ -21,25 +21,25 @@ if($mysql->connect_errno) {
 
 
 <body>
-<div class="container" class="smallcontainer">
+<div class="search">
     <form action="reflora_results.php">
 
         <strong>Search for Users:</strong><br><br>
 
-        Username: <input type="text" name="name">
+        Username: <input type="text" name="name" placeholder="Username">
         <br><br>
-        Joined Sometime between  <input type="text "name="datejoin1"> and <input type="text "name="datejoin2"><br>
-        (use YYYY-MM-DD format)
+        Joined between <br> <input type="date "name="datejoin1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="date "name="datejoin2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br><br>
 
         <strong>Search for Images:</strong><br><br>
 
-        Created Sometime between  <input type="text "name="datecreate1"> and <input type="text "name="datecreate2"><br>
-        (use YYYY-MM-DD format)
-
+        Created between <br> <input type="date "name="datecreate1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="date "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br>
-        Dot Color <select name="dotcolor">
-            <option value="ALL">ALL</option>
+
+        Ellipse Color <select name="dotcolor">
+            <option value="ALL">All</option>
             <option value="yellow">Yellow</option>
             <option value="red">Red</option>
             <option value="blue">Blue</option>
@@ -55,9 +55,12 @@ if($mysql->connect_errno) {
         <br><br>
 
         <input class="button" type="submit" value="Search">
-        <p>Go back to <a href="index.php">drawing</a>!</p>
-</div>
+
 
 </form>
+<br><br><br>
+    <p>Return to <a href="index.php">drawing</a></p>
+
+</div>
 </body>
 </html>

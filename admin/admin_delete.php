@@ -36,8 +36,8 @@ if($mysql->connect_errno) {
 <html>
 <head>
     <title>Reflora Delete</title>
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 
 </head>
 <body>

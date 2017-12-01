@@ -7,33 +7,49 @@
 </head>
 
 <body>
-<div class="container">
 
 <?php
 
+session_start();
+
 if(empty($_REQUEST['name'])) {
-    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+    $_SESSION["emptyfield"] = "yes";
+    include "index.php";
     exit();
+
+//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+//    exit();
 }
 if(empty(trim($_REQUEST['name']))) {
-    echo "You must enter a name.<br>";
-    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+    $_SESSION["emptyfield"] = "yes";
+    include "index.php";
     exit();
+//    echo "You must enter a name.<br>";
+//    exit();
 }
 if(empty(trim($_REQUEST['password1']))) {
-    echo "You must enter a name.<br>";
-    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+    $_SESSION["emptyfield"] = "yes";
+    include "index.php";
     exit();
+//    echo "You must enter a name.<br>";
+//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+//    exit();
 }
 if($_REQUEST['password1'] != $_REQUEST['password2']){
-    echo "Passwords do not match.";
-    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+    $_SESSION["nomatch"] = "yes";
+    include "index.php";
     exit();
+//    echo "Passwords do not match.";
+//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+//    exit();
 }
 if(empty(trim($_REQUEST['email']))) {
-    echo "You must enter an email.<br>";
-    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+    $_SESSION["emptyfield"] = "yes";
+    include "index.php";
     exit();
+//    echo "You must enter an email.<br>";
+//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+//    exit();
 }
 $mysql = new mysqli(
     "acad.itpwebdev.com",
@@ -57,14 +73,12 @@ $results = $mysql->query($sql);
 if(!$results) {
     echo "SQL error: ". $mysql->error;
     exit();
+} else {
+    $_SESSION["newaccount"]="yes";
+    include "index.php";
 }
-
 ?>
 
 
-
-<p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
-<a href="index.php"><input type="submit" class="button" value="Draw"></a>
-</div>
 </body>
 </html>

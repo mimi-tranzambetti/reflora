@@ -38,13 +38,13 @@ if(!$results) {
 <html>
 <head>
     <title>Account Edit</title>
-    <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 
 </head>
 <body>
 
-<div class="container">
+<div class="search">
     <h1>Edit Account - <?= $recorddata['username']?> </h1>
     <form action="admin_update.php">
         <input type="hidden" name ="user_id" value="<?= $recorddata["user_id"]; ?>">

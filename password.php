@@ -1,18 +1,18 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="shortcut icon" href="img/favicon.png">
 </head>
 <body>
 <div >
-<?php
-session_start();
+    <?php
+    session_start();
 
-$mysql = new mysqli(
-    "acad.itpwebdev.com",
-    halpan,
-    Pleasejustletmein4726,
-    "halpan_reflora");
+    $mysql = new mysqli(
+            "acad.itpwebdev.com",
+            halpan,
+            Pleasejustletmein4726,
+            "halpan_reflora");
 
 if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
@@ -31,31 +31,33 @@ if(!$results) {
 $currentrow = $results->fetch_assoc();
 
 $_SESSION['username'] = $currentrow['username'];
-$_SESSION['user_id'] = $currentrow['user_id'];
-echo $_SESSION['user_id'];
+$_SESSION["password"] = $currentrow["password"];
+$_SESSION["email"] = $currentrow["email"];
 
 if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
-}
-else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
+} else if($_REQUEST['password'] == ""){
+    $_SESSION ["error"]="yes";
+    include "index.php";
+    exit();
+} else if($_REQUEST['username'] == ""){
+    $_SESSION ["error"]="yes";
+    include "index.php";
+    exit();
+} else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         $_SESSION["loggedin"] = "admin";
         $_SESSION ["error"]="no";
-        header('Location: admin_home.php');
+        header('Location: admin/admin_home.php');
         exit();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
         $_SESSION ["error"]="no";
         include "index.php";
-    }else if($_REQUEST['password'] == ""){
-        header('Location: login.php');
-        $_SESSION ["error"]="no";
-        exit();
-    }
-    else {
-        include "login.php";
+    }else {
         $_SESSION["loggedin"] = "no";
         $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
+        include "index.php";
         exit();
     }
 }
@@ -69,3 +71,4 @@ else{
 </div>
 </body>
 </html>
+
