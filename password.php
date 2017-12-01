@@ -1,18 +1,18 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+        <link rel="shortcut icon" href="img/favicon.png">
 </head>
 <body>
 <div >
-<?php
-session_start();
+    <?php
+    session_start();
 
-$mysql = new mysqli(
-    "acad.itpwebdev.com",
-    halpan,
-    Pleasejustletmein4726,
-    "halpan_reflora");
+    $mysql = new mysqli(
+            "acad.itpwebdev.com",
+            halpan,
+            Pleasejustletmein4726,
+            "halpan_reflora");
 
 if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
@@ -54,8 +54,7 @@ if ($_SESSION["loggedin"] == "yes") {
         $_SESSION["loggedin"]="yes";
         $_SESSION ["error"]="no";
         include "index.php";
-    }
-    else {
+    }else {
         $_SESSION["loggedin"] = "no";
         $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
         include "index.php";
@@ -72,3 +71,4 @@ else{
 </div>
 </body>
 </html>
+
