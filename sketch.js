@@ -15,9 +15,6 @@ var aSlider = document.getElementById("aSlider");
 var bgSlider = document.getElementById("bgSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 
-var bg = parseInt(bgSlider.value);
-
-
 var settingsView = false;
 var controlsView = false;
 var infoView = false;
@@ -26,6 +23,7 @@ var libraryView = false;
 var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
+    console.log("line 29!");
     var settings = document.getElementById("settings");
     var info = document.getElementById("instructions");
     if (settingsView==false && infoView==false) {
@@ -46,6 +44,7 @@ function settings() {
 var infoButton = document.getElementById('#instructions-button');
 infoButton.mouseClicked(instructions());
 function instructions() {
+    console.log("line 50!");
     var settings = document.getElementById("settings");
     var info = document.getElementById("instructions");
     if(settingsView==true && infoView==false) {
@@ -65,6 +64,7 @@ function instructions() {
 var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
+    console.log("line 70!");
     var images = document.getElementById("images");
     var controls = document.getElementById("controls");
     if (libraryView==false && controlsView==false) {
@@ -85,6 +85,7 @@ function library() {
 var controlsButton = select('#controls-button');
 controlsButton.mouseClicked(controls());
 function controls() {
+    console.log("line 91!");
     var images = document.getElementById("images");
     var controls = document.getElementById("controls");
     if (controlsView==false && libraryView==false) {
@@ -123,14 +124,14 @@ function setup() {
 }
 
 function pause() {
-    var text = document.getElementById("pause-button").value;
-    if (text=="Pause") {
+    var button = document.getElementById("pause-button");
+    if (button.value=="Pause") {
         noLoop();
-        document.getElementById("pause-button").value = "Draw";
+        button.value = "Draw";
         start="false";
     } else {
         loop();
-        document.getElementById("pause-button").value="Pause";
+        button.value="Pause";
         start="true";
     }
 }
