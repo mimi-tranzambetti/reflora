@@ -18,7 +18,6 @@
             Pleasejustletmein4726,
             "halpan_reflora");
 
-
         if ($mysql->connect_errno) {
             echo "db connection error : " . $mysql->connect_error;
             exit();
@@ -31,24 +30,33 @@
 //            date(o).
 //            "')";
 
-        $sql = "UPDATE users SET ";
-        if (trim($_REQUEST["username"]) != "") {
-            $sql .= "username = '" . $_REQUEST['username'] . "'";
-            if (trim($_REQUEST["password"]) != "") {
-                $sql .= ", password = '" . $_REQUEST['password'] . "'";
+    $sql = "UPDATE users SET ";
+        if (trim($_REQUEST["username"]) != ""){
+            $sql .= "username = '" . $_REQUEST['username']. "'";
+            $_SESSION["username"] = $_REQUEST['username'];
+            if (trim($_REQUEST["password"]) != ""){
+                $sql .= ", password = '" . $_REQUEST['password']. "'";
+                $_SESSION["password"] = $_REQUEST['password'];
                 if (trim($_REQUEST["email"]) != "") {
                     $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                    $_SESSION["email"] = $_REQUEST['email'];
                 }
             } else if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                $_SESSION["email"] = $_REQUEST['email'];
             }
+        } else if (trim($_REQUEST["password"]) != ""){
+            $sql .= "password = '" . $_REQUEST['password'] . "'";
+            $_SESSION["password"] = $_REQUEST['password'];
         } else if (trim($_REQUEST["password"]) != "") {
             $sql .= "email = '" . $_REQUEST['password'] . "'";
             if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
+                $_SESSION["email"] = $_REQUEST['email'];
             }
         } else if (trim($_REQUEST["email"]) != "") {
             $sql .= "email = '" . $_REQUEST['email'] . "'";
+            $_SESSION["email"] = $_REQUEST['email'];
         }
         $sql .= " WHERE username = '" . $_SESSION["username"] . "'";
 
@@ -66,7 +74,7 @@
         }
     ?>
         Great your information has been reset.
-        <a href="index.php"><input type="submit" value="Back to drawing"></a>
+        <a href="index.php"> Back to drawing</a>
         </form>
     </div> <!-- close login div -->
 </body>
