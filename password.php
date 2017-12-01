@@ -38,7 +38,11 @@ if ($_SESSION["loggedin"] == "yes") {
     include "index.php";
 } else if($_REQUEST['password'] == ""){
     $_SESSION ["error"]="yes";
-    include "login.php";
+    include "index.php";
+    exit();
+} else if($_REQUEST['username'] == ""){
+    $_SESSION ["error"]="yes";
+    include "index.php";
     exit();
 } else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
@@ -54,7 +58,7 @@ if ($_SESSION["loggedin"] == "yes") {
     else {
         $_SESSION["loggedin"] = "no";
         $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
-        include "login.php";
+        include "index.php";
         exit();
     }
 }

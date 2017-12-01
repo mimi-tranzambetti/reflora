@@ -14,12 +14,6 @@
         gtag('config', 'UA-110403299-1');
     </script>
 
-    <script type="text/javascript">
-        $(window).on('load',function(){
-            $('#landing-modal').modal('show');
-        });
-    </script>
-
     <?php
     session_start();
     if( $_SESSION["loggedin"] == "admin"){
@@ -27,8 +21,6 @@
         exit();
     }
     ?>
-
-
 
     <meta charset="utf-8">
 
@@ -65,10 +57,28 @@
 
 
 </head>
+
+
+<script type="text/javascript">
+    $(window).on('load',function(){
+        <?php
+        if ($_SESSION['newaccount']=="yes"){
+            echo '$("#newuser-modal").modal("show");';
+        } else if ($_SESSION['error']=="yes"){
+            echo '$("#login-modal").modal("show");';
+        }  else if ($_SESSION["emptyfield"]=="yes" OR $_SESSION["nomatch"]=="yes")  {
+            echo '$("#signup-modal").modal("show");';
+        } else if ($_SESSION["loggedin"]=="no") {
+            echo '$("#landing-modal").modal("show");';
+        }
+        ?>
+    });
+
+</script>
+
 <body>
 
-<!--LANDING MODAL -- ADD 'DON'T SHOW AGAIN?"-->
-<!--why isn't this modal showing >:-( it worked before-->
+<!--LANDING MODAL -->
 
 <div class="modal fade" id="landing-modal" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -85,6 +95,27 @@
         </div>
     </div>
 </div>
+
+<!--NEW USER MODAL -->
+
+<div class="modal fade" id="newuser-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="login" class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <img class="logo" src="./img/logo.png"/><br><br>
+            <h1 class="title">Welcome!</h1>
+            <p><p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
+            <br>
+            <input type="submit" class="button" data-dismiss="modal" value="Start drawing" >
+            <?php
+            unset($_SESSION["newaccount"]);
+            ?>
+            <br><br>
+        </div>
+    </div>
+</div>
+
 
 
 <!--MODAL LOGIN & SIGN UP POPUPS -->
@@ -111,7 +142,6 @@
                 </div>
 
                 <?php
-
                 if ($_SESSION['error']=="yes"){
                     echo '<div class="redtext">Incorrect login, please try again.</div>';
                 }
@@ -162,6 +192,17 @@
                     <input type="password" name="password2" placeholder="Re-enter password"><br>
                 </div>
 
+                <?php
+                if ($_SESSION['emptyfield']=="yes"){
+                    echo '<div class="redtext">Please fill in all the fields!</div>';
+                    unset($_SESSION["emptyfield"]);
+                } else if ($_SESSION['nomatch']=="yes"){
+                    echo '<div class="redtext">Passwords do not match</div>';
+                    unset($_SESSION["nomatch"]);
+                }
+                ?>
+                <br>
+
 
                 <input type="submit" class="button" value="Create new account">
 
@@ -170,7 +211,9 @@
             <p>
                 Already have an account? <a type="button" data-dismiss="modal" id="login-button2">Login here.</a>
             </p>
-
+            <?php
+            unset($_SESSION["error"]);
+            ?> <!--maybe make sure it's not just randomly unsetting sessions-->
         </div>
 
     </div>
