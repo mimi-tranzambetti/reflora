@@ -388,6 +388,7 @@
             <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden"><br>
             <input type="submit" value="Save" id="save-button" onclick="screenshot()">
     </form>
+
     <br style="clear:both;">
 </div>
 <!--SLIDERS-->

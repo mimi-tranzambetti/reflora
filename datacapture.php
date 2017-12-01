@@ -12,13 +12,23 @@
 
 */
 
-$rvalue = "rSlider.value";
-$gvalue = "gSlider.value";
-$bvalue = "bSlider.value";
-$avalue = "aSlider.value";
-$sizevalue = "sizeSlider.value";
-$speedvalue = "speedSlider.value";
-$authorvalue = "authorSlider.value";
+// <input type="hidden" name="rSlider" value="" id="rSlider-hidden"><br>
+//    <input type="hidden" name="gSlider" value="" id="gSlider-hidden"><br>
+//    <input type="hidden" name="bSlider" value="" id="bSlider-hidden"><br>
+//            <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden"><br>
+//    <input type="hidden" name="aSlider" value="" id="aSlider-hidden"><br>
+//    <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden"><br>
+//            <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden"><br>
+//            <input type="submit" value="Save" id="save-button" onclick="screenshot()">
+
+$rvalue = $_REQUEST["rSlider"];
+$gvalue = $_REQUEST["gSlider"];
+$bvalue = $_REQUEST["bSlider"];
+$anglevalue = $_REQUEST["aSlider"];
+$sizevalue = $_REQUEST["rotSlider"];
+$speedvalue = $_REQUEST["bgSlider"];
+$authorvalue = $_REQUEST["rotSlider"];
+$date = date("c");
 
 $mysql = new mysqli(
     "acad.itpwebdev.com",
@@ -31,10 +41,12 @@ if($mysql->connect_errno) {
     exit();
 }
 
-$sql = "INSERT INTO entries (email, username, password, date_join) VALUES ('".
-    $_REQUEST['email']. "','".
-    $_REQUEST['name']. "','".
-    $_REQUEST['password1']. "',' ".
+$sql = "INSERT INTO entries (author_id, red, green, blue, angle, size, speed) VALUES ('".
+    $authorvalue. "','".
+    $rvalue. "','".
+    $gvalue. "',' ".
+    $gvalue. "',' ".
+
     $date.
     "')";
 
