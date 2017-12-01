@@ -75,6 +75,7 @@ if(!$results) {
     exit();
 } else {
     $_SESSION["newaccount"]="yes";
+    $_SESSION["loggedin"]="yes";
     include "index.php";
 }
 ?>

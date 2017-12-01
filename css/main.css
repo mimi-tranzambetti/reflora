@@ -238,6 +238,7 @@ input[type=submit] {
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     transition: 0.5s;
+    outline: none;
 }
 
 input[type=submit]:hover {
@@ -272,6 +273,7 @@ input[type=submit]:hover {
     display: none;
     position: absolute;
     width: 200px;
+    top: 50px;
     right: 30px;
     padding: 2%;
     opacity: 0.95;
@@ -301,9 +303,23 @@ input[type=submit]:hover {
     text-align: center;
 }
 
+
 #images img{
     width: 130px;
 }
+
+#controls{
+    background:white;
+    position: absolute;
+    display: none;
+    width: 150px;
+    top: 50px;
+    left: 20px;
+    padding: 20px;
+    opacity: 0.95;
+    text-align: center;
+}
+
 
 .redtext {
     color: #990000;
