@@ -86,7 +86,7 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="login" class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br><br>
             <h1 class="title">Calm your mind</h1>
             <p>Welcome to Reflora. Here, you can watch a relaxing drawing generate on screen. Toggle the drawing in
@@ -221,6 +221,36 @@
     </div>
 </div>
 
+<!--ACCOUNT SETTINGS-->
+
+    <!-- Log in Modal -->
+    <div class="modal" id="account-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="login" class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
+                <img class="logo" src="./img/logo.png"/><br>
+                <form role="form" action="userconfirm.php" method="post">
+                    <div class="form-group">
+                        <label for="username">Username:</label> <input type="text" name="username" value=" <?= $_SESSION['username']?> "><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label> <input type="password" name="password" value="<?= $_SESSION['password']?> "><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label> <input type="text" name="email" value=" <?= $_SESSION['email']?> "><br>
+                    </div>
+                    <br>
+                    <input type="submit" class="button" value="Save Changes">
+                </form>
+                <input type="submit" class="button" value="Logout" onclick="location.href='logout.php';">
+                <br>
+            </div>
+        </div>
+    </div>
+
+
+
 <script>
     $(document).ready(function(){
         $("#login-button").click(function(){
@@ -231,6 +261,9 @@
         });
         $("#signup-button").click(function(){
             $("#signup-modal").modal();
+        });
+        $("#account-button").click(function(){
+            $("#account-modal").modal();
         });
 
     });
@@ -243,11 +276,11 @@
             <a onclick="library()" id="library-button">Library</a>
             <a onclick="settings()" id="settings-button">Settings</a>
             <a onclick="instructions()" id="instructions-button">Instructions</a>
-            <a href='reflora_search.php'>Search</a>
+            <a href='reflora_search.php' target="_blank">Search</a>
                 <?php
                 session_start();
                 if($_SESSION["loggedin"] == "yes") {
-                    echo "<a href='logout.php'>". " Welcome " . $_SESSION['username']. ", Logout". "</a>";
+                    echo "<a type='button' id='account-button' onclick='noLoop()'>". " Welcome " . $_SESSION['username'] . "</a>";
                 } else {
                     echo "<a type='button' id='login-button' onclick='noLoop()'>". " Log in" . "</a>";
                 } ?>
@@ -280,12 +313,14 @@
 
 <div class="sidebar" id="images">
     <?php include "imageupload.php"; ?>
-    <i class="material-icons" id="close-x" onclick="library()">close</i>
+
+    <button type="button" class="close" onclick="library()">&times;</button>
+<!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
     <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
     <img src="./img/phyllo3.jpg.jpeg"> <br><br>
-    
+
     <form method="post" action="" enctype="multipart/form-data" target="noreload">
         <input type="hidden" name="size" value="1000000">
         <div>
@@ -300,7 +335,8 @@
 </div>
 
 <div class="sidebar" id="settings">
-    <i class="material-icons" id="close-x" onclick="settings()">close</i>
+    <button type="button" class="close" onclick="settings()">&times;</button>
+<!--    <i class="material-icons" id="close-x" onclick="settings()">close</i>-->
     <p style="text-align: center;">Settings</p>
     <br>
     <p>Red <span id="rSlider-value" style="float:right;"></span></p>
@@ -344,7 +380,7 @@
         <input type="range" min="1" max="255" value="50" class="slider" id="bgSlider">
     </div>
     <br>
-    <br>
+    <br style="clear:both;">
     <!--settings switch-->
 <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 
@@ -353,13 +389,14 @@
 
 <div class="sidebar" id="controls">
 
-    <i class="material-icons" id="close-x" onclick="controls()">close</i>
+    <button type="button" class="close" onclick="controls()">&times;</button>
+<!--    <i class="material-icons" id="close-x" onclick="controls()">close</i>-->
     <p style="text-align: center;">Controls</p>
 
     <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
     <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
-
+    <input type="submit" value="Settings" onclick="settings()">
     <script>
         function pause() {
             var text = document.getElementById("pause-button").value;
@@ -378,13 +415,13 @@
     <iframe name="noreload" style="display:none;"></iframe>
     <form action="" method="post" target="noreload">
 
-            <input type="hidden" name="rSlider" value="" id="rSlider-hidden"><br>
-            <input type="hidden" name="gSlider" value="" id="gSlider-hidden"><br>
-            <input type="hidden" name="bSlider" value="" id="bSlider-hidden"><br>
-            <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden"><br>
-            <input type="hidden" name="aSlider" value="" id="aSlider-hidden"><br>
-            <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden"><br>
-            <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden"><br>
+            <input type="hidden" name="rSlider" value="" id="rSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="gSlider" value="" id="gSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="bSlider" value="" id="bSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="aSlider" value="" id="aSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden" style="display:none;"><br>
+            <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden" style="display:none;"><br>
             <input type="submit" value="Save" id="save-button" onclick="screenshot()">
     </form>
 
@@ -469,12 +506,14 @@
 
 
 <div class="sidebar" id="instructions">
-    <i class="material-icons" id="close-x" onclick="instructions()">close</i>
+
+    <button type="button" class="close" onclick="settings()">&times;</button>
+<!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
     <p style="text-align: center;">Instructions</p>
-    <p>INTRO Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
+    <p>Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
     <p>Please be aware that resizing the window will restart the drawing!</p>
     <!--PROBABLY ADD BUTTONS HERE to search and things-->
-
+    <br style="clear:both;">
 </div>
 
 <div id="sketch">

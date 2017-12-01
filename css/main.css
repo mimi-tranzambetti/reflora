@@ -201,11 +201,12 @@ input[type=text], input[type=password], select {
     outline: none;
 }
 
-/*input[type=hidden] {*/
-    /*width: 0%;*/
-    /*height: 0%;*/
-    /*outline: none;*/
-/*}*/
+input[type=hidden] {
+    width: 0%;
+    height: 0%;
+    outline: none;
+    display: none;
+}
 
 .half-input{
     width: 47%;
@@ -318,7 +319,7 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 200px;
-    top: 150px;
+    top: 50px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
@@ -342,6 +343,9 @@ input[type=submit]:hover {
     text-align: center;
 }
 
+.close{
+    outline:none;
+}
 
 .redtext {
     color: #990000;
