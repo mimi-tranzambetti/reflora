@@ -121,6 +121,7 @@ function setup() {
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
     noLoop();
+    frameRate(20);
 }
 
 function pause() {
