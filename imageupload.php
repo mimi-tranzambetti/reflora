@@ -8,13 +8,12 @@
 	$msg = "";
 
 	if (isset($_POST['upload'])) {
-
             $target = "images/".basename($_FILES['image']['name']);
             $image = $_FILES['image']['name'];
             $image_text = mysqli_real_escape_string($db, $_POST['image_text']);
-            $user_id= $_SESSION['user_id'];
+            $userid= $_SESSION['userid'];
             $date = date("c");
-            $sql = "INSERT INTO images (image, user_id, date_created) VALUES ('$image','$user_id','$date')";
+            $sql = "INSERT INTO images (image, user_id, date_created) VALUES ('$image','$userid','$date')";
             mysqli_query($db, $sql);
             if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
                 $msg = "Image uploaded successfully";
@@ -23,6 +22,6 @@
         }
 
     }
-    $sql2 = "SELECT * FROM images WHERE user_id = '" .$user_id ."'";
+    $sql2 = "SELECT * FROM images WHERE user_id = '" .$userid ."'";
     $result = mysqli_query($db, $sql2);
 ?>
