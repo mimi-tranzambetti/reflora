@@ -201,6 +201,12 @@ input[type=text], input[type=password], select {
     outline: none;
 }
 
+/*input[type=hidden] {*/
+    /*width: 0%;*/
+    /*height: 0%;*/
+    /*outline: none;*/
+/*}*/
+
 .half-input{
     width: 47%;
     padding: 12px 20px;
