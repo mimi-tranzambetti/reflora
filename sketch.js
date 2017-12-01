@@ -173,8 +173,8 @@ function draw() {
 
 function windowResized(){
 
-    // resizeCanvas(windowWidth, windowHeight);
-    canvas.position(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
+    // canvas.position(windowWidth, windowHeight);
     //background slider doesn't work rn???
 
     background(bgSlider.value);

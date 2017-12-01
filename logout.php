@@ -11,6 +11,8 @@
 session_start();
 $_SESSION["loggedin"]="no";
 unset($_SESSION["username"]);
+unset($_SESSION["error"]);
+unset($_SESSION["newaccount"]);
 include "index.php";
 ?>
 <!---->
