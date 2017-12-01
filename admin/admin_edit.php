@@ -44,7 +44,7 @@ if(!$results) {
 </head>
 <body>
 
-<div class="container">
+<div class="search">
     <h1>Edit Account - <?= $recorddata['username']?> </h1>
     <form action="admin_update.php">
         <input type="hidden" name ="user_id" value="<?= $recorddata["user_id"]; ?>">

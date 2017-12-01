@@ -2,18 +2,18 @@
 //move your mouse to start
 
 var n = 0;
-var c = 18; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
+var c = 15; //changing c is really really fun! i wanted to spend more time figuring out how to change it permanently while drawing so the user could fiddle with it but i realized that changing in it in the draw() function will actually just break the code which is nice for capturing sketches you like
 
 var start = 0;
 
-var sliders;
-var rSlider;
-var gSlider;
-var bSlider;
-var rotSlider;
-var aSlider;
-var bgSlider;
-var sizeSlider;
+
+var rSlider = document.getElementById("rSlider");
+var gSlider = document.getElementById("gSlider");
+var bSlider = document.getElementById("bSlider");
+var rotSlider = document.getElementById("rotSlider");
+var aSlider = document.getElementById("aSlider");
+var bgSlider = document.getElementById("bgSlider");
+var sizeSlider = document.getElementById("sizeSlider");
 
 var settingsView = false;
 var infoView = false;
@@ -22,40 +22,18 @@ var libraryView = false;
 var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
-    // settingsView=!settingsView
-    var x = document.getElementById("settings");
-    var y = document.getElementById("instructions");
+    var settings = document.getElementById("settings");
+    var info = document.getElementById("instructions");
     if (settingsView==false && infoView==false) {
-        rSlider.style("display", "block");
-        gSlider.style("display", "block");
-        bSlider.style("display", "block");
-        rotSlider.style("display", "block");
-        aSlider.style("display", "block");
-        bgSlider.style("display", "block");
-        sizeSlider.style("display", "block");
-        x.style.display = "block";
+        settings.style.display = "block";
         settingsView = true;
     } else if (settingsView==false && infoView==true){
-        y.style.display = "none";
+        info.style.display = "none";
         infoView=false;
-        x.style.display = "block";
-        rSlider.style("display", "block");
-        gSlider.style("display", "block");
-        bSlider.style("display", "block");
-        rotSlider.style("display", "block");
-        aSlider.style("display", "block");
-        bgSlider.style("display", "block");
-        sizeSlider.style("display", "block");
+        settings.style.display = "block";
         settingsView=true;
     } else {
-        rSlider.style("display", "none");
-        gSlider.style("display", "none");
-        bSlider.style("display", "none");
-        rotSlider.style("display", "none");
-        aSlider.style("display", "none");
-        bgSlider.style("display", "none");
-        sizeSlider.style("display", "none");
-        x.style.display = "none";
+        settings.style.display = "none";
         settingsView=false;
     }
 }
@@ -64,27 +42,18 @@ function settings() {
 var infoButton = document.getElementById('#instructions-button');
 infoButton.mouseClicked(instructions());
 function instructions() {
-
-    var x = document.getElementById("instructions");
-    var y = document.getElementById("settings");
-
+    var settings = document.getElementById("settings");
+    var info = document.getElementById("instructions");
     if(settingsView==true && infoView==false) {
-        rSlider.style("display", "none");
-        gSlider.style("display", "none");
-        bSlider.style("display", "none");
-        rotSlider.style("display", "none");
-        aSlider.style("display", "none");
-        bgSlider.style("display", "none");
-        sizeSlider.style("display", "none");
-        y.style.display = "none";
+        settings.style.display = "none";
         settingsView=false;
-        x.style.display = "block";
+        info.style.display = "block";
         infoView=true;
     } else if(infoView==false && settingsView==false) {
-        x.style.display = "block";
+        info.style.display = "block";
         infoView=true;
     } else {
-        x.style.display = "none";
+        info.style.display = "none";
         infoView=false;
     }
 }
@@ -93,89 +62,69 @@ function instructions() {
 var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
-    var x = document.getElementById("images");
+    var images = document.getElementById("images");
     if (libraryView===false) {
-        x.style.display = "block";
+        images.style.display = "block";
         libraryView=true;
     } else {
-        x.style.display = "none";
+        images.style.display = "none";
         libraryView=false;
     }
 }
 
-
-var saveButton = select('#camera-button');
-saveButton.mouseClicked(screenshot);
-
-function screenshot(){
-    saveCanvas('reflora', 'jpg');
-}
-
-function setup() {
-
+var refreshButton = select('#refresh-button');
+refreshButton.mouseClicked(reset());
+function reset() {
     var canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('sketch');
     angleMode(DEGREES); //since p5.js default mode is in radians
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
+}
 
-    rSlider = createSlider(0, 255, 255);
-    rSlider.position(windowWidth-(50+rSlider.width), 190);
-    rSlider.style("display", "none");
+// var saveButton = select('#camera-button');
+// saveButton.mouseClicked(screenshot);
 
-    gSlider = createSlider(0, 255, 10);
-    gSlider.position(windowWidth-(50+gSlider.width), 225);
-    gSlider.style("display", "none");
+function screenshot(){
+    saveCanvas('reflora', 'jpg');
+}
 
-    bSlider = createSlider(0, 255, 10);
-    bSlider.position(windowWidth-(50+bSlider.width), 260);
-    bSlider.style("display", "none");
 
-    rotSlider = createSlider(0, 100, 5);
-    rotSlider.position(windowWidth-(50+rotSlider.width), 295);
-    rotSlider.style("display", "none");
-
-    aSlider = createSlider(0, 20000, 1375);
-    aSlider.position(windowWidth-(50+aSlider.width), 335);
-    aSlider.style("display", "none");
-
-    bgSlider = createSlider(0, 255, 150);
-    bgSlider.position(windowWidth-(50+aSlider.width), 375);
-    bgSlider.style("display", "none");
-
-    sizeSlider = createSlider(1, windowWidth/4, 30);
-    sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
-    sizeSlider.style("display", "none");
-
+function setup() {
+    var canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('sketch');
+    angleMode(DEGREES); //since p5.js default mode is in radians
+    colorMode(RGB);
+    background(random(0,255)); //random grayscale backgrounds only
 }
 
 
 function draw() {
 
     translate(windowWidth /2 , windowHeight/ 2);
-    var rot = rotSlider.value();
+    var rot = rotSlider.value;
     rotate(n * rot / 100);
 
     for (var i = 0; i < n; i++) {
 
-        var magic = aSlider.value()/10;
+        var magic = aSlider.value/10;
         var a = i * magic; //some math changing the angle here is kind of fun, but note that 137.5 is a very magical number
         var r = c * sqrt(i);
         var x = r * cos(a);
         var y = r * sin(a);
 
-        var r = rSlider.value();
-        var g = gSlider.value();
-        var b = bSlider.value();
+        var r = rSlider.value;
+        var g = gSlider.value;
+        var b = bSlider.value;
 
-        if (sizeSlider.value() > 80){
-            var dimension = sizeSlider.value();
-        } else if (sizeSlider.value() <81) {
-            var dimension = sizeSlider.value()/3;
+        var dimension = parseInt(sizeSlider.value);
+
+        if(dimension>100){
+            dimension = parseInt(sizeSlider.value);
+        } else if (dimension<100){
+            dimension = parseInt(sizeSlider.value)/6;
         }
 
-        // supposed to allow for more smooth sliding and variability on the low end the spectrum, not sure if it's workin
-        //also should add input options to directly input values
 
         //makes drawing shift temporarily in x direction
         if (keyIsDown(UP_ARROW)){
@@ -198,15 +147,15 @@ function draw() {
 
         //resets background
         if (keyIsDown(ENTER)){ //set the slider, click enter to create a new background over the drawing
-            background(bgSlider.value());
+            background(bgSlider.value);
         }
 
-        if (dimension >= 10){
+        if (dimension >= 33){
             noFill();
             strokeWeight(.5);
             stroke(r,g,b);
             rotate(-.1);
-        } else if (dimension < 10) {
+        } else if (dimension < 33) {
             noStroke();
             fill(r, g, b);
         } else {
@@ -224,17 +173,10 @@ function draw() {
 
 function windowResized(){
 
-    resizeCanvas(windowWidth, windowHeight);
+    // resizeCanvas(windowWidth, windowHeight);
+    canvas.position(windowWidth, windowHeight);
+    //background slider doesn't work rn???
 
-    rSlider.position(windowWidth-(50+rSlider.width), 190);
-    gSlider.position(windowWidth-(50+gSlider.width), 225);
-    bSlider.position(windowWidth-(50+bSlider.width), 260);
-    rotSlider.position(windowWidth-(50+rotSlider.width), 295);
-    aSlider.position(windowWidth-(50+aSlider.width), 335);
-    bgSlider.position(windowWidth-(50+bgSlider.width), 375);
-    sizeSlider.position(windowWidth-(50+sizeSlider.width), 405);
-    saveButton.position(windowWidth-400, 25);
-
-    background(bgSlider.value());
+    background(bgSlider.value);
 
 }

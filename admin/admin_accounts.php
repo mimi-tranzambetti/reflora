@@ -5,7 +5,6 @@
     <title>Reflora Accounts</title>
     <link rel="shortcut icon" href="../img/favicon.png">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/form.css">
 
     <style>
         .column1{
@@ -50,7 +49,7 @@
 </head>
 <body>
 
-<div class="container" id="autoheight">
+<div class="search" id="autoheight">
     <h1>Reflora Accounts</h1>
     <form action="../logout.php" method="get">
         <input class="button" type="submit" value="Logout of Admin">

@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
+
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Save Edits</title>
 </head>
@@ -40,28 +41,27 @@
                     $sql .= ", email = '" . $_REQUEST['email'] . "'";
                     $_SESSION["email"] = $_REQUEST['email'];
                 }
-            }else if(trim($_REQUEST["email"]) != "") {
+            } else if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
                 $_SESSION["email"] = $_REQUEST['email'];
             }
         } else if (trim($_REQUEST["password"]) != ""){
             $sql .= "password = '" . $_REQUEST['password'] . "'";
             $_SESSION["password"] = $_REQUEST['password'];
+        } else if (trim($_REQUEST["password"]) != "") {
+            $sql .= "email = '" . $_REQUEST['password'] . "'";
             if (trim($_REQUEST["email"]) != "") {
                 $sql .= ", email = '" . $_REQUEST['email'] . "'";
                 $_SESSION["email"] = $_REQUEST['email'];
             }
-        } else if (trim($_REQUEST["email"]) != ""){
+        } else if (trim($_REQUEST["email"]) != "") {
             $sql .= "email = '" . $_REQUEST['email'] . "'";
             $_SESSION["email"] = $_REQUEST['email'];
         }
         $sql .= " WHERE username = '" . $_SESSION["username"] . "'";
 
-
-
-    $results = $mysql->query($sql);
+        $results = $mysql->query($sql);
     }
-    header('Location: index.php');
 
     ?>
     <div class="login">

@@ -16,7 +16,6 @@ if($mysql->connect_errno) {
 <head>
     <title>Reflora: Search</title>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="shortcut icon" href="img/favicon.png">
 </head>
 
@@ -27,16 +26,16 @@ if($mysql->connect_errno) {
 
         <strong>Search for Users:</strong><br><br>
 
-        Username: <input type="text" name="name">
+        Username: <input type="text" name="name" placeholder="Username">
         <br><br>
-        Joined between <br> <input type="text "name="datejoin1" placeholder="YYYY-MM-DD" class="half-input">
-        and <input type="text "name="datejoin2" placeholder="YYYY-MM-DD" class="half-input">
+        Joined between <br> <input type="date "name="datejoin1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="date "name="datejoin2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br><br>
 
         <strong>Search for Images:</strong><br><br>
 
-        Created between <br> <input type="text "name="datecreate1" placeholder="YYYY-MM-DD" class="half-input">
-        and <input type="text "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
+        Created between <br> <input type="date "name="datecreate1" placeholder="YYYY-MM-DD" class="half-input">
+        and <input type="date "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
         <br><br>
 
         Ellipse Color <select name="dotcolor">

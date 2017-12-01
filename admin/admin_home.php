@@ -8,10 +8,11 @@ include "admin.php";
     <title>Reflora Admin</title>
     <link rel="shortcut icon" href="../img/favicon.png">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+
 </head>
 
 <body>
-<div class="container">
+<div class="search">
     <h1>Reflora Administer Home</h1>
     <h3>Actions</h3>
     <a href="admin_accounts.php"> Manage Accounts</a>
