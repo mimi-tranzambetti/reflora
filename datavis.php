@@ -64,7 +64,7 @@ $blue = floor($row['average_blue']);
     }
     ?>
 
-
+<br style="clear:both;">
 </div><!--endcolortilebox-->
 
 </body>

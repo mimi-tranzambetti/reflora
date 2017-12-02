@@ -17,13 +17,6 @@ if(empty($_REQUEST['username'])) {
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-if(empty(trim($_REQUEST['username']))) {
-    $_SESSION["emptyfield"] = "yes";
-    header('Location: index.php');
-    exit();
-//    echo "You must enter a name.<br>";
-//    exit();
-}
 if(empty(trim($_REQUEST['password']))) {
     $_SESSION["emptyfield"] = "yes";
     header('Location: index.php');
@@ -32,11 +25,18 @@ if(empty(trim($_REQUEST['password']))) {
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
+
+if(empty(trim($_REQUEST['email']))) {
+    $_SESSION["emptyfield"] = "yes";
+    header('Location: index.php');
+    exit();
+}
+
 if(empty(trim($_REQUEST['password1']))) {
     $_SESSION["emptyfield"] = "yes";
     header('Location: index.php');
     exit();
-//    echo "You must enter a name.<br>";
+//    echo "You must enter an email.<br>";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
@@ -48,14 +48,7 @@ if($_REQUEST['password'] != $_REQUEST['password1']){
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-if(empty(trim($_REQUEST['email']))) {
-    $_SESSION["emptyfield"] = "yes";
-    header('Location: index.php');
-    exit();
-//    echo "You must enter an email.<br>";
-//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
-//    exit();
-}
+
 $mysql = new mysqli(
     "acad.itpwebdev.com",
     halpan,
@@ -72,7 +65,9 @@ $sql = "INSERT INTO users (email, username, password, date_join) VALUES ('".
     $_REQUEST['password1']. "',' ".
     $date.
     "')";
+
 $results = $mysql->query($sql);
+
 if(!$results) {
     echo "SQL error: ". $mysql->error;
     exit();

@@ -31,6 +31,12 @@ if($mysql->connect_errno) {
         Username: <input type="text" name="name" placeholder="Username">
         <br><br>
 
+        <?php
+        if ($_SESSION['searcherror1']=="yes"){
+            echo '<div class="redtext">Please fill in all the fields!</div>';
+        }
+        ?>
+
         <input class="button" type="submit" value="Search">
 
 
@@ -39,8 +45,8 @@ if($mysql->connect_errno) {
     <form action="reflora_results.php">
         <strong>Search for Entries:</strong><br><br>
 
-        Created between the hours of: <br> <input type="date "name="timecreate1" placeholder="Enter military time format" class="half-input">
-        and <input type="date "name="timecreate2" placeholder="Enter military time format" class="half-input">
+        Created between the hours of: <br> <input type="date "name="timecreate1" placeholder="HH:MM:SS" class="half-input">
+        and <input type="date "name="timecreate2" placeholder="HH:MM:SS" class="half-input">
         <br><br>
 
         Ellipse Color <select name="dotcolor">
@@ -62,6 +68,12 @@ if($mysql->connect_errno) {
 <!--            <option>location</option>-->
 <!--        </select><br>-->
         <br><br>
+
+        <?php
+        if ($_SESSION['searcherror2']=="yes"){
+            echo '<div class="redtext">Please fill in all the fields!</div>';
+        }
+        ?>
 
         <input class="button" type="submit" value="Search">
 
