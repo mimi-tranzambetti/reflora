@@ -60,6 +60,7 @@
 <script type="text/javascript">
     $(window).on('load',function(){
         <?php
+            session_start();
         if ($_SESSION['newaccount']=="yes"){
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
@@ -106,7 +107,7 @@
             <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br><br>
             <h1 class="title">Welcome!</h1>
-            <p><p>Thank you <?= $_REQUEST['name']; ?>! You've successfully created your account! Go ahead and start drawing</p>
+            <p><p>Thank you <?= $_REQUEST['username']; ?>! You've successfully created your account! Go ahead and start drawing</p>
             <br>
             <input id="start-draw" type="submit" class="button" data-dismiss="modal" value="Start Drawing" onclick="loop()"  >
             <?php
@@ -183,7 +184,7 @@
             <form role="form" action="newuserconfirm.php">
 
                 <div class="form-group">
-                    <label for="name">Username:</label> <input type="text" name="name" placeholder="Enter username"><br>
+                    <label for="name">Username:</label> <input type="text" name="username" placeholder="Enter username"><br>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label><input type="text" name="email" placeholder="name@company.com"><br>
