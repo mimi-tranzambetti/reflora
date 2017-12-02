@@ -394,35 +394,6 @@ input[type=submit]:hover {
     text-align: center;
 }
 
-#averagecolor {
-    width: 80%;
-    margin: auto;
-
-}
-
-.colorbar{
-    width: 540px;
-    hieght: 200px;
-    margin: auto;
-    background-color: white;
-    text-align: center;
-}
-.colortile{
-    width: 5%;
-    height: 5%;
-    margin: 5px;
-    background-color:grey;
-    float: left;
-}
-#colortilebox{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    background-color: white;
-
-
-}
-
 
 #images img{
     width: 130px;
