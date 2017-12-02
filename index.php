@@ -343,11 +343,13 @@
     <button type="button" class="close" onclick="library()">&times;</button>
     <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
-
-    <p>You can upload some of your favorite Reflora drawings here! </p>
+    <p>You can upload some of your favorite Reflora drawings here! <? $msg ?> </p>
     <form method="post" action="" enctype="multipart/form-data" target="noreload">
 
         <?php
+        if($_SESSION["imageuploaded"] = "yes"){
+            echo $msg;
+        }
         $start = 1;
         $end = $start+2;
         $counter = $start;

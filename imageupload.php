@@ -17,9 +17,12 @@
             mysqli_query($db, $sql);
             if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
                 $msg = "Image uploaded successfully";
+                $_SESSION["imageuploaded"] = "yes";
             }else{
                 $msg = "Failed to upload image";
-        }
+                $_SESSION["imageuploaded"] = "no";
+
+            }
 
     }
     $sql2 = "SELECT * FROM images WHERE user_id = '" .$userid ."'";
