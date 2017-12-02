@@ -10,12 +10,13 @@
 <?php
 session_start();
 $_SESSION["loggedin"]="no";
+unset($_SESSION["loggedin"]);
 unset($_SESSION["username"]);
 unset($_SESSION["error"]);
 unset($_SESSION["newaccount"]);
 unset($_SESSION["inforeset"]);
 unset($_SESSION["new-settings"]);
-include "index.php";
+header('Location: index.php');
 ?>
 <!---->
 <!--<body>-->
