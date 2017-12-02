@@ -333,8 +333,8 @@ input[type=submit]:hover {
 }
 
 .colorbar{
-    width: 510px;
-    margin: auto;
+    width: 100px;
+    margin: 0;
     background-color: white;
     text-align: center;
 }

@@ -2,8 +2,7 @@
 session_start();
 
 if(empty($_REQUEST['dotcolor']) & empty($_REQUEST["name"])){
-    echo "Error. Please use the <a href='reflora_search.php'> Search </a> page.";
-    exit();
+    header('Location:reflora_search.php');
 }
 
 $mysql = new mysqli(
@@ -39,9 +38,8 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-            echo "<hr>Your SQL:<br> " . $sql . "<br><br>";
-            echo "SQL Error: " . $mysql->error . "<hr>";
-            exit();
+            $_SESSION["searcherror1"] = "yes";
+            header('Location:reflora_search.php');
         }
 
         echo "<em>Your results returned <strong>" .
@@ -92,9 +90,8 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-            echo "<hr>Your SQL:<br> " . $sql . "<br><br>";
-            echo "SQL Error: " . $mysql->error . "<hr>";
-            exit();
+            $_SESSION["searcherror2"] = "yes";
+            header('Location:reflora_search.php');
         }
 
         echo $sql . "<br>";
