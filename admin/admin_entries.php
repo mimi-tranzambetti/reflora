@@ -32,6 +32,11 @@ if(empty($_REQUEST["start"])){
 }else {
     $start = $_REQUEST["start"];
 }
+
+if ($results->num_rows < $end){
+    $end = $results->num_rows;
+}
+
 $end = $start+9;
 $counter = $start;
 $results->data_seek($start-1);
@@ -104,12 +109,12 @@ $results->data_seek($start-1);
             <a href='admin_delete.php?user_id=<?=$currentrow["user_id"]?>'> Delete </a>
         </div>
         <?php
-
         if($end <= $counter) {
             break;
         }
         +$counter++;
     }
+
         if($start >= 9){
             ?>
             <form action="" method="get">
