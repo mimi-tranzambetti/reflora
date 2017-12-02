@@ -32,7 +32,7 @@ if(empty(trim($_REQUEST['password']))) {
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-if(empty(trim($_REQUEST['password']))) {
+if(empty(trim($_REQUEST['password1']))) {
     $_SESSION["emptyfield"] = "yes";
     header('Location: index.php');
     exit();
