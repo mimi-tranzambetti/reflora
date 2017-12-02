@@ -23,7 +23,6 @@ var libraryView = false;
 var settingsButton = document.getElementById("#settings-button");
 settingsButton.mouseClicked(settings());
 function settings() {
-    console.log("line 29!");
     var settings = document.getElementById("settings");
     var info = document.getElementById("instructions");
     if (settingsView==false && infoView==false) {
@@ -44,7 +43,6 @@ function settings() {
 var infoButton = document.getElementById('#instructions-button');
 infoButton.mouseClicked(instructions());
 function instructions() {
-    console.log("line 50!");
     var settings = document.getElementById("settings");
     var info = document.getElementById("instructions");
     if(settingsView==true && infoView==false) {
@@ -64,7 +62,6 @@ function instructions() {
 var libraryButton = select('#library-button');
 libraryButton.mouseClicked(library());
 function library() {
-    console.log("line 70!");
     var images = document.getElementById("images");
     var controls = document.getElementById("controls");
     if (libraryView==false && controlsView==false) {
@@ -81,11 +78,9 @@ function library() {
     }
 }
 
-
 var controlsButton = select('#controls-button');
 controlsButton.mouseClicked(controls());
 function controls() {
-    console.log("line 91!");
     var images = document.getElementById("images");
     var controls = document.getElementById("controls");
     if (controlsView==false && libraryView==false) {
@@ -166,19 +161,19 @@ function draw() {
         }
 
 
-        //makes drawing shift temporarily in x direction
-        if (keyIsDown(UP_ARROW)){
-            x+=100;
-        } else if (keyIsDown(DOWN_ARROW)) {
-            x-=100;
-        }
-
-        //makes drawing shift temporarly in y direction
-        if (keyIsDown(LEFT_ARROW)){
-            y+=100;
-        } else if (keyIsDown(RIGHT_ARROW)) {
-            y-=100;
-        }
+        // //makes drawing shift temporarily in x direction
+        // if (keyIsDown(UP_ARROW)){
+        //     x+=100;
+        // } else if (keyIsDown(DOWN_ARROW)) {
+        //     x-=100;
+        // }
+        //
+        // //makes drawing shift temporarly in y direction
+        // if (keyIsDown(LEFT_ARROW)){
+        //     y+=100;
+        // } else if (keyIsDown(RIGHT_ARROW)) {
+        //     y-=100;
+        // }
 
 
         //resets background

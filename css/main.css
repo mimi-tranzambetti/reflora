@@ -201,11 +201,12 @@ input[type=text], input[type=password], select {
     outline: none;
 }
 
-/*input[type=hidden] {*/
-    /*width: 0%;*/
-    /*height: 0%;*/
-    /*outline: none;*/
-/*}*/
+input[type=hidden] {
+    width: 0%;
+    height: 0%;
+    outline: none;
+    display: none;
+}
 
 .half-input{
     width: 47%;
@@ -318,11 +319,38 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 200px;
-    top: 100px;
+    top: 50px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
     text-align: center;
+}
+
+#averagecolor {
+    width: 80%;
+    margin: auto;
+
+}
+
+.colorbar{
+    width: 510px;
+    margin: auto;
+    background-color: white;
+    text-align: center;
+}
+.colortile{
+    width: 25%;
+    height: 25%;
+    margin: 4%;
+    background-color:grey;
+    float: left;
+}
+#colortilebox{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+
+
 }
 
 
@@ -342,6 +370,9 @@ input[type=submit]:hover {
     text-align: center;
 }
 
+.close{
+    outline:none;
+}
 
 .redtext {
     color: #990000;
@@ -551,3 +582,5 @@ nav {
     }
 
 }
+
+
