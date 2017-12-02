@@ -300,10 +300,10 @@
     <a href="index.php"><img class="corner-logo" src="./img/logo.png"/></a>
     <div class="navlinks" id="topnav">
         <a onclick="controls()" id="controls-button">Controls</a>
-        <a onclick="library()" id="library-button">Library</a>
         <a onclick="settings()" id="settings-button">Settings</a>
-        <a onclick="instructions()" id="instructions-button">Instructions</a>
+        <a onclick="library()" id="library-button">Library</a>
         <a href='reflora_search.php' target="_blank">Search</a>
+        <a onclick="instructions()" id="instructions-button">About</a>
         <?php
         session_start();
         if($_SESSION["loggedin"] == "yes") {
@@ -446,6 +446,9 @@
         <input type="range" min="1" max="255" value="50" class="slider" id="bgSlider">
     </div>
     <br>
+    <p style="line-height:15pt">Restart drawing to update the background color!</p>
+
+
     <br style="clear:both;">
     <!--settings switch-->
     <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
@@ -459,8 +462,8 @@
     <!--    <i class="material-icons" id="close-x" onclick="controls()">close</i>-->
     <p style="text-align: center;">Controls</p>
 
-    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
-    <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
+<!--    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">-->
+    <input type="submit" value="Restart" id="refresh-button" onclick="restart();pause();">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
     <input type="submit" value="Settings" onclick="settings()">
     <script>
@@ -492,6 +495,8 @@
 
     <iframe name="noreload" style="display:none;">
     </iframe>
+
+
 
     <br style="clear:both;">
 </div>
@@ -566,12 +571,13 @@
 
 <div class="sidebar" id="instructions">
 
-    <button type="button" class="close" onclick="settings()">&times;</button>
+    <button type="button" class="close" onclick="instructions()">&times;</button>
     <!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
-    <p style="text-align: center;">Instructions</p>
-    <p>Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
+    <p style="text-align: center;">About Reflora</p>
+    <p>Reflora's drawing is modelled after phyllotaxis, the arrangement of leaves on an axis or stem. The base p5.js
+        code can be found on this great tutorial by <a href="https://www.youtube.com/watch?v=KWoJgHFYWxY">The Coding Train</a>.</p>
+    <p>You can search for other users and see their last saved RGB settings.</p>
     <p>Please be aware that resizing the window will restart the drawing! </p>
-    <p>You can search for other users and see their last saved RGB settings</p>
 
 
     <!--PROBABLY ADD BUTTONS HERE to search and things-->

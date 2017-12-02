@@ -361,12 +361,12 @@ input[type=submit]:hover {
 
 #settings{
     background:white;
-    display: none;
+    display: block;
     position: absolute;
     bottom: 50px;
     width: 200px;
     right: 30px;
-    padding: 2%;
+    padding: 20px;
     opacity: 0.95;
 }
 
@@ -375,10 +375,9 @@ input[type=submit]:hover {
     display: none;
     position: absolute;
     width: 200px;
-    height: 300px;
     bottom: 150px;
     right: 30px;
-    padding: 2%;
+    padding: 20px;
     opacity: 0.95;
 }
 
@@ -387,7 +386,7 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 200px;
-    bottom: 50px;
+    bottom: 100px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
