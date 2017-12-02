@@ -333,15 +333,16 @@ input[type=submit]:hover {
 }
 
 .colorbar{
-    width: 100px;
-    margin: 0;
+    width: 540px;
+    hieght: 200px;
+    margin: auto;
     background-color: white;
     text-align: center;
 }
 .colortile{
-    width: 25%;
-    height: 25%;
-    margin: 4%;
+    width: 5%;
+    height: 5%;
+    margin: 1%;
     background-color:grey;
     float: left;
 }
@@ -349,6 +350,7 @@ input[type=submit]:hover {
     width: 80%;
     margin: auto;
     text-align: center;
+    background-color: white;
 
 
 }

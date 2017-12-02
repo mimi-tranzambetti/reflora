@@ -39,24 +39,17 @@ if(!$results) {
             <input type="hidden" value="yes" name="submit">
             In order to recover your account please provide
             <br>
-
-            <h3>Username: <input type="text" name="username"></h3>
-            or
-            <br>
-            <h3>Password: <input type="text" name="password"></h3>
-            or
-            <br>
-            <h3>Email: <input type="text" name="password"></h3>
+            <h3>Username: <input type="text" name="username" placeholder="Enter your username"></h3>
+            <!--                    <br>-->
+            <!--                    <h3>Email: <input type="text" name="email" placeholder="Or enter your e-mail"></h3>-->
             <input type="submit" value="Submit">
         </form>
         <br><br> Nevermind, take me<a href='index.php'> back to drawing.</a>
     <?php
-    }else if ($_REQUEST["username"] != "" OR $_REQUEST["password"] != "" OR $_REQUEST["email"] != ""){
+    }else if ($_REQUEST["username"] != "" OR $_REQUEST["email"] != ""){
         $sql = "SELECT username, password, email FROM users WHERE ";
             if($_REQUEST["username"] != ""){
                 $sql .= "username = '" . $_REQUEST["username"] . "'";
-            } else if($_REQUEST["password"] != ""){
-                $sql .= "password  = '" . $_REQUEST["password"] . "'";
             } else if($_REQUEST["email"] != ""){
                 $sql .= "email  = '" . $_REQUEST["email"] . "'";
             }
@@ -91,17 +84,13 @@ if(!$results) {
                 echo "Great! Your username and password have been sent to  " . $currentrow["email"];
                 echo "<br><br> <a href='index.php'> Back to drawing.</a>";
             } else{
-                echo "Sorry couldn't find you there. Try again?"?>
+                echo "Sorry couldn't find you there. Try again?" ?>
                 <form action="" method="get">
                     <input type="hidden" value="yes" name="submit">
                     <br>
-                    <h3>Username: <input type="text" name="username"></h3>
-                    or
-                    <br>
-                    <h3>Password: <input type="text" name="password"></h3>
-                    or
-                    <br>
-                    <h3>Email: <input type="text" name="password"></h3>
+                    <h3>Username: <input type="text" name="username" placeholder="Enter your username"></h3>
+<!--                    <br>-->
+<!--                    <h3>Email: <input type="text" name="email" placeholder="Or enter your e-mail"></h3>-->
                     <input type="submit" value="Submit">
                 </form>
                 <br><br> Nevermind, take me<a href='index.php'> back to drawing.</a>
@@ -115,13 +104,9 @@ if(!$results) {
             In order to recover your account please provide
         <br>
 
-            <h3>Username: <input type="text" name="username"></h3>
-            or
-            <br>
-            <h3>Password: <input type="text" name="password"></h3>
-            or
-            <br>
-            <h3>Email: <input type="text" name="password"></h3>
+            <h3>Username: <input type="text" name="username" placeholder="Enter your username"></h3>
+<!--            <br>-->
+<!--            <h3>Email: <input type="text" name="password"></h3>-->
             <input type="submit" value="Submit">
         </form>
         <br><br> Nevermind, take me<a href='index.php'> back to drawing.</a>

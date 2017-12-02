@@ -36,15 +36,15 @@ $currentrow = $results->fetch_assoc();
 
 
     if ($_SESSION["loggedin"] == "yes") {
-    include "index.php";
-} else if($_REQUEST['password'] == ""){
+        header('Location: index.php');
+    } else if($_REQUEST['password'] == ""){
     $_SESSION ["error"]="yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
 } else if($_REQUEST['username'] == ""){
     $_SESSION ["error"]="yes";
-    include "index.php";
-    exit();
+        header('Location: index.php');
+        exit();
 } else if ($_REQUEST["password"] != "" && $_REQUEST["username"] != "") {
     if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password'] && $currentrow['clearance'] > 3) {
         $_SESSION["loggedin"] = "admin";
@@ -54,11 +54,11 @@ $currentrow = $results->fetch_assoc();
     }else if($_REQUEST["username"]== $currentrow['username'] && $_REQUEST["password"]== $currentrow['password']) {
         $_SESSION["loggedin"]="yes";
         $_SESSION ["error"]="no";
-        include "index.php";
+        header('Location: index.php');
     }else {
         $_SESSION["loggedin"] = "no";
-        $_SESSION ["error"]="yes"; // !!! fix error styling so it's not on a dark red background at the bottom
-        include "index.php";
+        $_SESSION ["error"]="yes";
+        header('Location: index.php');
         exit();
     }
 }

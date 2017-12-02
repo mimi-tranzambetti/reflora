@@ -46,9 +46,9 @@ $blue = floor($row['average_blue']);
 </head>
 <body>
 <div class="colorbar" style="background-color:rgb(<?php echo $red . "," . $green . "," .$blue;?>);"><h1>Average color</h1></div>
-<div class="colorbar"><div class="colorbarfill" style="background-color:red;width: <?php echo $red;?>px;"><h1>Average red value</h1></div></div><br>
-<div class="colorbar"><div class="colorbarfill" style="background-color:green;width: <?php echo $green;?>px;"><h1>Average green value</h1></div></div><br>
-<div class="colorbar"><div class="colorbarfill" style="background-color:blue;width: <?php echo $blue;?>px;"><h1>Average blue value</h1></div></div><br>
+<div class="colorbar"><div class="colorbarfill" style="background-color:red;width: <?php echo $red;?>px;"><h3>Average red value</h3></div></div><br>
+<div class="colorbar"><div class="colorbarfill" style="background-color:green;width: <?php echo $green;?>px;"><h3>Average green value</h3></div></div><br>
+<div class="colorbar"><div class="colorbarfill" style="background-color:blue;width: <?php echo $blue;?>px;"><h3>Average blue value</h3></div></div><br>
 
 <div id="colortilebox"><h1>User Color Tiles</h1>
     <?php
@@ -73,6 +73,3 @@ $blue = floor($row['average_blue']);
 </html>
 
 
-
-<?php
-session_start();

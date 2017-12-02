@@ -38,7 +38,7 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-            $_SESSION["searcherror1"] = "yes";
+//            $_SESSION["searcherror1"] = "yes";
             header('Location:reflora_search.php');
         }
 
@@ -90,7 +90,7 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-            $_SESSION["searcherror2"] = "yes";
+//            $_SESSION["searcherror2"] = "yes";
             header('Location:reflora_search.php');
         }
 
