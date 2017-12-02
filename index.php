@@ -383,7 +383,8 @@
     <br>
     <p>Red <span id="rSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rSlider-div">
-        <input type="range" min="1" max="255" value="94" class="slider" id="rSlider">
+        <input type="range" min="1" max="255" value="96" class="slider" id="rSlider">
+
 
     </div>
     <br>
@@ -429,13 +430,15 @@
 </div>
 
 
+
+
 <div class="sidebar" id="controls">
 
     <button type="button" class="close" onclick="controls()">&times;</button>
 <!--    <i class="material-icons" id="close-x" onclick="controls()">close</i>-->
     <p style="text-align: center;">Controls</p>
 
-    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
+<!--    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">-->
     <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
     <input type="submit" value="Settings" onclick="settings()">
