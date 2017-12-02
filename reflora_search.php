@@ -24,6 +24,7 @@ if($mysql->connect_errno) {
 <body>
 <div class="search">
     <form action="reflora_results.php">
+        <h1>Search</h1>
 
         <strong>Search for Users:</strong><br><br>
 
