@@ -161,6 +161,7 @@ function draw() {
         }
 
 
+
         // //makes drawing shift temporarily in x direction
         // if (keyIsDown(UP_ARROW)){
         //     x+=100;

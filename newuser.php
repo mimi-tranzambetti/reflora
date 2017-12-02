@@ -17,9 +17,9 @@
     <img class="logo" src="./img/logo.png"/><br><br>
 
     <form action="newuserconfirm.php">
-        Username: <input type="text" name="name" placeholder="Username"><br>
-        Password: <input type="password" name="password1" placeholder="Password"><br>
-        Re-enter Password: <input type="password" name="password2" placeholder="Re-enter password"><br>
+        Username: <input type="text" name="username" placeholder="Username"><br>
+        Password: <input type="password" name="password" placeholder="Password"><br>
+        Re-enter Password: <input type="password" name="password1" placeholder="Re-enter password"><br>
         Email: <input type="text" name="email" placeholder="name@company.com"><br><br>
 
 

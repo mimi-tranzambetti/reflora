@@ -64,18 +64,17 @@
     }
 
     ?>
-    <div class="login">
-        <form>
         <?php
 
         if(!$results) {
             echo "SQL error: ". $mysql->error;
             exit();
+        } else {
+            $_SESSION["inforeset"]="yes";
+            include "index.php";
+            exit();
         }
     ?>
-        Great your information has been reset.
-        <a href="index.php"> Back to drawing</a>
-        </form>
-    </div> <!-- close login div -->
+
 </body>
 </html>

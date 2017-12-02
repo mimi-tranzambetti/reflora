@@ -69,6 +69,8 @@
             echo '$("#login-modal").modal("show");';
         }  else if ($_SESSION["emptyfield"]=="yes" OR $_SESSION["nomatch"]=="yes")  {
             echo '$("#signup-modal").modal("show");';
+        } else if ( $_SESSION["inforeset"]=="yes"){
+            echo '$("#account-modal").modal("show");';
         } else if ($_SESSION["loggedin"]=="no") {
             echo '$("#landing-modal").modal("show");';
         } else {
@@ -191,8 +193,8 @@
                     <label for="email">Email:</label><input type="text" name="email" placeholder="name@company.com"><br>
                 </div>
                 <div class="form-group">
-                    <label for="password1">Password:</label> <input type="password" name="password1" placeholder="Enter password"><br>
-                    <input type="password" name="password2" placeholder="Re-enter password"><br>
+                    <label for="password1">Password:</label> <input type="password" name="password" placeholder="Enter password"><br>
+                    <input type="password" name="password1" placeholder="Re-enter password"><br>
                 </div>
 
                 <?php
@@ -231,6 +233,24 @@
             <div class="login" class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
                 <img class="logo" src="./img/logo.png"/><br>
+                <div id="user-info" style="display:block;">
+                    <?php
+                    if ($_SESSION['inforeset']=="yes"){
+                        echo '<div>Great, your information has been saved!</div>';
+                        unset($_SESSION["inforeset"]);
+                    } else {
+
+                    }
+                    ?>
+                    <br>
+
+                    <p>Username: <?= $_SESSION['username']?></p>
+                    <p>Password: <?= $_SESSION['password']?></p>
+                    <p>Email: <?= $_SESSION['email']?></p>
+
+                    <input type="submit" class="button" value="Edit Account Info" id="edit-button">
+                </div>
+                <div id="edit-info" style="display:none;">
                 <form role="form" action="userconfirm.php" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label> <input type="text" name="username" value=" <?= $_SESSION['username']?> "><br>
@@ -242,9 +262,11 @@
                         <label for="email">Email:</label> <input type="text" name="email" value=" <?= $_SESSION['email']?> "><br>
                     </div>
                     <br>
-                    <input type="submit" class="button" value="Save Changes">
+                    <input type="submit" class="button" value="Save Changes" id="save-changes-button">
                 </form>
+                </div>
                 <input type="submit" class="button" value="Logout" onclick="location.href='logout.php';">
+                <input type="submit" class="button" value="Back to Drawing" data-dismiss="modal" onclick="loop()">
                 <br>
             </div>
         </div>
@@ -265,6 +287,14 @@
         });
         $("#account-button").click(function(){
             $("#account-modal").modal();
+        });
+        $("#edit-button").click(function(){
+            $("#edit-info").show();
+            $("#user-info").hide();
+        });
+        $("#save-changes-button").click(function(){
+            $("#edit-info").hide();
+            $("#user-info").show();
         });
 
     });
@@ -318,13 +348,8 @@
     <button type="button" class="close" onclick="library()">&times;</button>
 <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
-<<<<<<< .merge_file_uBgPmE
-    <img src="./img/phyllo1.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo2.jpg.jpeg"> <br> <br>
-    <img src="./img/phyllo3.jpg.jpeg"> <br><br>
 
     <form method="post" action="" enctype="multipart/form-data" target="noreload">
-=======
 
     <?php
     $start = 1;
@@ -341,13 +366,12 @@
     ?>
     
     <form method="post" action="" enctype="multipart/form-data">
->>>>>>> .merge_file_9sPsAA
         <input type="hidden" name="size" value="1000000">
         <div>
             <input type="file" name="image" >
         </div>
         <div>
-            <button type="submit" name="upload" class="upload-button">POST</button>
+            <button type="submit" name="upload" class="upload-button">Post</button>
         </div>
     </form>
 
