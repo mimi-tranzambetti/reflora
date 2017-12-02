@@ -83,8 +83,6 @@
 
 <body>
 
-<!--LANDING MODAL -->
-
 <div class="modal fade" id="landing-modal" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -361,7 +359,7 @@
         if($end <= $counter) {
             break;
         }
-        +$counter++;
+        $counter++;
     }
     ?>
     

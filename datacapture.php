@@ -35,7 +35,7 @@ $sql = "INSERT INTO entries (user_id, author_id, red, green, blue, angle, size, 
     $date.
     "')";
 
-//echo $sql;
+echo $sql;
 
 $results = $mysql->query($sql);
 
