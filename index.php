@@ -335,6 +335,7 @@
 
 
 <div class="sidebar" id="images">
+    <p>You can upload some of your favorite Reflora drawings here! </p>
     <?php include "imageupload.php"; ?>
 
     <button type="button" class="close" onclick="library()">&times;</button>
@@ -539,7 +540,10 @@
     <!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
     <p style="text-align: center;">Instructions</p>
     <p>Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
-    <p>Please be aware that resizing the window will restart the drawing!</p>
+    <p>Please be aware that resizing the window will restart the drawing! </p>
+    <p>You can search for other users and see their last saved RGB settings</p>
+
+
     <!--PROBABLY ADD BUTTONS HERE to search and things-->
     <br style="clear:both;">
 </div>
