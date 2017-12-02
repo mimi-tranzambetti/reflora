@@ -2,6 +2,7 @@
 session_start();
 
 if(empty($_REQUEST['dotcolor']) & empty($_REQUEST["name"])){
+    $_SESSION["searcherror1"] = "yes";
     header('Location:reflora_search.php');
 }
 
@@ -38,7 +39,7 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-//            $_SESSION["searcherror1"] = "yes";
+            $_SESSION["searcherror2"] = "yes";
             header('Location:reflora_search.php');
         }
 
@@ -90,11 +91,11 @@ if($mysql->connect_errno) {
         $results = $mysql->query($sql);
 
         if(!$results) {
-//            $_SESSION["searcherror2"] = "yes";
+            $_SESSION["searcherror2"] = "yes";
             header('Location:reflora_search.php');
         }
 
-        echo $sql . "<br>";
+//        echo $sql . "<br>";
 
         echo "<em>Your results returned <strong>" .
             $results->num_rows .
