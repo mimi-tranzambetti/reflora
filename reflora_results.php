@@ -23,11 +23,11 @@ if($mysql->connect_errno) {
 <head>
     <title>Reflora: Results</title>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="./img/favicon.png">
 </head>
 <body>
-<div class="container" class="smallcontainer">
-    <h1> Search results<hr></h1>
+<div class="search" style="width: 500px">
+    <h1> Search results</h1>
 
     <?php
 
@@ -49,7 +49,7 @@ if($mysql->connect_errno) {
         echo "<br><br>";
 
         while($currentrow = $results->fetch_assoc()) {
-            echo "<div class='name'><strong>" . $currentrow['username'] . "</strong>";
+            echo "<div class=''><strong>" . $currentrow['username'] . "</strong>";
             echo "<br><br>";
 
         }
@@ -105,10 +105,10 @@ if($mysql->connect_errno) {
         while($currentrow = $results->fetch_assoc()) {
             echo "<div class='name'><strong><a href='index.php?r-value=" . $currentrow['red'].
                 "&g-value=". $currentrow['green']."&b-value=". $currentrow['blue']."'>" .
-                $currentrow['username'] . "</a></strong><br>";
+                $currentrow['username'] . "</a></strong>";
             echo "<div class='color'> <a href='index.php?r-value=" . $currentrow['red'].
                 "&g-value=". $currentrow['green']."&b-value=". $currentrow['blue']."'> R" . $currentrow['red'] .", G". $currentrow['green'] .", B". $currentrow['blue'] ."</a></div>";
-            echo "<br><br>";
+            echo "<br>";
 
         }
 

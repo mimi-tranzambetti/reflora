@@ -336,13 +336,14 @@
 
 
 <div class="sidebar" id="images">
-    <p>You can upload some of your favorite Reflora drawings here! </p>
+
     <?php include "imageupload.php"; ?>
 
     <button type="button" class="close" onclick="library()">&times;</button>
     <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
 
+    <p>You can upload some of your favorite Reflora drawings here! </p>
     <form method="post" action="" enctype="multipart/form-data" target="noreload">
 
         <?php
@@ -361,7 +362,8 @@
         <form method="post" action="" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
             <div>
-                <input type="file" name="image" >
+                <input type="file" name="image" class="inputfile">
+                <label for="image">Choose a file</label>
             </div>
             <div>
                 <button type="submit" name="upload" class="upload-button">Post</button>

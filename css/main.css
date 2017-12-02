@@ -202,6 +202,33 @@ input[type=text], input[type=password], select {
     outline: none;
 }
 
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    color: blue;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+
+.inputfile + label {
+    cursor: pointer; /* "hand" cursor */
+}
+
 input[type=hidden] {
     width: 0%;
     height: 0%;
@@ -317,7 +344,7 @@ input[type=submit]:hover {
     background:white;
     display: none;
     position: absolute;
-    top: 20px;
+    bottom: 50px;
     width: 200px;
     right: 30px;
     padding: 2%;
@@ -330,7 +357,7 @@ input[type=submit]:hover {
     position: absolute;
     width: 200px;
     height: 300px;
-    top: 50px;
+    bottom: 150px;
     right: 30px;
     padding: 2%;
     opacity: 0.95;
@@ -341,7 +368,7 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 200px;
-    top: 50px;
+    bottom: 50px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
@@ -387,7 +414,7 @@ input[type=submit]:hover {
     position: absolute;
     display: none;
     width: 150px;
-    top: 20px;
+    bottom: 100px;
     left: 20px;
     padding: 20px;
     opacity: 0.95;
@@ -583,7 +610,7 @@ nav {
         right: 15px;
     }
     nav{
-        opacity: .85;
+        opacity: 1;
     }
 }
 
@@ -602,7 +629,7 @@ nav {
     }
 
     nav{
-        opacity: .95;
+        opacity: 1;
     }
 
 }

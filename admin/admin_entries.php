@@ -38,8 +38,6 @@ $results->data_seek($start-1);
 
 ?>
 
-
-?>
 <html>
 <head>
     <title>Reflora Entries</title>

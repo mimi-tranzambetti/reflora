@@ -12,7 +12,7 @@
             height: 30px;
             float: left;
             /*border: red solid 1px;*/
-        } s
+        }
         .column2{
             width: 23%;
             height: 30px;
@@ -26,16 +26,12 @@
             /*border: red solid 1px;*/
         }
 
-        .wide{
-            float: left;
-            width: 20%;
-            height: 40px;
-            /*border: red solid 1px;*/
-        }
 
         .buttons{
             width: 10%;
-            height: 30px;
+            height: 25px;
+            padding: 0px;
+            padding-bottom: 5px;
             /*border: red solid 1px;*/
             float: left;
 
@@ -45,7 +41,7 @@
 </head>
 <body>
 
-<div class="search" style="width: 900px;">
+<div class="search" style="width: 1000px;">
     <h1>Reflora Accounts</h1>
 
     <h3>
