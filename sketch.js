@@ -15,7 +15,7 @@ var aSlider = document.getElementById("aSlider");
 var bgSlider = document.getElementById("bgSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 
-var settingsView = false;
+var settingsView = true;
 var controlsView = false;
 var infoView = false;
 var libraryView = false;
@@ -116,7 +116,7 @@ function setup() {
     colorMode(RGB);
     background(random(0,255)); //random grayscale backgrounds only
     noLoop();
-    frameRate(20);
+    frameRate(22);
 }
 
 function pause() {
