@@ -12,7 +12,7 @@
             height: 30px;
             float: left;
             /*border: red solid 1px;*/
-        }
+        } s
         .column2{
             width: 23%;
             height: 30px;

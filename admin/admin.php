@@ -2,6 +2,7 @@
 session_start();
 
 if($_SESSION["loggedin"] != admin) {
+    header('Location:../index.php');
     exit();
 }
 
