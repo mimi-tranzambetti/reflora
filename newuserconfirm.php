@@ -12,7 +12,7 @@
 
 session_start();
 
-if(empty($_REQUEST['name'])) {
+if(empty($_REQUEST['username'])) {
     $_SESSION["emptyfield"] = "yes";
     include "index.php";
     exit();
@@ -20,22 +20,36 @@ if(empty($_REQUEST['name'])) {
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-if(empty(trim($_REQUEST['name']))) {
+if(empty(trim($_REQUEST['username']))) {
     $_SESSION["emptyfield"] = "yes";
     include "index.php";
     exit();
 //    echo "You must enter a name.<br>";
 //    exit();
 }
-if(empty(trim($_REQUEST['password1']))) {
+if(empty(trim($_REQUEST['password']))) {
     $_SESSION["emptyfield"] = "yes";
     include "index.php";
     exit();
+
+
 //    echo "You must enter a name.<br>";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-if($_REQUEST['password1'] != $_REQUEST['password2']){
+
+if(empty(trim($_REQUEST['password']))) {
+    $_SESSION["emptyfield"] = "yes";
+    include "index.php";
+    exit();
+
+
+//    echo "You must enter a name.<br>";
+//    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
+//    exit();
+}
+
+if($_REQUEST['password'] != $_REQUEST['password1']){
     $_SESSION["nomatch"] = "yes";
     include "index.php";
     exit();
@@ -64,7 +78,7 @@ if($mysql->connect_errno) {
 $date = date("c");
 $sql = "INSERT INTO users (email, username, password, date_join) VALUES ('".
     $_REQUEST['email']. "','".
-    $_REQUEST['name']. "','".
+    $_REQUEST['username']. "','".
     $_REQUEST['password1']. "',' ".
     $date.
     "')";

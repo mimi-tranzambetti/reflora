@@ -13,6 +13,7 @@ $_SESSION["loggedin"]="no";
 unset($_SESSION["username"]);
 unset($_SESSION["error"]);
 unset($_SESSION["newaccount"]);
+unset($_SESSION["inforeset"]);
 include "index.php";
 ?>
 <!---->
