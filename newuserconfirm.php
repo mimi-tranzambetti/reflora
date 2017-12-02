@@ -3,55 +3,46 @@
 <head>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     <link rel="shortcut icon" href="img/favicon.png">
-<title>Reflora Welcome!</title>
+    <title>Reflora Welcome!</title>
 </head>
 
 <body>
 
 <?php
-
 session_start();
-
 if(empty($_REQUEST['username'])) {
     $_SESSION["emptyfield"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
-
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
 if(empty(trim($_REQUEST['username']))) {
     $_SESSION["emptyfield"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
 //    echo "You must enter a name.<br>";
 //    exit();
 }
 if(empty(trim($_REQUEST['password']))) {
     $_SESSION["emptyfield"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
-
-
 //    echo "You must enter a name.<br>";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-
 if(empty(trim($_REQUEST['password']))) {
     $_SESSION["emptyfield"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
-
-
 //    echo "You must enter a name.<br>";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
 //    exit();
 }
-
 if($_REQUEST['password'] != $_REQUEST['password1']){
     $_SESSION["nomatch"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
 //    echo "Passwords do not match.";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
@@ -59,7 +50,7 @@ if($_REQUEST['password'] != $_REQUEST['password1']){
 }
 if(empty(trim($_REQUEST['email']))) {
     $_SESSION["emptyfield"] = "yes";
-    include "index.php";
+    header('Location: index.php');
     exit();
 //    echo "You must enter an email.<br>";
 //    echo "Please go the <a href='newuser.php'>sign up</a> form page.";
@@ -70,7 +61,6 @@ $mysql = new mysqli(
     halpan,
     Pleasejustletmein4726,
     "halpan_reflora");
-
 if($mysql->connect_errno) {
     echo "db connection error : " . $mysql->connect_error;
     exit();
@@ -82,16 +72,14 @@ $sql = "INSERT INTO users (email, username, password, date_join) VALUES ('".
     $_REQUEST['password1']. "',' ".
     $date.
     "')";
-
 $results = $mysql->query($sql);
-
 if(!$results) {
     echo "SQL error: ". $mysql->error;
     exit();
 } else {
     $_SESSION["newaccount"]="yes";
     $_SESSION["loggedin"]="yes";
-    include "index.php";
+    header('Location: index.php');
 }
 ?>
 
