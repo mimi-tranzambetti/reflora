@@ -28,12 +28,20 @@ if($mysql->connect_errno) {
 
         <strong>Search for Users:</strong><br><br>
 
+        <?php
+        if ($_SESSION['searcherror2']=="yes"){
+            echo '<div class="redtext">Your search did not return any results! Please try again</div>';
+            unset($_SESSION["searcherror2"]);
+        }
+        ?>
+
         Username: <input type="text" name="name" placeholder="Username">
         <br><br>
 
         <?php
         if ($_SESSION['searcherror1']=="yes"){
             echo '<div class="redtext">Please fill in all the fields!</div>';
+            unset($_SESSION["searcherror1"]);
         }
         ?>
 
@@ -70,8 +78,9 @@ if($mysql->connect_errno) {
         <br><br>
 
         <?php
-        if ($_SESSION['searcherror2']=="yes"){
+        if ($_SESSION['searcherror1']=="yes"){
             echo '<div class="redtext">Please fill in all the fields!</div>';
+            unset($_SESSION["searcherror1"]);
         }
         ?>
 
