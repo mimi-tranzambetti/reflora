@@ -26,10 +26,6 @@
             /*border: red solid 1px;*/
         }
 
-        #autoheight{
-            height: 400px;
-        }
-
         .wide{
             float: left;
             width: 20%;
@@ -49,11 +45,9 @@
 </head>
 <body>
 
-<div class="search" id="autoheight">
+<div class="search" style="width: 900px;">
     <h1>Reflora Accounts</h1>
-    <form action="../logout.php" method="get">
-        <input class="button" type="submit" value="Logout of Admin">
-    </form>
+
     <h3>
         <div class="column1"> Username </div>
         <div class="column1"> Email </div>
@@ -75,6 +69,7 @@
             <a href='admin_edit.php?user_id=<?=$currentrow["user_id"]?>'> Edit |  </a>
             <a href='admin_delete.php?user_id=<?=$currentrow["user_id"]?>'> Delete </a>
         </div>
+        <br><br>
         <?php
         if($end <= $counter) {
             break;
@@ -82,13 +77,12 @@
         +$counter++;
     }?>
 
-    <div class="wide">
         <?php
         if($start >= 9){
             ?>
             <form action="" method="get">
                 <input type="hidden" name="start" value="<?= ($start-10) ?>">
-                <input class="button" type="submit" value="PREVIOUS">
+                <input class="button" type="submit" value="Previous" style="float:left; width:49%;">
             </form>
             <?php
         }
@@ -98,13 +92,16 @@
             ?>
             <form action="" method="get">
                 <input type="hidden" name="start" value="<?= ($start+10) ?>">
-                <input class="button" type="submit" value="NEXT">
+                <input class="button" type="submit" value="More users" style="float:right; width:49%;">
             </form>
         <?php } ?>
-        <br>
+    <form action="../logout.php" method="get">
+        <input class="button" type="submit" value="Logout of Admin">
+    </form>
+        <br style="clear:both;"><br><br>
         <a href="admin_home.php"> Return Home</a>
-    </div>
-
+        <br style="clear:both;">
+</div>
 
 
 </body>

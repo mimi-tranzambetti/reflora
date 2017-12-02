@@ -107,7 +107,7 @@
             <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
             <img class="logo" src="./img/logo.png"/><br><br>
             <h1 class="title">Welcome!</h1>
-            <p><p>Thank you <?= $_REQUEST['username']; ?>! You've successfully created your account! Go ahead and start drawing</p>
+            <p><p>Thank you <?= $_SESSION['username']; ?>! You've successfully created your account! Go ahead and start drawing</p>
             <br>
             <input id="start-draw" type="submit" class="button" data-dismiss="modal" value="Start Drawing" onclick="loop()"  >
             <?php

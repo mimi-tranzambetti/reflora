@@ -74,6 +74,7 @@ if(!$results) {
 } else {
     $_SESSION["newaccount"]="yes";
     $_SESSION["loggedin"]="yes";
+    $_SESSION["username"] =  $_REQUEST['username'];
     header('Location: index.php');
 }
 ?>

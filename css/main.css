@@ -173,6 +173,7 @@ logo{
     text-align: center;
 }
 
+
 a:hover{
     padding-bottom: 3px;
     text-decoration: none;
@@ -246,6 +247,27 @@ input[type=submit], input[type=file] {
     -o-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+}
+
+
+.buttons {
+    width: 100%;
+    background-color: #5e79dd;
+    color: white;
+    padding: 5px 5px;
+    margin: 2px 0;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.buttons a {
+    color: white;
 }
 
 button[type=submit]{
