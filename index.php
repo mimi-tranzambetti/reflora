@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -10,7 +9,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-110403299-1');
     </script>
 
@@ -62,7 +60,7 @@
 <script type="text/javascript">
     $(window).on('load',function(){
         <?php
-            session_start();
+        session_start();
         if ($_SESSION['newaccount']=="yes"){
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
@@ -78,10 +76,11 @@
         }
         ?>
     });
-
 </script>
 
 <body>
+
+<!--LANDING MODAL -->
 
 <div class="modal fade" id="landing-modal" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -224,31 +223,30 @@
 
 <!--ACCOUNT SETTINGS-->
 
-    <!-- Log in Modal -->
-    <div class="modal" id="account-modal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <!-- Modal content-->
-            <div class="login" class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
-                <img class="logo" src="./img/logo.png"/><br>
-                <div id="user-info" style="display:block;">
-                    <?php
-                    if ($_SESSION['inforeset']=="yes"){
-                        echo '<div>Great, your information has been saved!</div>';
-                        unset($_SESSION["inforeset"]);
-                    } else {
+<!-- Log in Modal -->
+<div class="modal" id="account-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="login" class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" onclick="loop()">&times;</button>
+            <img class="logo" src="./img/logo.png"/><br>
+            <div id="user-info" style="display:block;">
+                <?php
+                if ($_SESSION['inforeset']=="yes"){
+                    echo '<div>Great, your information has been saved!</div>';
+                    unset($_SESSION["inforeset"]);
+                } else {
+                }
+                ?>
+                <br>
 
-                    }
-                    ?>
-                    <br>
+                <p>Username: <?= $_SESSION['username']?></p>
+                <p>Password: <?= $_SESSION['password']?></p>
+                <p>Email: <?= $_SESSION['email']?></p>
 
-                    <p>Username: <?= $_SESSION['username']?></p>
-                    <p>Password: <?= $_SESSION['password']?></p>
-                    <p>Email: <?= $_SESSION['email']?></p>
-
-                    <input type="submit" class="button" value="Edit Account Info" id="edit-button">
-                </div>
-                <div id="edit-info" style="display:none;">
+                <input type="submit" class="button" value="Edit Account Info" id="edit-button">
+            </div>
+            <div id="edit-info" style="display:none;">
                 <form role="form" action="userconfirm.php" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label> <input type="text" name="username" value=" <?= $_SESSION['username']?> "><br>
@@ -262,13 +260,13 @@
                     <br>
                     <input type="submit" class="button" value="Save Changes" id="save-changes-button">
                 </form>
-                </div>
-                <input type="submit" class="button" value="Logout" onclick="location.href='logout.php';">
-                <input type="submit" class="button" value="Back to Drawing" data-dismiss="modal" onclick="loop()">
-                <br>
             </div>
+            <input type="submit" class="button" value="Logout" onclick="location.href='logout.php';">
+            <input type="submit" class="button" value="Back to Drawing" data-dismiss="modal" onclick="loop()">
+            <br>
         </div>
     </div>
+</div>
 
 
 
@@ -294,28 +292,27 @@
             $("#edit-info").hide();
             $("#user-info").show();
         });
-
     });
 </script>
 
-    <nav>
-        <a href="index.php"><img class="corner-logo" src="./img/logo.png"/></a>
-        <div class="navlinks" id="topnav">
-            <a onclick="controls()" id="controls-button">Controls</a>
-            <a onclick="library()" id="library-button">Library</a>
-            <a onclick="settings()" id="settings-button">Settings</a>
-            <a onclick="instructions()" id="instructions-button">Instructions</a>
-            <a href='reflora_search.php' target="_blank">Search</a>
-                <?php
-                session_start();
-                if($_SESSION["loggedin"] == "yes") {
-                    echo "<a type='button' id='account-button' onclick='noLoop()'>". " Welcome " . $_SESSION['username'] . "</a>";
-                } else {
-                    echo "<a type='button' id='login-button' onclick='noLoop()'>". " Log in" . "</a>";
-                } ?>
+<nav>
+    <a href="index.php"><img class="corner-logo" src="./img/logo.png"/></a>
+    <div class="navlinks" id="topnav">
+        <a onclick="controls()" id="controls-button">Controls</a>
+        <a onclick="library()" id="library-button">Library</a>
+        <a onclick="settings()" id="settings-button">Settings</a>
+        <a onclick="instructions()" id="instructions-button">Instructions</a>
+        <a href='reflora_search.php' target="_blank">Search</a>
+        <?php
+        session_start();
+        if($_SESSION["loggedin"] == "yes") {
+            echo "<a type='button' id='account-button' onclick='noLoop()'>". " Welcome " . $_SESSION['username'] . "</a>";
+        } else {
+            echo "<a type='button' id='login-button' onclick='noLoop()'>". " Log in" . "</a>";
+        } ?>
 
-            <!--hamburgericon-->
-            <a href="javascript:void(0);" class="nav-icon" >
+        <!--hamburgericon-->
+        <a href="javascript:void(0);" class="nav-icon" >
             <div id="nav-icon">
                 <span></span>
                 <span></span>
@@ -323,20 +320,18 @@
                 <span></span>
             </div></a>
 
-        </div> <!-- close nav links-->
-    </nav>
+    </div> <!-- close nav links-->
+</nav>
 
 
-    <script>
-
-        $(document).ready(function(){
-            $('.nav-icon').click(function(){
-                $(this).toggleClass('open');
-                $("#topnav").toggleClass('responsive');
-            });
+<script>
+    $(document).ready(function(){
+        $('.nav-icon').click(function(){
+            $(this).toggleClass('open');
+            $("#topnav").toggleClass('responsive');
         });
-
-    </script>
+    });
+</script>
 
 
 
@@ -344,47 +339,45 @@
     <?php include "imageupload.php"; ?>
 
     <button type="button" class="close" onclick="library()">&times;</button>
-<!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
+    <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
 
     <form method="post" action="" enctype="multipart/form-data" target="noreload">
 
-    <?php
-    $start = 1;
-    $end = $start+2;
-    $counter = $start;
-
-    while ($row = mysqli_fetch_array($result)) {
-        echo "<img src='images/".$row['image']."' >";
-        if($end <= $counter) {
-            break;
+        <?php
+        $start = 1;
+        $end = $start+2;
+        $counter = $start;
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<img src='images/".$row['image']."' >";
+            if($end <= $counter) {
+                break;
+            }
+            +$counter++;
         }
-        $counter++;
-    }
-    ?>
-    
-    <form method="post" action="" enctype="multipart/form-data">
-        <input type="hidden" name="size" value="1000000">
-        <div>
-            <input type="file" name="image" >
-        </div>
-        <div>
-            <button type="submit" name="upload" class="upload-button">Post</button>
-        </div>
-    </form>
+        ?>
 
-    <br style="clear:both;">
+        <form method="post" action="" enctype="multipart/form-data">
+            <input type="hidden" name="size" value="1000000">
+            <div>
+                <input type="file" name="image" >
+            </div>
+            <div>
+                <button type="submit" name="upload" class="upload-button">Post</button>
+            </div>
+        </form>
+
+        <br style="clear:both;">
 </div>
 
 <div class="sidebar" id="settings">
     <button type="button" class="close" onclick="settings()">&times;</button>
-<!--    <i class="material-icons" id="close-x" onclick="settings()">close</i>-->
+    <!--    <i class="material-icons" id="close-x" onclick="settings()">close</i>-->
     <p style="text-align: center;">Settings</p>
     <br>
     <p>Red <span id="rSlider-value" style="float:right;"></span></p>
     <div class="slider" id="rSlider-div">
-        <input type="range" min="1" max="255" value="96" class="slider" id="rSlider">
-
+        <input type="range" min="1" max="255" value="94" class="slider" id="rSlider">
 
     </div>
     <br>
@@ -425,20 +418,18 @@
     <br>
     <br style="clear:both;">
     <!--settings switch-->
-<!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
+    <!--    <h6>Mouse Control</h6><input type="checkbox" checked="" id="mouse-control">-->
 
 </div>
-
-
 
 
 <div class="sidebar" id="controls">
 
     <button type="button" class="close" onclick="controls()">&times;</button>
-<!--    <i class="material-icons" id="close-x" onclick="controls()">close</i>-->
+    <!--    <i class="material-icons" id="close-x" onclick="controls()">close</i>-->
     <p style="text-align: center;">Controls</p>
 
-<!--    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">-->
+    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">
     <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
     <input type="submit" value="Settings" onclick="settings()">
@@ -453,21 +444,20 @@
                 document.getElementById("pause-button").value="Pause";
             }
         }
-
     </script>
 
 
 
     <form action="datacapture.php" method="post" target="_blank">
 
-            <input type="hidden" name="rSlider" value="" id="rSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="gSlider" value="" id="gSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="bSlider" value="" id="bSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="aSlider" value="" id="aSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden" style="display:none;"><br>
-            <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden" style="display:none;"><br>
-            <input type="submit" value="Save" id="save-button" onclick="screenshot()">
+        <input type="hidden" name="rSlider" value="" id="rSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="gSlider" value="" id="gSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="bSlider" value="" id="bSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="rotSlider" value="" id="rotSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="aSlider" value="" id="aSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="bgSlider" value="" id="bgSlider-hidden" style="display:none;"><br>
+        <input type="hidden" name="sizeSlider" value="" id="sizeSlider-hidden" style="display:none;"><br>
+        <input type="submit" value="Save" id="save-button" onclick="screenshot()">
     </form>
 
     <iframe name="noreload" style="display:none;">
@@ -477,86 +467,77 @@
 </div>
 <!--SLIDERS-->
 
-    <script>
-
-        var rSlider = document.getElementById("rSlider");
-        var rSliderVal = document.getElementById("rSlider-value");
-        var rSliderhidden = document.getElementById("rSlider-hidden");
-        rSliderVal.innerHTML = rSlider.value; // Display the default slider value
-        rSliderhidden.value = rSlider.value;
-        rSlider.oninput = function() {
-            rSliderVal.innerHTML = this.value; // Update the current slider value (each time you drag the slider handle)
-            rSliderhidden.value = this.value;
-        }
-
-        var gSlider = document.getElementById("gSlider");
-        var gSliderVal = document.getElementById("gSlider-value");
-        var gSliderhidden = document.getElementById("gSlider-hidden");
-        gSliderVal.innerHTML = gSlider.value;
-        gSliderhidden.value = gSlider.value;
-        gSlider.oninput = function() {
-            gSliderVal.innerHTML = this.value;
-            gSliderhidden.value = this.value;
-        }
-
-        var bSlider = document.getElementById("bSlider");
-        var bSliderVal = document.getElementById("bSlider-value");
-        var bSliderhidden = document.getElementById("bSlider-hidden");
-        bSliderVal.innerHTML = bSlider.value;
-        bSliderhidden.value = bSlider.value;
-        bSlider.oninput = function() {
-            bSliderVal.innerHTML = this.value;
-            bSliderhidden.value = this.value;
-        }
-
-        var rotSlider = document.getElementById("rotSlider");
-        var rotSliderVal = document.getElementById("rotSlider-value");
-        var rotSliderhidden = document.getElementById("rotSlider-hidden");
-        rotSliderVal.innerHTML = rotSlider.value;
-        rotSliderhidden.value = rotSlider.value;
-        rotSlider.oninput = function() {
-            rotSliderVal.innerHTML = this.value;
-            rotSliderhidden.value = this.value;
-        }
-
-        var aSlider = document.getElementById("aSlider");
-        var aSliderVal = document.getElementById("aSlider-value");
-        var aSliderhidden = document.getElementById("aSlider-hidden");
-        aSliderVal.innerHTML = aSlider.value;
-        aSliderhidden.value = aSlider.value;
-        aSlider.oninput = function() {
-            aSliderVal.innerHTML = this.value;
-            aSliderhidden.value = this.value;
-        }
-
-        var bgSlider = document.getElementById("bgSlider");
-        var bgSliderVal = document.getElementById("bgSlider-value");
-        var bgSliderhidden = document.getElementById("bgSlider-hidden");
-        bgSliderVal.innerHTML = bgSlider.value;
-        bgSliderhidden.value = bgSlider.value;
-        bgSlider.oninput = function() {
-            bgSliderVal.innerHTML = this.value;
-            bgSliderhidden.value = this.value;
-        }
-
-        var sizeSlider = document.getElementById("sizeSlider");
-        var sizeSliderVal = document.getElementById("sizeSlider-value");
-        var sizeSliderhidden = document.getElementById("sizeSlider-hidden");
-        sizeSliderVal.innerHTML = sizeSlider.value;
-        sizeSliderhidden.value = sizeSlider.value;
-        sizeSlider.oninput = function() {
-            sizeSliderVal.innerHTML = this.value;
-            sizeSliderhidden.value = this.value;
-        }
-
-
-    </script>
+<script>
+    var rSlider = document.getElementById("rSlider");
+    var rSliderVal = document.getElementById("rSlider-value");
+    var rSliderhidden = document.getElementById("rSlider-hidden");
+    rSliderVal.innerHTML = rSlider.value; // Display the default slider value
+    rSliderhidden.value = rSlider.value;
+    rSlider.oninput = function() {
+        rSliderVal.innerHTML = this.value; // Update the current slider value (each time you drag the slider handle)
+        rSliderhidden.value = this.value;
+    }
+    var gSlider = document.getElementById("gSlider");
+    var gSliderVal = document.getElementById("gSlider-value");
+    var gSliderhidden = document.getElementById("gSlider-hidden");
+    gSliderVal.innerHTML = gSlider.value;
+    gSliderhidden.value = gSlider.value;
+    gSlider.oninput = function() {
+        gSliderVal.innerHTML = this.value;
+        gSliderhidden.value = this.value;
+    }
+    var bSlider = document.getElementById("bSlider");
+    var bSliderVal = document.getElementById("bSlider-value");
+    var bSliderhidden = document.getElementById("bSlider-hidden");
+    bSliderVal.innerHTML = bSlider.value;
+    bSliderhidden.value = bSlider.value;
+    bSlider.oninput = function() {
+        bSliderVal.innerHTML = this.value;
+        bSliderhidden.value = this.value;
+    }
+    var rotSlider = document.getElementById("rotSlider");
+    var rotSliderVal = document.getElementById("rotSlider-value");
+    var rotSliderhidden = document.getElementById("rotSlider-hidden");
+    rotSliderVal.innerHTML = rotSlider.value;
+    rotSliderhidden.value = rotSlider.value;
+    rotSlider.oninput = function() {
+        rotSliderVal.innerHTML = this.value;
+        rotSliderhidden.value = this.value;
+    }
+    var aSlider = document.getElementById("aSlider");
+    var aSliderVal = document.getElementById("aSlider-value");
+    var aSliderhidden = document.getElementById("aSlider-hidden");
+    aSliderVal.innerHTML = aSlider.value;
+    aSliderhidden.value = aSlider.value;
+    aSlider.oninput = function() {
+        aSliderVal.innerHTML = this.value;
+        aSliderhidden.value = this.value;
+    }
+    var bgSlider = document.getElementById("bgSlider");
+    var bgSliderVal = document.getElementById("bgSlider-value");
+    var bgSliderhidden = document.getElementById("bgSlider-hidden");
+    bgSliderVal.innerHTML = bgSlider.value;
+    bgSliderhidden.value = bgSlider.value;
+    bgSlider.oninput = function() {
+        bgSliderVal.innerHTML = this.value;
+        bgSliderhidden.value = this.value;
+    }
+    var sizeSlider = document.getElementById("sizeSlider");
+    var sizeSliderVal = document.getElementById("sizeSlider-value");
+    var sizeSliderhidden = document.getElementById("sizeSlider-hidden");
+    sizeSliderVal.innerHTML = sizeSlider.value;
+    sizeSliderhidden.value = sizeSlider.value;
+    sizeSlider.oninput = function() {
+        sizeSliderVal.innerHTML = this.value;
+        sizeSliderhidden.value = this.value;
+    }
+</script>
 
 
 <div class="sidebar" id="instructions">
 
     <button type="button" class="close" onclick="settings()">&times;</button>
-<!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
+    <!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
     <p style="text-align: center;">Instructions</p>
     <p>Originally modelled after phyllotaxis, the arrangement of leaves on an axis or stem, as explained by The Coding Train.</p>
     <p>Please be aware that resizing the window will restart the drawing!</p>
@@ -571,4 +552,3 @@
 
 </body>
 </html>
-
