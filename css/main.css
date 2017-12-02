@@ -202,33 +202,6 @@ input[type=text], input[type=password], select {
     outline: none;
 }
 
-.inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    color: blue;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-.inputfile + label {
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    background-color: black;
-    display: inline-block;
-}
-
-.inputfile:focus + label,
-.inputfile + label:hover {
-    background-color: red;
-}
-
-.inputfile + label {
-    cursor: pointer; /* "hand" cursor */
-}
-
 input[type=hidden] {
     width: 0%;
     height: 0%;
@@ -260,7 +233,7 @@ input[type=password]:focus {
     border: 2px solid #93a8ff;
 }
 
-input[type=submit], input[type=file] {
+input[type=submit]{
     width: 100%;
     background-color: #5e79dd;
     color: white;
@@ -274,6 +247,52 @@ input[type=submit], input[type=file] {
     -o-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+}
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+
+.fileContainer {
+    width: 100%;
+    background-color: #5e79dd;
+    text-align:center;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+
+}
+
+.fileContainer:hover {
+    background-color: #204eab;
+}
+
+.fileContainer [type=file] {
+    cursor: pointer;
 }
 
 

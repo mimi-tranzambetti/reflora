@@ -12,6 +12,7 @@
         gtag('config', 'UA-110403299-1');
     </script>
 
+
     <?php
     session_start();
     if( $_SESSION["loggedin"] == "admin"){
@@ -362,20 +363,46 @@
         <form method="post" action="" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
             <div>
-                <input type="file" name="image" class="inputfile">
-                <label for="image">Choose a file</label>
+                <label class="fileContainer">
+                    Choose file
+                    <input type="file" name="image"/>
+                </label>
             </div>
             <div>
-                <button type="submit" name="upload" class="upload-button">Post</button>
+                <input type="submit" name="upload" class="upload-button" value="Post"/>
             </div>
         </form>
 
         <br style="clear:both;">
 </div>
 
+<script>
+//
+//    var inputs = document.querySelectorAll( '.fileContainer' );
+//    Array.prototype.forEach.call( inputs, function( input )
+//    {
+//        var label	 = input.nextElementSibling,
+//            labelVal = label.innerHTML;
+//
+//        input.addEventListener( 'change', function( e )
+//        {
+//            var fileName = '';
+//            if( this.files && this.files.length > 1 )
+//                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+//            else
+//                fileName = e.target.value.split( '\\' ).pop();
+//
+//            if( fileName )
+//                label.querySelector( 'span' ).innerHTML = fileName;
+//            else
+//                label.innerHTML = labelVal;
+//        });
+//    });
+
+</script>
+
 <div class="sidebar" id="settings">
     <button type="button" class="close" onclick="settings()">&times;</button>
-    <!--    <i class="material-icons" id="close-x" onclick="settings()">close</i>-->
     <p style="text-align: center;">Settings</p>
     <br>
     <p>Red <span id="rSlider-value" style="float:right;"></span></p>
