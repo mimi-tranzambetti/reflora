@@ -14,6 +14,7 @@ unset($_SESSION["username"]);
 unset($_SESSION["error"]);
 unset($_SESSION["newaccount"]);
 unset($_SESSION["inforeset"]);
+unset($_SESSION["new-settings"]);
 include "index.php";
 ?>
 <!---->

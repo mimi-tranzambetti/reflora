@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mysql = new mysqli(
     "acad.itpwebdev.com",
     halpan,

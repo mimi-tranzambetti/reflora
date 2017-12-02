@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(empty($_REQUEST['dotcolor']) & empty($_REQUEST["name"])){
     echo "Error. Please use the <a href='reflora_search.php'> Search </a> page.";
@@ -59,6 +60,7 @@ if($mysql->connect_errno) {
 
 
     }else{
+        $_SESSION["new-settings"] = "yes";
         $sql = 	"SELECT * FROM entry_view WHERE 1=1";
 
         if ($_REQUEST["datecreate1"] != ""){
