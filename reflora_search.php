@@ -28,14 +28,17 @@ if($mysql->connect_errno) {
 
         Username: <input type="text" name="name" placeholder="Username">
         <br><br>
-        Joined between <br> <input type="date "name="datejoin1" placeholder="YYYY-MM-DD" class="half-input">
-        and <input type="date "name="datejoin2" placeholder="YYYY-MM-DD" class="half-input">
-        <br><br><br>
 
-        <strong>Search for Images:</strong><br><br>
+        <input class="button" type="submit" value="Search">
 
-        Created between <br> <input type="date "name="datecreate1" placeholder="YYYY-MM-DD" class="half-input">
-        and <input type="date "name="datecreate2" placeholder="YYYY-MM-DD" class="half-input">
+
+    </form>
+
+    <form action="reflora_results.php">
+        <strong>Search for Entries:</strong><br><br>
+
+        Created between the hours of: <br> <input type="date "name="timecreate1" placeholder="Enter military time format" class="half-input">
+        and <input type="date "name="timecreate2" placeholder="Enter military time format" class="half-input">
         <br><br>
 
         Ellipse Color <select name="dotcolor">
@@ -43,6 +46,10 @@ if($mysql->connect_errno) {
             <option value="yellow">Yellow</option>
             <option value="red">Red</option>
             <option value="blue">Blue</option>
+            <option value="green">Green</option>
+
+
+
 
         </select>
 <!--        <br>-->

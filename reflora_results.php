@@ -1,6 +1,6 @@
 <?php
 
-if(empty($_REQUEST['dotcolor'])) {
+if(empty($_REQUEST['dotcolor']) & empty($_REQUEST["name"])){
     echo "Error. Please use the <a href='reflora_search.php'> Search </a> page.";
     exit();
 }
@@ -30,62 +30,107 @@ if($mysql->connect_errno) {
 
     <?php
 
-    $sql = 		"SELECT * FROM all_fields_view WHERE 1=1";
-    $sql .= " AND username LIKE '%" .
-        $_REQUEST['name'] . "%'";
+    if ($_REQUEST["name"] != ""){
+        $sql = 	"SELECT * FROM users WHERE 1=1";
+        $sql .= " AND username LIKE '%" .
+            $_REQUEST['name'] . "%'";
 
-    if ($_REQUEST["datejoin1"] != ""){
-        $sql .= "AND 
-        date_join > '" . $_REQUEST["datejoin1"] . "' AND
-        date_join < '" . $_REQUEST["datejoin2"] . "'";
-    }
+        $results = $mysql->query($sql);
 
-    if ($_REQUEST["datecreate1"] != ""){
-        $sql .= "AND 
-        date_join > '" . $_REQUEST["datecreate1"] . "' AND
-        date_join < '" . $_REQUEST["datecreate2"] . "'";
-    }
-
-    if($_REQUEST['dotcolor'] != "ALL") {
-        if($_REQUEST['dotcolor'] == "yellow"){
-            $sql .= " AND
-            dot_r >". 200 . " AND dot_g >" . 200 .  " AND dot_b < ". 50;}
+        if(!$results) {
+            echo "<hr>Your SQL:<br> " . $sql . "<br><br>";
+            echo "SQL Error: " . $mysql->error . "<hr>";
+            exit();
         }
-        if ($_REQUEST['dotcolor'] == "red"){
-            $sql .= " AND
-            dot_r > 200 AND dot_g <50 AND dot_b < 50";
+
+        echo "<em>Your results returned <strong>" .
+        $results->num_rows .
+        "</strong> results.</em>";
+        echo "<br><br>";
+
+        while($currentrow = $results->fetch_assoc()) {
+            echo "<div class='name'><strong>" . $currentrow['username'] . "</strong>";
+            echo "<br><br>";
+
         }
-        if($_REQUEST['dotcolor'] == "blue"){
-            $sql .= " AND
-            dot_r < 50 AND dot_g < 50 AND dot_b > 200";
+
+        echo "<p>Go back to <a href=\"index.php\">drawing</a>!</p>";
+        exit();
+
+
+    }else{
+        $sql = 	"SELECT * FROM entry_view WHERE 1=1";
+
+        if ($_REQUEST["datecreate1"] != ""){
+            $sql .= "AND 
+        date_join > '" . $_REQUEST["timecreate1"] . "' AND
+        date_join < '" . $_REQUEST["timecreate2"] . "'";
         }
-    /// HELP: I want to siphon out colors and integer values when certain text parameters are set
 
-//    echo $sql;
+        if($_REQUEST['dotcolor'] != "ALL") {
+            if($_REQUEST['dotcolor'] == "yellow"){
+                $sql .= " AND
+            red > '". 200 . "' AND green > '" . 200 .  "' AND blue < '". 50 . "'";}
 
-    $results = $mysql->query($sql);
+            if ($_REQUEST['dotcolor'] == "red"){
+            $sql .= " AND
+            red > '". 200 . "' AND green <'" . 50 .  "' AND blue < '" . 50 .  "'";
+            }
+            if($_REQUEST['dotcolor'] == "blue"){
+            $sql .= " AND
+            red < '" . 50 .  "' AND green < '" . 50 .  "' AND blue > '". 200 . "'";
+            }
+            if($_REQUEST['dotcolor'] == "green"){
+                $sql .= " AND
+            red < '" . 50 .  "' AND green < '" . 200 .  "' AND blue > '". 50 . "'";
+            }
 
-    if(!$results) {
-        echo "<hr>Your SQL:<br> " . $sql . "<br><br>";
-        echo "SQL Error: " . $mysql->error . "<hr>";
+        }
+
+        $results = $mysql->query($sql);
+
+        if(!$results) {
+            echo "<hr>Your SQL:<br> " . $sql . "<br><br>";
+            echo "SQL Error: " . $mysql->error . "<hr>";
+            exit();
+        }
+
+        echo $sql . "<br>";
+
+        echo "<em>Your results returned <strong>" .
+            $results->num_rows .
+            "</strong> results.</em>";
+        echo "<br><br>";
+
+        while($currentrow = $results->fetch_assoc()) {
+            echo "<div class='name'><strong><a href='index.php?r-value=" . $currentrow['red'].
+                "&g-value=". $currentrow['green']."&b-value=". $currentrow['blue']."'>" .
+                $currentrow['username'] . "</a></strong><br>";
+            echo "<div class='color'> <a href='index.php?r-value=" . $currentrow['red'].
+                "&g-value=". $currentrow['green']."&b-value=". $currentrow['blue']."'> R" . $currentrow['red'] .", G". $currentrow['green'] .", B". $currentrow['blue'] ."</a></div>";
+            echo "<br><br>";
+
+        }
+
+        echo "<p>Go back to <a href=\"index.php\">drawing</a>!</p>";
         exit();
     }
 
 
-    echo "<em>Your results returned <strong>" .
-        $results->num_rows .
-        "</strong> results.</em>";
-    echo "<br><br>";
+    /// HELP: I want to siphon out colors and integer values when certain text parameters are set
 
-    while($currentrow = $results->fetch_assoc()) {
+//    echo $sql;
 
-//        print_r($currentrow);
 
-        echo "<div class='name'><strong>" . $currentrow['username'] . "</strong>";
-        echo "<div class='image'> <img src='".$currentrow['image']. "'>  </div>";
-        echo "<div class='color'> R" . $currentrow['dot_r'] .", G". $currentrow['dot_g'] .", B". $currentrow['dot_b'] ." </div>";
-
-    }
+//    while($currentrow = $results->fetch_assoc()) {
+//
+////        print_r($currentrow);
+//
+//        echo "<div class='name'><strong>" . $currentrow['username'] . "</strong>";
+//        echo "<div class='image'> <img src='".$currentrow['image']. "'>  </div>";
+//        echo "<div class='color'> R" . $currentrow['red'] .", G". $currentrow['green'] .", B". $currentrow['blue'] ." </div>";
+//
+//    }
     ?>
     <p>Go back to <a href="index.php">drawing</a>!</p>
 </div>

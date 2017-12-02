@@ -35,9 +35,11 @@ $sql = "INSERT INTO entries (user_id, author_id, red, green, blue, angle, size, 
     $date.
     "')";
 
-echo $sql;
+//echo $sql;
 
 $results = $mysql->query($sql);
+
+echo '<script> window.setTimeout("window.close()", 500); </script>';
 
 if(!$results) {
     echo "SQL error: ". $mysql->error;
