@@ -356,7 +356,7 @@
         $counter = $start;
         $result->data_seek($start-1);
         while ($row = mysqli_fetch_array($result)) {
-            echo "<img src='http://acad.itpwebdev.com/~amjohnst/ScheduleSearch/reflora/images/reflora.jpeg' >";
+            echo "<img src='http://acad.itpwebdev.com/~amjohnst/ScheduleSearch/images/reflora.jpeg' >";
             if($end <= $counter) {
                 break;
             }

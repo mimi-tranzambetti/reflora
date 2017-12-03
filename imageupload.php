@@ -8,7 +8,7 @@
 	$msg = "";
 
 	if (isset($_POST['upload'])) {
-            $target = "images/".basename($_FILES['image']['name']);
+            $target = "http://acad.itpwebdev.com/~amjohnst/ScheduleSearch/images/".basename($_FILES['image']['name']);
             $image = $_FILES['image']['name'];
             $image_text = mysqli_real_escape_string($db, $_POST['image_text']);
             $userid= $_SESSION['userid'];
