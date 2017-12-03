@@ -62,6 +62,7 @@
     $(window).on('load',function(){
         <?php
             session_start();
+        
         if ($_SESSION['newaccount']=="yes"){
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
@@ -353,8 +354,9 @@
         $start = 1;
         $end = $start+2;
         $counter = $start;
+        $result->data_seek($start-1);
         while ($row = mysqli_fetch_array($result)) {
-            echo "<img src='images/".$row['image']."' >";
+            echo "<img src='http://acad.itpwebdev.com/~amjohnst/ScheduleSearch/reflora/images/reflora.jpeg' >";
             if($end <= $counter) {
                 break;
             }
