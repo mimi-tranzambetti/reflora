@@ -47,7 +47,7 @@
             $_SESSION["loggedin"]="yes";
             $_SESSION ["error"]="no";
             header('Location: index.php');
-        }else {
+        } else {
             $_SESSION["loggedin"] = "no";
             $_SESSION ["error"]="yes";
             header('Location: index.php');

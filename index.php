@@ -356,7 +356,7 @@
         $counter = $start;
         $result->data_seek($start-1);
         while ($row = mysqli_fetch_array($result)) {
-            echo "<img src='../images/".$row['image']."' >";
+            echo "<img src='../images/".$row['image']."'>"."<"."br".">";
             if($end <= $counter) {
                 break;
             }
@@ -379,31 +379,6 @@
 
         <br style="clear:both;">
 </div>
-
-<script>
-//
-//    var inputs = document.querySelectorAll( '.fileContainer' );
-//    Array.prototype.forEach.call( inputs, function( input )
-//    {
-//        var label	 = input.nextElementSibling,
-//            labelVal = label.innerHTML;
-//
-//        input.addEventListener( 'change', function( e )
-//        {
-//            var fileName = '';
-//            if( this.files && this.files.length > 1 )
-//                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-//            else
-//                fileName = e.target.value.split( '\\' ).pop();
-//
-//            if( fileName )
-//                label.querySelector( 'span' ).innerHTML = fileName;
-//            else
-//                label.innerHTML = labelVal;
-//        });
-//    });
-
-</script>
 
 <div class="sidebar" id="settings">
     <button type="button" class="close" onclick="settings()">&times;</button>
@@ -577,7 +552,9 @@
 
     <button type="button" class="close" onclick="instructions()">&times;</button>
     <!--    <i class="material-icons" id="close-x" onclick="instructions()">close</i>-->
-    <p style="text-align: center;">About Reflora</p>
+    <h1 class="title">Calm your mind</h1>
+    <p>Welcome to Reflora. Here, you can watch a relaxing drawing generate on screen. Toggle the drawing in
+        the settings toolbar, and save a screenshot of your favorite pieces. </p>
     <p>Reflora's drawing is modelled after phyllotaxis, the arrangement of leaves on an axis or stem. The base p5.js
         code can be found on this great tutorial by <a href="https://www.youtube.com/watch?v=KWoJgHFYWxY">The Coding Train</a>.</p>
     <p>You can search for other users and see their last saved RGB settings.</p>
