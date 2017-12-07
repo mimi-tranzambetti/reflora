@@ -345,7 +345,7 @@
     <!--    <i class="material-icons" id="close-x" onclick="library()">close</i>-->
     <p style="text-align: center;">Library</p>
     <p>You can upload some of your favorite Reflora drawings here! <? $msg ?> </p>
-    <form method="post" action="" enctype="multipart/form-data" target="noreload">
+<!--    <form method="post" action="" enctype="multipart/form-data" /*target="noreload"*/>-->
 
         <?php
         if($_SESSION["imageuploaded"] = "yes"){
@@ -356,7 +356,7 @@
         $counter = $start;
         $result->data_seek($start-1);
         while ($row = mysqli_fetch_array($result)) {
-            echo "<img src='http://acad.itpwebdev.com/~amjohnst/ScheduleSearch/images/reflora.jpeg' >";
+            echo "<img src='../images/".$row['image']."' >";
             if($end <= $counter) {
                 break;
             }
