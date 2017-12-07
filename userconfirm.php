@@ -71,7 +71,7 @@
             exit();
         } else {
             $_SESSION["inforeset"]="yes";
-            include "index.php";
+            header('Location: index.php');
             exit();
         }
     ?>

@@ -67,12 +67,12 @@
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
             echo '$("#login-modal").modal("show");';
+        } else if ($_SESSION["loggedin"] == "no") {
+            echo '$("#landing-modal").modal("show");';
         }  else if ($_SESSION["emptyfield"]=="yes" OR $_SESSION["nomatch"]=="yes")  {
             echo '$("#signup-modal").modal("show");';
         } else if ( $_SESSION["inforeset"]=="yes"){
             echo '$("#account-modal").modal("show");';
-        } else if ($_SESSION["loggedin"]=="no") {
-            echo '$("#landing-modal").modal("show");';
         } else {
             echo "loop();";
         }
