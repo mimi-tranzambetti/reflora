@@ -16,7 +16,7 @@ var bgSlider = document.getElementById("bgSlider");
 var sizeSlider = document.getElementById("sizeSlider");
 
 var settingsView = true;
-var controlsView = false;
+var controlsView = true;
 var infoView = false;
 var libraryView = false;
 

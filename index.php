@@ -62,6 +62,7 @@
     $(window).on('load',function(){
         <?php
             session_start();
+        
         if ($_SESSION['newaccount']=="yes"){
             echo '$("#newuser-modal").modal("show");';
         } else if ($_SESSION['error']=="yes"){
@@ -466,7 +467,7 @@
     <p style="text-align: center;">Controls</p>
 
 <!--    <input type="submit" value="Randomize" id="randomize-button" onclick="randomize()">-->
-    <input type="submit" value="Restart" id="refresh-button" onclick="restart();pause();">
+    <input type="submit" value="Restart" id="refresh-button" onclick="restart()">
     <input type="submit" value="Pause" id="pause-button" onclick="pause()">
     <input type="submit" value="Settings" onclick="settings()">
     <script>
